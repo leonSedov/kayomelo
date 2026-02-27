@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós | Kayo Melo Advogados</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===== VARIÁVEIS ORIGINAIS ===== */
+        :root {
+            --navy: #0A2647;
+            --gold: #C5A059;
+            --offwhite: #F8F9FA;
+            --white: #FFFFFF;
+            --gray: #2D2D2D;
+            --border: rgba(10, 38, 71, 0.08);
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gray);
+            background-color: var(--white);
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--navy); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        section { padding: 10rem 0; }
+
+        /* ===== HEADER NAVY ===== */
+        header {
+            background-color: var(--navy);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 70px; width: auto; }
+        .nav-menu { display: flex; list-style: none; gap: 3rem; }
+        .nav-menu a {
+            text-decoration: none; color: var(--white); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; transition: var(--transition);
+        }
+        .nav-menu a:hover { color: var(--gold); }
+
+        /* ===== SEÇÃO HISTÓRIA ===== */
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .history-content h2 { font-size: 3.5rem; margin-bottom: 2rem; }
+        .history-content p { font-size: 1.1rem; color: #555; }
+
+        .history-image-wrapper {
+            position: relative;
+            padding: 20px;
+        }
+
+        .history-image-wrapper img {
+            width: 100%;
+            border-radius: 2px;
+            box-shadow: 20px 20px 0px var(--gold);
+            z-index: 2;
+            position: relative;
+        }
+
+        /* ===== SEÇÃO EQUIPE ELABORADA ===== */
+        .team-section { background-color: var(--offwhite); }
+
+        .team-intro { text-align: center; max-width: 700px; margin: 0 auto 5rem; }
+        .team-intro h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        .team-intro p { text-transform: uppercase; color: var(--gold); letter-spacing: 3px; font-weight: 700; font-size: 0.8rem; }
+
+        .category-label {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin: 4rem 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+        }
+
+        .category-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .membro-card {
+            background: var(--white);
+            padding: 3.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Iniciais em marca d'água no fundo do card */
+        .membro-card::before {
+            content: attr(data-initials);
+            position: absolute;
+            top: 10%;
+            right: -5%;
+            font-size: 10rem;
+            font-family: 'Playfair Display';
+            font-weight: 900;
+            color: rgba(10, 38, 71, 0.03);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .membro-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(10, 38, 71, 0.1);
+        }
+
+        .avatar-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 2rem;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            margin-bottom: 2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .membro-info { z-index: 1; }
+        .membro-info h4 { font-size: 1.6rem; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+        .membro-info .cargo {
+            display: inline-block;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+        }
+        
+        .membro-info .bio {
+            font-size: 0.9rem;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer { background: var(--navy); padding: 4rem 0; color: var(--white); text-align: center; }
+
+        @media (max-width: 992px) {
+            .history-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="Camada-3.png" alt="Kayo Melo Advogados">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="areas.html">Áreas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section>
+        <div class="container history-grid">
+            <div class="history-content" data-aos="fade-right">
+                <h2>Excelência em cada detalhe.</h2>
+                <p>O escritório Kayo Melo Advogados nasceu da convicção de que o Direito deve ser exercido com agilidade e precisão técnica. Fundado pelo Dr. Kayo Melo, nossa atuação é pautada pela ética e pela busca constante da inovação no cenário jurídico nacional.</p>
+                <br>
+                <p>Combinamos nossa expertise jurídica com uma infraestrutura tecnológica exclusiva, permitindo que cada cliente receba uma solução personalizada e eficiente para suas demandas mais complexas.</p>
+            </div>
+            <div class="history-image-wrapper" data-aos="fade-left">
+                <img src="kayomelo.png" alt="Sócio Fundador">
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="team-intro" data-aos="fade-up">
+                <p>Nossa Capital Humana</p>
+                <h2>A mente por trás do seu direito</h2>
+            </div>
+
+            <div class="category-label" data-aos="fade-right">Corpo Jurídico Especializado</div>
+            <div class="team-grid">
+                
+                <div class="membro-card" data-aos="fade-up" data-initials="KM">
+                    <div class="avatar-circle">KM</div>
+                    <div class="membro-info">
+                        <h4>Kayo Melo</h4>
+                        <span class="cargo">Sócio Fundador</span>
+                        <p class="bio">Estrategista jurídico focado em soluções inovadoras e gestão de alta performance.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="MZ">
+                    <div class="avatar-circle">MZ</div>
+                    <div class="membro-info">
+                        <h4>Matheus Zuza</h4>
+                        <span class="cargo">Advogado Associado</span>
+                        <p class="bio">Especialista em Direito Previdenciário e Planejamento de Aposentadoria.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card" data-aos="fade-up" data-aos-delay="200" data-initials="IM">
+                    <div class="avatar-circle">IM</div>
+                    <div class="membro-info">
+                        <h4>Israel Morais</h4>
+                        <span class="cargo">Advogado Associado</span>
+                        <p class="bio">Expert em Direito Tributário e Recuperação de Créditos Fiscais.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card" data-aos="fade-up" data-aos-delay="300" data-initials="AC">
+                    <div class="avatar-circle">AC</div>
+                    <div class="membro-info">
+                        <h4>Ana Clara</h4>
+                        <span class="cargo">Advogada Associada</span>
+                        <p class="bio">Atuação focada no Direito Previdenciário e benefícios sociais.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card" data-aos="fade-up" data-aos-delay="400" data-initials="MR">
+                    <div class="avatar-circle">MR</div>
+                    <div class="membro-info">
+                        <h4>Maria Ruthillena</h4>
+                        <span class="cargo">Advogada Associada</span>
+                        <p class="bio">Especialista em Direito Civil e Responsabilidade Civil.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card" data-aos="fade-up" data-aos-delay="500" data-initials="D">
+                    <div class="avatar-circle">D</div>
+                    <div class="membro-info">
+                        <h4>Deyse</h4>
+                        <span class="cargo">Estagiária Jurídica</span>
+                        <p class="bio">Graduanda em Serviços Judiciais dedicada ao suporte processual.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-label" data-aos="fade-right">Inteligência & Tecnologia</div>
+            <div class="team-grid">
+                <div class="membro-card" data-aos="fade-up" data-initials="LS">
+                    <div class="avatar-circle">LS</div>
+                    <div class="membro-info">
+                        <h4>Leon Sedov</h4>
+                        <span class="cargo">Head of Technology</span>
+                        <p class="bio">Líder do departamento de TI, responsável pela segurança e inovação digital.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="OA">
+                    <div class="avatar-circle">OA</div>
+                    <div class="membro-info">
+                        <h4>Othon Anselmo</h4>
+                        <span class="cargo">Estagiário de TI</span>
+                        <p class="bio">Estudante de Engenharia Mecatrotônica na UFRN aplicada ao Direito.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-label" data-aos="fade-right">Gestão & Sucesso do Cliente</div>
+            <div class="team-grid">
+                <div class="membro-card" data-aos="fade-up" data-initials="IM">
+                    <div class="avatar-circle">IM</div>
+                    <div class="membro-info">
+                        <h4>Inês Maria</h4>
+                        <span class="cargo">Gerente & Closer</span>
+                        <p class="bio">Responsável pela gestão de contratos e fechamentos estratégicos.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="JS">
+                    <div class="avatar-circle">JS</div>
+                    <div class="membro-info">
+                        <h4>Jessislyne Silva</h4>
+                        <span class="cargo">Customer Success</span>
+                        <p class="bio">Garantindo a melhor experiência de atendimento e recepção.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Kayo Melo Advogados. Tradição e Tecnologia.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>

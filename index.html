@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayo Melo Advogados | Advocacia Especializada e Inovadora</title>
+    <meta name="description" content="Escritório de advocacia especializado em Direito Previdenciário, Tributário, Civil e Saúde. Tecnologia própria e atendimento humanizado.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===== RESET E VARIÁVEIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0A2647;
+            --gold: #C5A059;
+            --offwhite: #F8F9FA;
+            --gray: #2D2D2D;
+            --white: #FFFFFF;
+            --border: #E0E0E0;
+            --shadow: 0 20px 40px rgba(0,0,0,0.05);
+            --shadow-hover: 0 30px 50px rgba(197,160,89,0.2);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gray);
+            background-color: var(--offwhite);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        h1 { font-size: 4.5rem; line-height: 1.1; }
+        h2 { font-size: 3.2rem; margin-bottom: 2rem; position: relative; }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin-top: 1rem;
+        }
+        h3 { font-size: 2rem; margin-bottom: 1rem; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 10rem 0; /* AUMENTADO O ESPAÇAMENTO ENTRE SEÇÕES */
+        }
+
+        /* ===== HEADER MELHORADO PARA LOGO NO CANTO ===== */
+        header {
+            background-color: var(--navy); /* FUNDO ESCURO PARA COMBINAR COM A LOGO */
+            padding: 0.3rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 90px; /* AJUSTE DE ALTURA PARA LOGO */
+            width: 200px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--white); /* COR ALTERADA PARA BRANCO PELO FUNDO NAVY */
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .menu-mobile {
+            display: none;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* ===== BOTÕES DO HERO MELHORADOS ===== */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px; /* MAIS QUADRADO E PROFISSIONAL */
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--navy);
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        /* ===== HERO CAROUSEL MODIFICADO ===== */
+        .hero {
+            position: relative;
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(10,38,71,0.95) 0%, rgba(10,38,71,0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .slide-text {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        /* Carrossel Navigation - Pontos inferiores como na imagem */
+        .hero-nav-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-nav-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            padding: 2rem 1rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-top: 4px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-item i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item span {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+
+        .nav-item.active {
+            background: var(--offwhite);
+            color: var(--navy);
+            border-top: 4px solid var(--gold);
+        }
+
+        .nav-item.active i {
+            color: var(--navy);
+        }
+
+        /* Setas laterais */
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 25;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .hero-arrow:hover { opacity: 1; }
+        .arrow-prev { left: 20px; }
+        .arrow-next { right: 20px; }
+
+        .hero-highlight {
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== ESTATÍSTICAS ===== */
+        .stats {
+            background-color: var(--white);
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding: 5rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.3rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* ===== ÁREAS CARD ===== */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .area-card {
+            background: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .area-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .area-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .area-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .area-icon {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .area-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== DIFERENCIAL TECH ===== */
+        .diferencial {
+            background-color: var(--white);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: var(--shadow);
+        }
+
+        .diferencial-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .tech-badge {
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .tech-icon {
+            max-width: 400px; 
+            height: auto; 
+            object-fit: contain; 
+            border-radius: 20px;
+        }
+
+        /* ===== EQUIPE ===== */
+        .equipe-categoria {
+            margin-bottom: 5rem;
+        }
+
+        .equipe-categoria h3 {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+        }
+
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .membro-card {
+            text-align: center;
+            background: var(--white);
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .membro-card:hover {
+            transform: scale(1.05);
+            border-color: var(--gold);
+        }
+
+        .membro-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--offwhite);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--gold);
+            color: var(--navy);
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .membro-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .membro-card p {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ===== BLOG ===== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .post-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .post-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s;
+        }
+
+        .post-card:hover .post-image {
+            transform: scale(1.05);
+        }
+
+        .post-content {
+            padding: 2rem;
+        }
+
+        .post-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CONTATO ===== */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(197,160,89,0.2);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        footer h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        footer p, footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(197,160,89,0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* ===== SOBRE (FOTO + CITAÇÃO) ===== */
+        .sobre-photo {
+            background-image: url('kayomelo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 30px;
+            border: 3px solid var(--gold);
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .sobre-photo-overlay {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .sobre-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #fff;
+            max-width: 95%;
+        }
+
+        .sobre-author {
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.8rem; }
+            .areas-grid { grid-template-columns: repeat(2, 1fr); }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-nav-container { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .menu-mobile { display: block; }
+            section { padding: 6rem 0; }
+            .areas-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .contato-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+            footer .container { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .diferencial-content { flex-direction: column; text-align: center; }
+            .hero-nav-container { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images.png" alt="Kayo Melo Advogados">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="areas.html">Áreas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <div class="menu-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <button class="hero-arrow arrow-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="hero-arrow arrow-next"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito Previdenciário</span>
+                        <h1>Planeje sua<br>aposentadoria com segurança</h1>
+                        <p>Estratégias modernas para garantir o melhor benefício para o seu futuro. Atendimento ágil e consultoria especializada.</p>
+                        <a href="contato.html" class="btn btn-primary">Quero me aposentar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito à Saúde</span>
+                        <h1>Defendendo seu acesso<br>ao tratamento digno</h1>
+                        <p>Atuação contra negativas de planos de saúde e fornecimento de medicamentos de alto custo com rapidez processual.</p>
+                        <a href="contato.html" class="btn btn-primary">Garantir meus direitos</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito Civil</span>
+                        <h1>Soluções jurídicas para<br>seus desafios cotidianos</h1>
+                        <p>Dos contratos à responsabilidade civil, oferecemos segurança jurídica para você e sua família no mundo moderno.</p>
+                        <a href="contato.html" class="btn btn-primary">Falar com advogado</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito Tributário</span>
+                        <h1>Inteligência fiscal para<br>proteger seu patrimônio</h1>
+                        <p>Recuperação de créditos e planejamento tributário estratégico com uso de tecnologia de ponta e análise criteriosa.</p>
+                        <a href="contato.html" class="btn btn-primary">Otimizar impostos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-nav-wrapper">
+            <div class="hero-nav-container">
+                <div class="nav-item active" data-index="0">
+                    <i class="fas fa-id-card"></i>
+                    <span>Previdenciário</span>
+                </div>
+                <div class="nav-item" data-index="1">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Saúde</span>
+                </div>
+                <div class="nav-item" data-index="2">
+                    <i class="fas fa-gavel"></i>
+                    <span>Civil</span>
+                </div>
+                <div class="nav-item" data-index="3">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Tributário</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" data-aos="fade-up">
+        <div class="container stats-grid">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                <h3>+1000</h3>
+                <p>Atuações judiciais e extrajudiciais</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                <h3>+700</h3>
+                <p>Clientes atendidos</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                <h3>+10</h3>
+                <p>Anos de experiência</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="areas">
+        <h2 data-aos="fade-right">Áreas de Atuação Core</h2>
+        <div class="areas-grid">
+            <div class="area-card" data-aos="flip-left" data-aos-delay="100">
+                <i class="fas fa-id-card area-icon"></i>
+                <h3>Previdenciário</h3>
+                <p>Aposentadorias, revisões de benefício e planejamento previdenciário.</p>
+            </div>
+            <div class="area-card" data-aos="flip-left" data-aos-delay="200">
+                <i class="fas fa-chart-line area-icon"></i>
+                <h3>Tributário</h3>
+                <p>Planejamento tributário, litígios fiscais e recuperação de créditos.</p>
+            </div>
+            <div class="area-card" data-aos="flip-left" data-aos-delay="300">
+                <i class="fas fa-gavel area-icon"></i>
+                <h3>Civil</h3>
+                <p>Contratos, responsabilidade civil e direito das famílias.</p>
+            </div>
+            <div class="area-card" data-aos="flip-left" data-aos-delay="400">
+                <i class="fas fa-heartbeat area-icon"></i>
+                <h3>Saúde</h3>
+                <p>Planos de saúde, tratamentos negados e direito hospitalar.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section style="background: var(--white);">
+        <div class="container">
+            <h2 data-aos="fade-right">Sobre Nós</h2>
+            <div style="display: flex; gap: 4rem; align-items: center;">
+                <div data-aos="fade-right">
+                    <p style="font-size: 1.2rem;">Fundado pelo Dr. Kayo Melo, nosso escritório nasceu com o propósito de oferecer soluções jurídicas personalizadas, aliando o conhecimento tradicional à mais moderna tecnologia.</p>
+                    <p style="margin-top: 1.5rem;">Nossa trajetória é marcada pela ética, transparência e pela busca incessante da atualização.</p>
+                    <a href="sobre.html" class="btn btn-outline" style="margin-top: 2.5rem;">Leia mais</a>
+                </div>
+                <div class="sobre-photo" data-aos="fade-left">
+                    <div class="sobre-photo-overlay">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <p class="sobre-quote">"Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho."</p>
+                        <p class="sobre-author">Dr. Kayo Melo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container" data-aos="fade-up">
+        <div class="diferencial">
+            <div class="diferencial-content">
+                <div>
+                    <span class="tech-badge"><i class="fas fa-microchip"></i> Tech Law</span>
+                    <h2 style="margin-top: 1.5rem;">Inovação que protege seu patrimônio</h2>
+                    <p style="font-size: 1.2rem;">Com nosso <strong>departamento de TI </strong>. Leon (Head de TI) e Othon (Estagiário) garantem a segurança dos seus dados e agilidade processual com tecnologia de ponta.</p>
+                    <a href="sobre.html" class="btn btn-outline" style="margin-top: 2.5rem;">Conheça nosso time</a>
+                </div>
+                <img src="equipeOmin.webp" alt="Equipe de TI" class="tech-icon">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container" id="blog">
+        <h2 data-aos="fade-right">Últimas do Blog</h2>
+        <div class="blog-grid">
+            <article class="post-card" data-aos="fade-up">
+                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="post-content">
+                    <h4>Reforma Tributária: o que muda para você</h4>
+                    <p>Entenda os principais pontos e como isso pode impactar seu bolso.</p>
+                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            <article class="post-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="post-content">
+                    <h4>Novas regras para aposentadoria em 2025</h4>
+                    <p>Planeje-se com antecedência e garanta seus direitos.</p>
+                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            <article class="post-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="post-content">
+                    <h4>Planos de saúde: como garantir seu tratamento</h4>
+                    <p>Saiba quais são seus direitos em caso de negativa.</p>
+                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="blog.html" class="btn btn-outline">Ver todos os posts</a>
+        </div>
+    </section>
+
+    <section style="background: var(--offwhite);">
+        <div class="container">
+            <h2 data-aos="fade-right">Entre em Contato</h2>
+            <div class="contato-grid">
+                <form action="https://formspree.io/f/seudominio" method="POST" data-aos="fade-right">
+                    <div class="form-group">
+                        <input type="text" name="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Seu e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="telefone" placeholder="Seu telefone">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                </form>
+                <div data-aos="fade-left">
+                    <h3>Nosso Escritório</h3>
+                    <p><i class="fas fa-map-marker-alt" style="color:var(--gold); margin-right: 0.5rem;"></i> Av. Exemplo, 1234 - Sala 101, Natal/RN</p>
+                    <p><i class="fas fa-phone-alt" style="color:var(--gold); margin-right: 0.5rem;"></i> (84) 99999-9999</p>
+                    <p><i class="fas fa-envelope" style="color:var(--gold); margin-right: 0.5rem;"></i> contato@kayomeloadvogados.com.br</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63496.29463226143!2d-35.22667595!3d-5.794473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b3b1b2b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sNatal%2C%20RN!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Kayo Melo Advogados</h4>
+                <p>Advocacia especializada com tecnologia própria.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Links Rápidos</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="sobre.html">Sobre</a></p>
+                <p><a href="areas.html">Áreas</a></p>
+                <p><a href="blog.html">Blog</a></p>
+                <p><a href="contato.html">Contato</a></p>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone-alt"></i> (84) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@kayomeloadvogados.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Natal/RN</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5584999999999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Lógica do Carrossel Hero
+        const slides = document.querySelectorAll('.slide');
+        const navItems = document.querySelectorAll('.nav-item');
+        const btnNext = document.querySelector('.arrow-next');
+        const btnPrev = document.querySelector('.arrow-prev');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            navItems.forEach(n => n.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            navItems[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+
+        btnNext.addEventListener('click', () => {
+            nextSlide();
+            resetTimer();
+        });
+
+        btnPrev.addEventListener('click', () => {
+            prevSlide();
+            resetTimer();
+        });
+
+        navItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                showSlide(index);
+                resetTimer();
+            });
+        });
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 7000);
+        }
+
+        slideInterval = setInterval(nextSlide, 7000);
+
+        // Menu mobile
+        document.querySelector('.menu-mobile').addEventListener('click', function() {
+            alert('Implementar menu off-canvas com JavaScript.');
+        });
+    </script>
+</body>
+</html>

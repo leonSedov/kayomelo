@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áreas de Atuação | Kayo Melo Advogados</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===== VARIÁVEIS DO PROJETO ===== */
+        :root {
+            --navy: #0A2647;
+            --gold: #C5A059;
+            --offwhite: #F8F9FA;
+            --white: #FFFFFF;
+            --gray: #2D2D2D;
+            --border: rgba(10, 38, 71, 0.08);
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gray);
+            background-color: var(--white);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--navy); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* ESPAÇAMENTO DE 10REM CONFORME PADRÃO */
+        section { padding: 10rem 0; }
+
+        /* ===== HEADER NAVY ===== */
+        header {
+            background-color: var(--navy); /* FUNDO ESCURO PARA COMBINAR COM A LOGO */
+            padding: 0.3rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 90px; /* AJUSTE DE ALTURA PARA LOGO */
+            width: 200px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--white); /* COR ALTERADA PARA BRANCO PELO FUNDO NAVY */
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .menu-mobile {
+            display: none;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* ===== HERO ÁREAS ===== */
+        .areas-hero {
+            background: linear-gradient(rgba(10, 38, 71, 0.85), rgba(10, 38, 71, 0.85)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .areas-hero h1 { color: var(--white); font-size: 4rem; margin-bottom: 1rem; }
+        .areas-hero p { text-transform: uppercase; letter-spacing: 4px; font-weight: 700; color: var(--gold); }
+
+        /* ===== LAYOUT DE ÁREAS (TOP DE LINHA) ===== */
+        .area-block {
+            display: flex;
+            align-items: center;
+            gap: 6rem;
+            margin-bottom: 10rem;
+        }
+
+        .area-block:nth-child(even) { flex-direction: row-reverse; }
+
+        .area-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .area-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: brightness(0.8);
+            transition: var(--transition);
+        }
+
+        .area-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border-top: 5px solid var(--gold);
+            border-left: 5px solid var(--gold);
+            z-index: 1;
+        }
+
+        .area-content { flex: 1; }
+
+        .area-number {
+            font-family: 'Playfair Display';
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(10, 38, 71, 0.05);
+            line-height: 1;
+            margin-bottom: -2rem;
+        }
+
+        .area-content h2 { font-size: 3rem; margin-bottom: 1.5rem; position: relative; }
+        .area-content p { font-size: 1.1rem; color: #555; margin-bottom: 2rem; }
+
+        .feature-list { list-style: none; }
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .feature-list li i { color: var(--gold); font-size: 0.8rem; }
+
+        /* ===== BOTÃO ESTILO ORIGINAL REFINADO ===== */
+        .btn-area {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            transition: var(--transition);
+            margin-top: 2rem;
+        }
+
+        .btn-area:hover {
+            background-color: var(--gold);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer { background: var(--navy); padding: 5rem 0; color: var(--white); text-align: center; }
+
+        @media (max-width: 992px) {
+            .area-block, .area-block:nth-child(even) { flex-direction: column; gap: 3rem; text-align: center; }
+            .area-image img { height: 350px; }
+            .feature-list li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images.png" alt="Kayo Melo Advogados">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="areas.html">Áreas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <div class="menu-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="areas-hero">
+        <div data-aos="zoom-in">
+            <p>Especialidades</p>
+            <h1>Nossa Expertise</h1>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            
+            <div class="area-block" data-aos="fade-up">
+                <div class="area-image">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Direito Previdenciário">
+                </div>
+                <div class="area-content">
+                    <div class="area-number">01</div>
+                    <h2>Direito Previdenciário</h2>
+                    <p>Planejamento estratégico para garantir sua tranquilidade futura. Atuamos com inteligência tecnológica para acelerar processos e revisões.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle"></i> Planejamento de Aposentadoria</li>
+                        <li><i class="fas fa-circle"></i> Revisão de Benefícios (Vida Toda)</li>
+                        <li><i class="fas fa-circle"></i> BPC / LOAS</li>
+                        <li><i class="fas fa-circle"></i> Auxílio-Doença e Invalidez</li>
+                    </ul>
+                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
+                </div>
+            </div>
+
+            <div class="area-block" data-aos="fade-up">
+                <div class="area-image">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Direito Tributário">
+                </div>
+                <div class="area-content">
+                    <div class="area-number">02</div>
+                    <h2>Direito Tributário</h2>
+                    <p>Proteção patrimonial e otimização fiscal para empresas e indivíduos. Foco em recuperação de créditos e defesa contra execuções fiscais.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle"></i> Recuperação de Créditos Fiscais</li>
+                        <li><i class="fas fa-circle"></i> Planejamento Tributário</li>
+                        <li><i class="fas fa-circle"></i> Defesa em Execução Fiscal</li>
+                        <li><i class="fas fa-circle"></i> Consultoria para Pequenas e Médias Empresas</li>
+                    </ul>
+                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
+                </div>
+            </div>
+
+            <div class="area-block" data-aos="fade-up">
+                <div class="area-image">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80" alt="Direito Civil">
+                </div>
+                <div class="area-content">
+                    <div class="area-number">03</div>
+                    <h2>Direito Civil</h2>
+                    <p>Segurança jurídica nas relações interpessoais e contratuais. Do direito das famílias às indenizações complexas.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle"></i> Responsabilidade Civil e Indenizações</li>
+                        <li><i class="fas fa-circle"></i> Elaboração e Análise de Contratos</li>
+                        <li><i class="fas fa-circle"></i> Inventários e Sucessões</li>
+                        <li><i class="fas fa-circle"></i> Direito das Famílias</li>
+                    </ul>
+                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
+                </div>
+            </div>
+
+            <div class="area-block" data-aos="fade-up">
+                <div class="area-image">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Direito à Saúde">
+                </div>
+                <div class="area-content">
+                    <div class="area-number">04</div>
+                    <h2>Direito à Saúde</h2>
+                    <p>Ações rápidas e eficazes para garantir acesso a tratamentos, cirurgias e medicamentos de alto custo negados pelos planos ou estado.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle"></i> Negativa de Cirurgias e Exames</li>
+                        <li><i class="fas fa-circle"></i> Fornecimento de Medicamentos de Alto Custo</li>
+                        <li><i class="fas fa-circle"></i> Erro Médico e Responsabilidade Hospitalar</li>
+                        <li><i class="fas fa-circle"></i> Reajustes Abusivos em Planos de Saúde</li>
+                    </ul>
+                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Kayo Melo Advogados. Inteligência Jurídica em Cada Detalhe.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
