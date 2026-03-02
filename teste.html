@@ -3,263 +3,1575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayo Melo Advogados | Excelência e Inovação Jurídica</title>
-    <meta name="description" content="Escritório de advocacia especializado com tecnologia própria e atendimento humanizado.">
+    <title>Kayo Melo Advogados | Advocacia Especializada e Inovadora</title>
+    <meta name="description" content="Escritório de advocacia especializado em Direito Previdenciário, Tributário, Civil e Saúde. Tecnologia própria e atendimento humanizado.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* ===== VARIÁVEIS E RESET ===== */
+        /* ===== RESET E VARIÁVEIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --navy: #0A2647;
-            --navy-dark: #04101E;
             --gold: #C5A059;
-            --gold-light: #D4B982;
+            --gold-light: #E5C28E;
             --offwhite: #F8F9FA;
+            --gray: #2D2D2D;
             --white: #FFFFFF;
-            --text-gray: #64748b;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --border: #E0E0E0;
+            --shadow-sm: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 30px 50px rgba(197,160,89,0.25);
+            --shadow-gold: 0 15px 35px rgba(197,160,89,0.15);
+            --gradient-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            --gradient-navy: linear-gradient(135deg, var(--navy) 0%, #1A3A5F 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--navy); background: var(--white); line-height: 1.6; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 8rem 0; }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-
-        .btn-gold {
-            background: var(--gold); color: var(--navy); padding: 1rem 2.5rem;
-            text-decoration: none; text-transform: uppercase; font-weight: 700;
-            font-size: 0.8rem; letter-spacing: 2px; display: inline-flex;
-            align-items: center; gap: 10px; transition: var(--transition);
-            border: 1px solid var(--gold); border-radius: 4px;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gray);
+            background-color: var(--offwhite);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
         }
-        .btn-gold:hover { background: transparent; color: var(--gold); transform: translateY(-3px); }
 
-        /* ===== HEADER ===== */
-        header { background: var(--navy); padding: 0.5rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .header-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 70px; }
-        .nav-menu { display: flex; list-style: none; gap: 2.5rem; }
-        .nav-menu a { text-decoration: none; color: var(--white); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); }
-        .nav-menu a:hover { color: var(--gold); }
+        /* Textura sutil de fundo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(197,160,89,0.02) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(10,38,71,0.02) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
 
-        /* ===== SEÇÃO BLOG (ÚLTIMAS NOTÍCIAS) ===== */
-        .blog-section { background: var(--offwhite); }
-        .section-tag { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.8rem; display: block; margin-bottom: 1rem; text-align: center; }
-        .section-title { font-size: 3rem; text-align: center; margin-bottom: 4rem; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 1.5rem auto 0; }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--navy);
+        }
 
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .blog-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        
-        .blog-img { height: 220px; background-size: cover; background-position: center; }
-        .blog-content { padding: 2rem; }
-        .blog-date { font-size: 0.7rem; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem; display: block; }
-        .blog-content h3 { font-size: 1.4rem; margin-bottom: 1rem; line-height: 1.3; color: var(--navy); }
-        .blog-content p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .read-more { color: var(--navy); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-        .read-more:hover { color: var(--gold); }
+        h1 { 
+            font-size: clamp(2.5rem, 5vw, 4.5rem); 
+            line-height: 1.1; 
+            letter-spacing: -0.02em;
+        }
+        h2 { 
+            font-size: clamp(2rem, 4vw, 3.2rem); 
+            margin-bottom: 2rem; 
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 4px;
+            box-shadow: var(--shadow-gold);
+        }
+        h3 { 
+            font-size: clamp(1.5rem, 3vw, 2rem); 
+            margin-bottom: 1rem; 
+        }
 
-        /* ===== SEÇÃO FAQ ===== */
-        .faq-section { background: var(--white); }
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid #e2e8f0; padding: 1.5rem 0; }
-        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .faq-question h4 { font-size: 1.1rem; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--navy); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s ease; opacity: 0; }
-        .faq-item.active .faq-answer { max-height: 200px; opacity: 1; padding-top: 1rem; }
-        .faq-item.active i { transform: rotate(180deg); color: var(--gold); }
-        .faq-item i { transition: var(--transition); font-size: 0.8rem; color: var(--gold); }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
 
-        /* ===== FOOTER IMPECÁVEL ===== */
-        footer { background: var(--navy-dark); color: var(--white); padding: 80px 0 30px; margin-top: 4rem; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 3rem; margin-bottom: 60px; }
-        .footer-logo img { height: 60px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); }
-        .footer-about p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.8; }
-        .footer-title { color: var(--gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 2rem; display: block; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 0.8rem; }
-        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition); font-size: 0.85rem; }
-        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
-        .footer-contact p { display: flex; align-items: flex-start; gap: 12px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 1rem; }
-        .footer-contact i { color: var(--gold); margin-top: 4px; }
-        .social-icons { display: flex; gap: 12px; margin-top: 1.5rem; }
-        .social-icons a { width: 38px; height: 38px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--white); text-decoration: none; transition: var(--transition); }
-        .social-icons a:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-5px); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.4); font-size: 0.75rem; }
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
 
-        /* RESPONSIVIDADE */
-        @media (max-width: 1024px) { .blog-grid, .footer-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 768px) { .blog-grid, .footer-grid { grid-template-columns: 1fr; } .section-title { font-size: 2.2rem; } }
+        /* Elementos decorativos de fundo */
+        .section-decor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .section-decor::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            opacity: 0.02;
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+        }
+        .section-decor::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--navy);
+            opacity: 0.02;
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+        }
+
+        /* ===== HEADER MELHORADO ===== */
+        header {
+            background: var(--gradient-navy);
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(197,160,89,0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            max-width: 180px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            transition: transform 0.3s;
+        }
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Menu mobile */
+        .menu-mobile {
+            display: none;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--gradient-navy);
+            z-index: 1002;
+            padding: 5rem 2rem 2rem;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            border-left: 1px solid rgba(197,160,89,0.3);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            margin-top: 3rem;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--gold);
+        }
+
+        /* ===== BOTÕES REFINADOS - MAIS ARREDONDADOS ===== */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 100px; /* MÁXIMO ARREDONDAMENTO */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--navy);
+            box-shadow: 0 10px 25px rgba(197,160,89,0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(197,160,89,0.5);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        /* ===== HERO CAROUSEL REFINADO ===== */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(10,38,71,0.95) 0%, rgba(10,38,71,0.7) 50%, rgba(10,38,71,0.4) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .slide-text {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero-nav-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(197,160,89,0.2);
+        }
+
+        .hero-nav-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            padding: 1.5rem 1rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: all 0.4s;
+            border-top: 4px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item i {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-item span {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+        .nav-item:hover i {
+            transform: scale(1.2);
+        }
+
+        .nav-item.active {
+            background: var(--offwhite);
+            color: var(--navy);
+            border-top: 4px solid var(--gold);
+        }
+        .nav-item.active i {
+            color: var(--navy);
+        }
+
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 25;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.8rem 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s, background 0.3s;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+        }
+        .hero:hover .hero-arrow {
+            opacity: 0.7;
+        }
+        .hero-arrow:hover { 
+            opacity: 1 !important;
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .arrow-prev { left: 20px; }
+        .arrow-next { right: 20px; }
+
+        .hero-highlight {
+            background: var(--gradient-gold);
+            color: var(--navy);
+            padding: 0.6rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* ===== ESTATÍSTICAS ===== */
+        .stats {
+            background-color: var(--white);
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 10px rgba(197,160,89,0.2);
+        }
+
+        .stat-item p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--navy);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        .stat-item p::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        /* ===== ÁREAS CARD (CLICÁVEIS) ===== */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .area-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .area-card-link:hover {
+            transform: translateY(-10px);
+        }
+
+        .area-card {
+            background: var(--white);
+            padding: 2rem 1rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.4s;
+            border: 1px solid rgba(224,224,224,0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.8);
+            height: 100%;
+        }
+
+        .area-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+            transform-origin: left;
+        }
+
+        .area-card-link:hover .area-card::before {
+            transform: scaleX(1);
+        }
+
+        .area-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            transition: transform 0.4s;
+        }
+        .area-card-link:hover .area-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .area-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        .area-card-link:hover .area-card h3 {
+            color: var(--gold);
+        }
+
+        .area-card p {
+            font-size: 0.95rem;
+        }
+
+        /* ===== DIFERENCIAL TECH ===== */
+        .diferencial {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(197,160,89,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .diferencial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 0% 0%, rgba(197,160,89,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .diferencial-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .tech-badge {
+            background: var(--gradient-gold);
+            color: var(--navy);
+            padding: 0.7rem 2rem;
+            border-radius: 100px;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .tech-icon {
+            max-width: 350px; 
+            height: auto; 
+            object-fit: contain; 
+            border-radius: 40px;
+            box-shadow: var(--shadow-hover);
+            transition: transform 0.5s;
+        }
+        .tech-icon:hover {
+            transform: scale(1.02);
+        }
+
+        /* ===== SOBRE (FOTO + CITAÇÃO) ===== */
+        .sobre-photo {
+            background-image: url('kayomelo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 50px;
+            border: 4px solid var(--gold);
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .sobre-photo-overlay {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(10,38,71,0.9) 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .quote-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .sobre-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #fff;
+            max-width: 95%;
+        }
+
+        .sobre-author {
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ===== EQUIPE ===== */
+        .equipe-categoria {
+            margin-bottom: 5rem;
+        }
+
+        .equipe-categoria h3 {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+        }
+
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .membro-card {
+            text-align: center;
+            background: var(--white);
+            padding: 2rem 1rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 1px solid rgba(224,224,224,0.3);
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.7);
+        }
+
+        .membro-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+
+        .membro-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--offwhite);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--gold);
+            color: var(--navy);
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            transition: transform 0.4s, border-color 0.4s;
+            box-shadow: var(--shadow);
+        }
+        .membro-card:hover .membro-avatar {
+            transform: scale(1.05);
+            border-color: var(--navy);
+        }
+
+        .membro-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            transition: color 0.3s;
+        }
+        .membro-card:hover h4 {
+            color: var(--gold);
+        }
+
+        .membro-card p {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ===== BLOG ===== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: var(--white);
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .post-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s;
+        }
+
+        .post-card:hover .post-image {
+            transform: scale(1.1);
+        }
+
+        .post-content {
+            padding: 1.5rem;
+            position: relative;
+            background: white;
+        }
+
+        .post-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        .post-card:hover .post-content h4 {
+            color: var(--gold);
+        }
+
+        .post-content p {
+            font-size: 0.95rem;
+        }
+
+        .post-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: gap 0.3s;
+            font-size: 0.9rem;
+        }
+        .post-link:hover {
+            gap: 1rem;
+        }
+
+        /* ===== FAQ (PERGUNTAS FREQUENTES) ===== */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 40px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(224,224,224,0.3);
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.8);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+        .faq-question i {
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+        .faq-question h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            color: var(--navy);
+        }
+        .faq-answer p {
+            color: var(--gray);
+            line-height: 1.6;
+            padding-left: 2.8rem;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--gradient-navy);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path d="M20,20 Q40,10 60,20 T100,20" stroke="%23C5A059" fill="none" stroke-width="1"/><path d="M0,80 Q20,70 40,80 T80,80" stroke="%23C5A059" fill="none" stroke-width="1"/></svg>');
+            background-size: cover;
+            pointer-events: none;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        footer h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        footer p, footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background: rgba(197,160,89,0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.3s;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-5px);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37,211,102,0.3);
+            z-index: 1000;
+            transition: all 0.4s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15) rotate(5deg);
+            background: #128C7E;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 1024px) {
+            .areas-grid { grid-template-columns: repeat(2, 1fr); }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-nav-container { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .menu-mobile { display: block; }
+            
+            section { padding: 4rem 0; }
+            h2 { font-size: 2rem; }
+            
+            .hero-nav-wrapper {
+                display: none; /* Esconde navegação inferior em mobile para não poluir */
+            }
+            .hero-arrow { display: none; }
+            
+            .diferencial-content { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            .diferencial {
+                padding: 2rem;
+            }
+            
+            .sobre-photo {
+                height: 300px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .areas-grid { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem;
+            }
+            
+            .blog-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.8rem;
+            }
+            
+            /* Ajustes no hero para mobile */
+            .hero {
+                min-height: 80vh;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-highlight {
+                font-size: 0.7rem;
+                padding: 0.4rem 1rem;
+            }
+            
+            .area-card {
+                padding: 1.5rem 0.8rem;
+            }
+            
+            .area-icon {
+                font-size: 2.5rem;
+            }
+            
+            .area-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .post-image {
+                height: 180px;
+            }
+            
+            .faq-item {
+                padding: 1.2rem;
+            }
+            
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-
+    <div class="section-decor"></div>
     <header>
         <div class="container header-container">
-            <div class="logo"><img src="images.png" alt="Kayo Melo"></div>
+            <div class="logo">
+                <img src="images.png" alt="Kayo Melo Advogados">
+            </div>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#faq">Dúvidas</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="areas.html">Áreas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contato.html">Contato</a></li>
             </ul>
+            <div class="menu-mobile" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
-    <section class="blog-section" id="blog">
-        <div class="container">
-            <span class="section-tag" data-aos="fade-up">Conhecimento Jurídico</span>
-            <h2 class="section-title" data-aos="fade-up">Últimas do Blog</h2>
-            
-            <div class="blog-grid">
-                <article class="blog-card" data-aos="fade-up">
-                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="blog-content">
-                        <span class="blog-date">15 MAR 2024 • TRIBUTÁRIO</span>
-                        <h3>Reforma Tributária: O que muda para as empresas?</h3>
-                        <p>Entenda os impactos imediatos e como preparar seu planejamento fiscal para as novas regras.</p>
-                        <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-menu" id="closeMenu"><i class="fas fa-times"></i></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="areas.html">Áreas</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </div>
 
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="blog-content">
-                        <span class="blog-date">10 MAR 2024 • PREVIDENCIÁRIO</span>
-                        <h3>Revisão da Vida Toda: Entenda a decisão do STF</h3>
-                        <p>Saiba quem ainda pode ter direito ao recálculo da aposentadoria após os recentes julgamentos.</p>
-                        <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+    <section class="hero" id="home">
+        <button class="hero-arrow arrow-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="hero-arrow arrow-next"><i class="fas fa-chevron-right"></i></button>
+        
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito Previdenciário</span>
+                        <h1>Planeje sua<br>aposentadoria com segurança</h1>
+                        <p>Estratégias modernas para garantir o melhor benefício para o seu futuro. Atendimento ágil e consultoria especializada.</p>
+                        <a href="contato.html" class="btn btn-primary">Quero me aposentar</a>
                     </div>
-                </article>
-
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80')"></div>
-                    <div class="blog-content">
-                        <span class="blog-date">05 MAR 2024 • SAÚDE</span>
-                        <h3>Negativa de Cirurgia: Como garantir seus direitos</h3>
-                        <p>O plano de saúde negou um procedimento essencial? Conheça os caminhos jurídicos para reverter.</p>
-                        <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+                </div>
             </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#" class="btn-gold">Ver Todos os Posts</a>
+
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito à Saúde</span>
+                        <h1>Defendendo seu acesso<br>ao tratamento digno</h1>
+                        <p>Atuação contra negativas de planos de saúde e fornecimento de medicamentos de alto custo com rapidez processual.</p>
+                        <a href="contato.html" class="btn btn-primary">Garantir meus direitos</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito Civil</span>
+                        <h1>Soluções jurídicas para<br>seus desafios cotidianos</h1>
+                        <p>Dos contratos à responsabilidade civil, oferecemos segurança jurídica para você e sua família no mundo moderno.</p>
+                        <a href="contato.html" class="btn btn-primary">Falar com advogado</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                <div class="container hero-content">
+                    <div class="slide-text">
+                        <span class="hero-highlight">Direito Tributário</span>
+                        <h1>Inteligência fiscal para<br>proteger seu patrimônio</h1>
+                        <p>Recuperação de créditos e planejamento tributário estratégico com uso de tecnologia de ponta e análise criteriosa.</p>
+                        <a href="contato.html" class="btn btn-primary">Otimizar impostos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-nav-wrapper">
+            <div class="hero-nav-container">
+                <div class="nav-item active" data-index="0">
+                    <i class="fas fa-id-card"></i>
+                    <span>Previdenciário</span>
+                </div>
+                <div class="nav-item" data-index="1">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Saúde</span>
+                </div>
+                <div class="nav-item" data-index="2">
+                    <i class="fas fa-gavel"></i>
+                    <span>Civil</span>
+                </div>
+                <div class="nav-item" data-index="3">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Tributário</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="faq-section" id="faq">
+    <section class="stats" data-aos="fade-up">
+        <div class="container stats-grid">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                <h3>+1000</h3>
+                <p>Atuações judiciais e extrajudiciais</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                <h3>+700</h3>
+                <p>Clientes atendidos</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                <h3>+10</h3>
+                <p>Anos de experiência</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="areas">
+        <h2 data-aos="fade-right">Áreas de Atuação Core</h2>
+        <div class="areas-grid">
+            <a href="previdenciario.html" class="area-card-link" data-aos="flip-left" data-aos-delay="100">
+                <div class="area-card">
+                    <i class="fas fa-id-card area-icon"></i>
+                    <h3>Previdenciário</h3>
+                    <p>Aposentadorias, revisões de benefício e planejamento previdenciário.</p>
+                </div>
+            </a>
+            <a href="tributario.html" class="area-card-link" data-aos="flip-left" data-aos-delay="200">
+                <div class="area-card">
+                    <i class="fas fa-chart-line area-icon"></i>
+                    <h3>Tributário</h3>
+                    <p>Planejamento tributário, litígios fiscais e recuperação de créditos.</p>
+                </div>
+            </a>
+            <a href="civil.html" class="area-card-link" data-aos="flip-left" data-aos-delay="300">
+                <div class="area-card">
+                    <i class="fas fa-gavel area-icon"></i>
+                    <h3>Civil</h3>
+                    <p>Contratos, responsabilidade civil e direito das famílias.</p>
+                </div>
+            </a>
+            <a href="saude.html" class="area-card-link" data-aos="flip-left" data-aos-delay="400">
+                <div class="area-card">
+                    <i class="fas fa-heartbeat area-icon"></i>
+                    <h3>Saúde</h3>
+                    <p>Planos de saúde, tratamentos negados e direito hospitalar.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section style="background: var(--offwhite);">
         <div class="container">
-            <span class="section-tag" data-aos="fade-up">FAQ</span>
-            <h2 class="section-title" data-aos="fade-up">Perguntas Frequentes</h2>
-            
-            <div class="faq-container">
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        <h4>Quais documentos preciso para uma consulta?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Para casos previdenciários, CNIS e CTPS. Para saúde, o relatório médico e a negativa por escrito. Em geral, RG, CPF e comprovante de residência são essenciais.</p>
-                    </div>
+            <h2 data-aos="fade-right">Sobre Nós</h2>
+            <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;">
+                <div data-aos="fade-right" style="flex: 1 1 300px;">
+                    <p style="font-size: 1.2rem;">Fundado pelo Dr. Kayo Melo, nosso escritório nasceu com o propósito de oferecer soluções jurídicas personalizadas, aliando o conhecimento tradicional à mais moderna tecnologia.</p>
+                    <p style="margin-top: 1.5rem;">Nossa trajetória é marcada pela ética, transparência e pela busca incessante da atualização.</p>
+                    <a href="sobre.html" class="btn btn-outline" style="margin-top: 2rem;">Leia mais</a>
                 </div>
-
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        <h4>O escritório atende clientes de outros estados?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim. Através de processos digitais e assinaturas eletrônicas, atendemos clientes em todo o Brasil com a mesma segurança do atendimento presencial.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item" data-aos="fade-up">
-                    <div class="faq-question">
-                        <h4>Como funciona o pagamento dos honorários?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Trabalhamos com transparência total. Os valores variam conforme a complexidade e área, podendo ser fixos, mensais ou baseados no sucesso da causa (ad exitum).</p>
+                <div class="sobre-photo" data-aos="fade-left" style="flex: 1 1 300px;">
+                    <div class="sobre-photo-overlay">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <p class="sobre-quote">"Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho."</p>
+                        <p class="sobre-author">Dr. Kayo Melo</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="container" data-aos="fade-up">
+        <div class="diferencial">
+            <div class="diferencial-content">
+                <div>
+                    <span class="tech-badge"><i class="fas fa-microchip"></i> Tech Law</span>
+                    <h2 style="margin-top: 1rem;">Inovação que protege seu patrimônio</h2>
+                    <p style="font-size: 1.1rem;">Com nosso <strong>departamento de TI</strong>. Leon (Head de TI) e Othon (Estagiário) garantem a segurança dos seus dados e agilidade processual com tecnologia de ponta.</p>
+                    <a href="sobre.html" class="btn btn-outline" style="margin-top: 2rem;">Conheça nosso time</a>
+                </div>
+                <img src="equipeOmin.webp" alt="Equipe de TI" class="tech-icon">
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: FAQ SOBRE APOSENTADORIA -->
+    <section style="background: var(--white);">
+        <div class="container">
+            <h2 data-aos="fade-right">Perguntas Frequentes sobre Aposentadoria</h2>
+            <div class="faq-grid">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Qual a idade mínima para se aposentar?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Após a Reforma da Previdência (EC 103/2019), a idade mínima é de 65 anos para homens e 62 para mulheres, com tempo de contribuição de 15 anos (mulheres) e 20 anos (homens), dependendo da regra de transição aplicável.</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Posso me aposentar sem ter atingido a idade mínima?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, é possível pelas regras de transição (como pedágio de 50% ou 100%) ou aposentadoria por tempo de contribuição (para quem já estava no sistema antes da reforma), desde que cumpridos os requisitos.</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>O que é o fator previdenciário?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>É uma fórmula que considera idade, tempo de contribuição e expectativa de vida, podendo reduzir o valor da aposentadoria por tempo de contribuição. Hoje, a aposentadoria programada tem o cálculo baseado na média de 100% dos salários.</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Como é calculado o valor da aposentadoria?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>É feita a média de 100% de todos os salários de contribuição desde julho de 1994. O valor inicial é 60% dessa média + 2% para cada ano que ultrapassar 20 anos de contribuição (homens) ou 15 anos (mulheres).</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Posso continuar trabalhando depois de aposentado?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, é possível, mas você continuará contribuindo para o INSS (não obrigatoriamente) e poderá ter direito a outros benefícios, como salário-maternidade ou reabilitação profissional.</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>O que fazer se o INSS negar meu pedido?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>É possível entrar com recurso administrativo ou ação judicial. Recomenda-se buscar um advogado especializado para avaliar as chances de êxito e orientar sobre a melhor estratégia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="blog">
+        <h2 data-aos="fade-right">Últimas do Blog</h2>
+        <div class="blog-grid">
+            <article class="post-card" data-aos="fade-up">
+                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="post-content">
+                    <h4>Reforma Tributária: o que muda para você</h4>
+                    <p>Entenda os principais pontos e como isso pode impactar seu bolso.</p>
+                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            <article class="post-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="post-content">
+                    <h4>Novas regras para aposentadoria em 2025</h4>
+                    <p>Planeje-se com antecedência e garanta seus direitos.</p>
+                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            <article class="post-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="post-content">
+                    <h4>Planos de saúde: como garantir seu tratamento</h4>
+                    <p>Saiba quais são seus direitos em caso de negativa.</p>
+                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="blog.html" class="btn btn-outline">Ver todos os posts</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <div class="footer-logo"><img src="images.png" alt="Logo Footer"></div>
-                    <p>Referência em advocacia de alta performance, unindo tradição jurídica e inovação tecnológica para proteger seus direitos e patrimônio.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <span class="footer-title">Institucional</span>
-                    <ul class="footer-links">
-                        <li><a href="#">Sobre o Escritório</a></li>
-                        <li><a href="#">Áreas de Atuação</a></li>
-                        <li><a href="#">Equipe Especializada</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <span class="footer-title">Áreas Core</span>
-                    <ul class="footer-links">
-                        <li><a href="#">Direito Previdenciário</a></li>
-                        <li><a href="#">Direito Tributário</a></li>
-                        <li><a href="#">Direito Civil</a></li>
-                        <li><a href="#">Direito à Saúde</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <span class="footer-title">Contato</span>
-                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal, 1000 - Ed. Corporate, Natal/RN</p>
-                    <p><i class="fas fa-phone"></i> (84) 99999-9999</p>
-                    <p><i class="fas fa-envelope"></i> contato@kayomelo.adv.br</p>
+            <div>
+                <h4>Kayo Melo Advogados</h4>
+                <p>Advocacia especializada com tecnologia própria.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Kayo Melo Advogados. OAB/RN 00.000. Todos os direitos reservados.</p>
-                <p>Powered by TechLaw Solutions</p>
+            <div>
+                <h4>Links Rápidos</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="sobre.html">Sobre</a></p>
+                <p><a href="areas.html">Áreas</a></p>
+                <p><a href="blog.html">Blog</a></p>
+                <p><a href="contato.html">Contato</a></p>
             </div>
+            <div>
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone-alt"></i> (84) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@kayomeloadvogados.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Natal/RN</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <a href="https://wa.me/5584999999999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
 
-        // Lógica do FAQ (Acordeão)
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
-                
-                // Fecha outros itens ao abrir um (opcional)
-                document.querySelectorAll('.faq-item').forEach(otherItem => {
-                    if (otherItem !== item) otherItem.classList.remove('active');
-                });
+        // Lógica do Carrossel Hero
+        const slides = document.querySelectorAll('.slide');
+        const navItems = document.querySelectorAll('.nav-item');
+        const btnNext = document.querySelector('.arrow-next');
+        const btnPrev = document.querySelector('.arrow-prev');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            navItems.forEach(n => n.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            navItems[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+
+        if (btnNext && btnPrev) {
+            btnNext.addEventListener('click', () => {
+                nextSlide();
+                resetTimer();
+            });
+
+            btnPrev.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+        }
+
+        navItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                showSlide(index);
+                resetTimer();
             });
         });
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 7000);
+        }
+
+        slideInterval = setInterval(nextSlide, 7000);
+
+        // Menu mobile funcional
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenu = document.getElementById('closeMenu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMobileMenu);
+        closeMenu.addEventListener('click', closeMobileMenu);
+        menuOverlay.addEventListener('click', closeMobileMenu);
     </script>
 </body>
 </html>
