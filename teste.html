@@ -3,324 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós | Kayo Melo Advogados</title>
-    
+    <title>Kayo Melo Advogados | Excelência e Inovação Jurídica</title>
+    <meta name="description" content="Escritório de advocacia especializado com tecnologia própria e atendimento humanizado.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ===== VARIÁVEIS ORIGINAIS ===== */
+        /* ===== VARIÁVEIS E RESET ===== */
         :root {
             --navy: #0A2647;
+            --navy-dark: #04101E;
             --gold: #C5A059;
+            --gold-light: #D4B982;
             --offwhite: #F8F9FA;
             --white: #FFFFFF;
-            --gray: #2D2D2D;
-            --border: rgba(10, 38, 71, 0.08);
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --text-gray: #64748b;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--gray);
-            background-color: var(--white);
-            line-height: 1.8;
-        }
-
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--navy); }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--navy); background: var(--white); line-height: 1.6; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        
-        section { padding: 10rem 0; }
+        section { padding: 8rem 0; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-        /* ===== HEADER NAVY ===== */
-        header {
-            background-color: var(--navy);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        .btn-gold {
+            background: var(--gold); color: var(--navy); padding: 1rem 2.5rem;
+            text-decoration: none; text-transform: uppercase; font-weight: 700;
+            font-size: 0.8rem; letter-spacing: 2px; display: inline-flex;
+            align-items: center; gap: 10px; transition: var(--transition);
+            border: 1px solid var(--gold); border-radius: 4px;
         }
+        .btn-gold:hover { background: transparent; color: var(--gold); transform: translateY(-3px); }
 
+        /* ===== HEADER ===== */
+        header { background: var(--navy); padding: 0.5rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .header-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 70px; width: auto; }
-        .nav-menu { display: flex; list-style: none; gap: 3rem; }
-        .nav-menu a {
-            text-decoration: none; color: var(--white); font-weight: 600;
-            text-transform: uppercase; letter-spacing: 1px; transition: var(--transition);
-        }
+        .logo img { height: 70px; }
+        .nav-menu { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-menu a { text-decoration: none; color: var(--white); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: var(--transition); }
         .nav-menu a:hover { color: var(--gold); }
 
-        /* ===== SEÇÃO HISTÓRIA ===== */
-        .history-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
+        /* ===== SEÇÃO BLOG (ÚLTIMAS NOTÍCIAS) ===== */
+        .blog-section { background: var(--offwhite); }
+        .section-tag { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.8rem; display: block; margin-bottom: 1rem; text-align: center; }
+        .section-title { font-size: 3rem; text-align: center; margin-bottom: 4rem; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 1.5rem auto 0; }
 
-        .history-content h2 { font-size: 3.5rem; margin-bottom: 2rem; }
-        .history-content p { font-size: 1.1rem; color: #555; }
-
-        .history-image-wrapper {
-            position: relative;
-            padding: 20px;
-        }
-
-        .history-image-wrapper img {
-            width: 100%;
-            border-radius: 2px;
-            box-shadow: 20px 20px 0px var(--gold);
-            z-index: 2;
-            position: relative;
-        }
-
-        /* ===== SEÇÃO EQUIPE ELABORADA ===== */
-        .team-section { background-color: var(--offwhite); }
-
-        .team-intro { text-align: center; max-width: 700px; margin: 0 auto 5rem; }
-        .team-intro h2 { font-size: 3rem; margin-bottom: 1.5rem; }
-        .team-intro p { text-transform: uppercase; color: var(--gold); letter-spacing: 3px; font-weight: 700; font-size: 0.8rem; }
-
-        .category-label {
-            font-size: 1.5rem;
-            color: var(--navy);
-            margin: 4rem 0 2rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 700;
-        }
-
-        .category-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .membro-card {
-            background: var(--white);
-            padding: 3.5rem 2.5rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* Iniciais em marca d'água no fundo do card */
-        .membro-card::before {
-            content: attr(data-initials);
-            position: absolute;
-            top: 10%;
-            right: -5%;
-            font-size: 10rem;
-            font-family: 'Playfair Display';
-            font-weight: 900;
-            color: rgba(10, 38, 71, 0.03);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .membro-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 30px 60px rgba(10, 38, 71, 0.1);
-        }
-
-        .avatar-circle {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 2rem;
-            font-weight: 700;
-            border: 2px solid var(--gold);
-            margin-bottom: 2rem;
-            z-index: 1;
-            position: relative;
-        }
-
-        .membro-info { z-index: 1; }
-        .membro-info h4 { font-size: 1.6rem; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
-        .membro-info .cargo {
-            display: inline-block;
-            color: var(--gold);
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin-bottom: 1.2rem;
-        }
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .blog-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         
-        .membro-info .bio {
-            font-size: 0.9rem;
-            color: #777;
-            line-height: 1.6;
-        }
+        .blog-img { height: 220px; background-size: cover; background-position: center; }
+        .blog-content { padding: 2rem; }
+        .blog-date { font-size: 0.7rem; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem; display: block; }
+        .blog-content h3 { font-size: 1.4rem; margin-bottom: 1rem; line-height: 1.3; color: var(--navy); }
+        .blog-content p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .read-more { color: var(--navy); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        .read-more:hover { color: var(--gold); }
 
-        /* ===== FOOTER ===== */
-        footer { background: var(--navy); padding: 4rem 0; color: var(--white); text-align: center; }
+        /* ===== SEÇÃO FAQ ===== */
+        .faq-section { background: var(--white); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid #e2e8f0; padding: 1.5rem 0; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .faq-question h4 { font-size: 1.1rem; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--navy); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s ease; opacity: 0; }
+        .faq-item.active .faq-answer { max-height: 200px; opacity: 1; padding-top: 1rem; }
+        .faq-item.active i { transform: rotate(180deg); color: var(--gold); }
+        .faq-item i { transition: var(--transition); font-size: 0.8rem; color: var(--gold); }
 
-        @media (max-width: 992px) {
-            .history-grid { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: 1fr; }
-        }
+        /* ===== FOOTER IMPECÁVEL ===== */
+        footer { background: var(--navy-dark); color: var(--white); padding: 80px 0 30px; margin-top: 4rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 3rem; margin-bottom: 60px; }
+        .footer-logo img { height: 60px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); }
+        .footer-about p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.8; }
+        .footer-title { color: var(--gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 2rem; display: block; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition); font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
+        .footer-contact p { display: flex; align-items: flex-start; gap: 12px; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 1rem; }
+        .footer-contact i { color: var(--gold); margin-top: 4px; }
+        .social-icons { display: flex; gap: 12px; margin-top: 1.5rem; }
+        .social-icons a { width: 38px; height: 38px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--white); text-decoration: none; transition: var(--transition); }
+        .social-icons a:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-5px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.4); font-size: 0.75rem; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) { .blog-grid, .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .blog-grid, .footer-grid { grid-template-columns: 1fr; } .section-title { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <img src="Camada-3.png" alt="Kayo Melo Advogados">
-            </div>
+            <div class="logo"><img src="images.png" alt="Kayo Melo"></div>
             <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="areas.html">Áreas</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#faq">Dúvidas</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </div>
     </header>
 
-    <section>
-        <div class="container history-grid">
-            <div class="history-content" data-aos="fade-right">
-                <h2>Excelência em cada detalhe.</h2>
-                <p>O escritório Kayo Melo Advogados nasceu da convicção de que o Direito deve ser exercido com agilidade e precisão técnica. Fundado pelo Dr. Kayo Melo, nossa atuação é pautada pela ética e pela busca constante da inovação no cenário jurídico nacional.</p>
-                <br>
-                <p>Combinamos nossa expertise jurídica com uma infraestrutura tecnológica exclusiva, permitindo que cada cliente receba uma solução personalizada e eficiente para suas demandas mais complexas.</p>
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <span class="section-tag" data-aos="fade-up">Conhecimento Jurídico</span>
+            <h2 class="section-title" data-aos="fade-up">Últimas do Blog</h2>
+            
+            <div class="blog-grid">
+                <article class="blog-card" data-aos="fade-up">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="blog-content">
+                        <span class="blog-date">15 MAR 2024 • TRIBUTÁRIO</span>
+                        <h3>Reforma Tributária: O que muda para as empresas?</h3>
+                        <p>Entenda os impactos imediatos e como preparar seu planejamento fiscal para as novas regras.</p>
+                        <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="blog-content">
+                        <span class="blog-date">10 MAR 2024 • PREVIDENCIÁRIO</span>
+                        <h3>Revisão da Vida Toda: Entenda a decisão do STF</h3>
+                        <p>Saiba quem ainda pode ter direito ao recálculo da aposentadoria após os recentes julgamentos.</p>
+                        <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80')"></div>
+                    <div class="blog-content">
+                        <span class="blog-date">05 MAR 2024 • SAÚDE</span>
+                        <h3>Negativa de Cirurgia: Como garantir seus direitos</h3>
+                        <p>O plano de saúde negou um procedimento essencial? Conheça os caminhos jurídicos para reverter.</p>
+                        <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
             </div>
-            <div class="history-image-wrapper" data-aos="fade-left">
-                <img src="kayomelo.png" alt="Sócio Fundador">
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn-gold">Ver Todos os Posts</a>
             </div>
         </div>
     </section>
 
-    <section class="team-section">
+    <section class="faq-section" id="faq">
         <div class="container">
-            <div class="team-intro" data-aos="fade-up">
-                <p>Nossa Capital Humana</p>
-                <h2>A mente por trás do seu direito</h2>
-            </div>
-
-            <div class="category-label" data-aos="fade-right">Corpo Jurídico Especializado</div>
-            <div class="team-grid">
-                
-                <div class="membro-card" data-aos="fade-up" data-initials="KM">
-                    <div class="avatar-circle">KM</div>
-                    <div class="membro-info">
-                        <h4>Kayo Melo</h4>
-                        <span class="cargo">Sócio Fundador</span>
-                        <p class="bio">Estrategista jurídico focado em soluções inovadoras e gestão de alta performance.</p>
+            <span class="section-tag" data-aos="fade-up">FAQ</span>
+            <h2 class="section-title" data-aos="fade-up">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h4>Quais documentos preciso para uma consulta?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para casos previdenciários, CNIS e CTPS. Para saúde, o relatório médico e a negativa por escrito. Em geral, RG, CPF e comprovante de residência são essenciais.</p>
                     </div>
                 </div>
 
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="MZ">
-                    <div class="avatar-circle">MZ</div>
-                    <div class="membro-info">
-                        <h4>Matheus Zuza</h4>
-                        <span class="cargo">Advogado Associado</span>
-                        <p class="bio">Especialista em Direito Previdenciário e Planejamento de Aposentadoria.</p>
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h4>O escritório atende clientes de outros estados?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim. Através de processos digitais e assinaturas eletrônicas, atendemos clientes em todo o Brasil com a mesma segurança do atendimento presencial.</p>
                     </div>
                 </div>
 
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="200" data-initials="IM">
-                    <div class="avatar-circle">IM</div>
-                    <div class="membro-info">
-                        <h4>Israel Morais</h4>
-                        <span class="cargo">Advogado Associado</span>
-                        <p class="bio">Expert em Direito Tributário e Recuperação de Créditos Fiscais.</p>
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h4>Como funciona o pagamento dos honorários?</h4>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="300" data-initials="AC">
-                    <div class="avatar-circle">AC</div>
-                    <div class="membro-info">
-                        <h4>Ana Clara</h4>
-                        <span class="cargo">Advogada Associada</span>
-                        <p class="bio">Atuação focada no Direito Previdenciário e benefícios sociais.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="400" data-initials="MR">
-                    <div class="avatar-circle">MR</div>
-                    <div class="membro-info">
-                        <h4>Maria Ruthillena</h4>
-                        <span class="cargo">Advogada Associada</span>
-                        <p class="bio">Especialista em Direito Civil e Responsabilidade Civil.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="500" data-initials="D">
-                    <div class="avatar-circle">D</div>
-                    <div class="membro-info">
-                        <h4>Deyse</h4>
-                        <span class="cargo">Estagiária Jurídica</span>
-                        <p class="bio">Graduanda em Serviços Judiciais dedicada ao suporte processual.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="category-label" data-aos="fade-right">Inteligência & Tecnologia</div>
-            <div class="team-grid">
-                <div class="membro-card" data-aos="fade-up" data-initials="LS">
-                    <div class="avatar-circle">LS</div>
-                    <div class="membro-info">
-                        <h4>Leon Sedov</h4>
-                        <span class="cargo">Head of Technology</span>
-                        <p class="bio">Líder do departamento de TI, responsável pela segurança e inovação digital.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="OA">
-                    <div class="avatar-circle">OA</div>
-                    <div class="membro-info">
-                        <h4>Othon Anselmo</h4>
-                        <span class="cargo">Estagiário de TI</span>
-                        <p class="bio">Estudante de Engenharia Mecatrotônica na UFRN aplicada ao Direito.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="category-label" data-aos="fade-right">Gestão & Sucesso do Cliente</div>
-            <div class="team-grid">
-                <div class="membro-card" data-aos="fade-up" data-initials="IM">
-                    <div class="avatar-circle">IM</div>
-                    <div class="membro-info">
-                        <h4>Inês Maria</h4>
-                        <span class="cargo">Gerente & Closer</span>
-                        <p class="bio">Responsável pela gestão de contratos e fechamentos estratégicos.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="JS">
-                    <div class="avatar-circle">JS</div>
-                    <div class="membro-info">
-                        <h4>Jessislyne Silva</h4>
-                        <span class="cargo">Customer Success</span>
-                        <p class="bio">Garantindo a melhor experiência de atendimento e recepção.</p>
+                    <div class="faq-answer">
+                        <p>Trabalhamos com transparência total. Os valores variam conforme a complexidade e área, podendo ser fixos, mensais ou baseados no sucesso da causa (ad exitum).</p>
                     </div>
                 </div>
             </div>
@@ -329,13 +198,68 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 Kayo Melo Advogados. Tradição e Tecnologia.</p>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo"><img src="images.png" alt="Logo Footer"></div>
+                    <p>Referência em advocacia de alta performance, unindo tradição jurídica e inovação tecnológica para proteger seus direitos e patrimônio.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <span class="footer-title">Institucional</span>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre o Escritório</a></li>
+                        <li><a href="#">Áreas de Atuação</a></li>
+                        <li><a href="#">Equipe Especializada</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <span class="footer-title">Áreas Core</span>
+                    <ul class="footer-links">
+                        <li><a href="#">Direito Previdenciário</a></li>
+                        <li><a href="#">Direito Tributário</a></li>
+                        <li><a href="#">Direito Civil</a></li>
+                        <li><a href="#">Direito à Saúde</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <span class="footer-title">Contato</span>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal, 1000 - Ed. Corporate, Natal/RN</p>
+                    <p><i class="fas fa-phone"></i> (84) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@kayomelo.adv.br</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kayo Melo Advogados. OAB/RN 00.000. Todos os direitos reservados.</p>
+                <p>Powered by TechLaw Solutions</p>
+            </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
+        // Lógica do FAQ (Acordeão)
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Fecha outros itens ao abrir um (opcional)
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+            });
+        });
     </script>
 </body>
 </html>

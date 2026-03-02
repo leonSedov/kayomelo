@@ -207,13 +207,54 @@
         }
 
         /* ===== FOOTER ===== */
-        footer { background: var(--navy); padding: 5rem 0; color: var(--white); text-align: center; }
-
-        @media (max-width: 992px) {
-            .area-block, .area-block:nth-child(even) { flex-direction: column; gap: 3rem; text-align: center; }
-            .area-image img { height: 350px; }
-            .feature-list li { justify-content: center; }
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 5rem 0 2rem;
         }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        footer h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        footer p, footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(197,160,89,0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
     </style>
 </head>
 <body>
@@ -224,9 +265,9 @@
                 <img src="images.png" alt="Kayo Melo Advogados">
             </div>
             <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="areas.html">Áreas</a></li>
+                <li><a href="areas.html" class="active">Áreas</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
@@ -320,13 +361,36 @@
 
         </div>
     </section>
-
     <footer>
         <div class="container">
-            <p>© 2026 Kayo Melo Advogados. Inteligência Jurídica em Cada Detalhe.</p>
+            <div>
+                <h4>Kayo Melo Advogados</h4>
+                <p>Advocacia especializada com tecnologia própria.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Links Rápidos</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="sobre.html">Sobre</a></p>
+                <p><a href="areas.html">Áreas</a></p>
+                <p><a href="blog.html">Blog</a></p>
+                <p><a href="contato.html">Contato</a></p>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone-alt"></i> (84) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@kayomeloadvogados.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Natal/RN</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
         </div>
     </footer>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
