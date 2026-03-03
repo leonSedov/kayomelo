@@ -3,357 +3,490 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Kayo Melo Advogados</title>
+    <title>Contato | Kayo Melo Advogados</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        /* ===== VARIÁVEIS DO PROJETO ===== */
         :root {
-            --navy: #06162a; /* Navy mais profundo */
+            --navy: #0A2647;
             --gold: #C5A059;
+            --offwhite: #F8F9FA;
             --white: #FFFFFF;
-            --gray-dark: #121212;
-            --accent: rgba(197, 160, 89, 0.15);
-            --transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            --gray: #2D2D2D;
+            --border: rgba(10, 38, 71, 0.08);
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--navy); 
-            color: var(--white); 
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gray);
+            background-color: var(--white);
+            line-height: 1.8;
             overflow-x: hidden;
-            line-height: 1.4;
         }
 
-        /* ===== BACKGROUND ELEMENTS ===== */
-        .bg-text {
-            position: fixed;
-            font-size: 25vw;
-            font-family: 'Playfair Display';
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.02);
-            z-index: -1;
-            pointer-events: none;
-            bottom: -5%;
-            left: -5%;
-            white-space: nowrap;
-        }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--navy); }
 
-        /* ===== HEADER REFINADO ===== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* ESPAÇAMENTO DE 10REM CONFORME PADRÃO */
+        section { padding: 10rem 0; }
+
+        /* ===== HEADER NAVY ===== */
         header {
-            padding: 2rem 0;
-            position: fixed;
-            width: 100%;
+            background-color: var(--navy);
+            padding: 0.3rem 1rem;
+            position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(6, 22, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 4rem; }
-        .header-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 60px; filter: brightness(1.2); }
-        
-        .nav-menu { display: flex; list-style: none; gap: 4rem; }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 90px;
+            width: 200px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
         .nav-menu a {
-            text-decoration: none; color: var(--white); font-weight: 300;
-            text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem;
-            position: relative; transition: var(--transition);
-        }
-        .nav-menu a::after {
-            content: ''; position: absolute; bottom: -10px; left: 0; width: 0; height: 1px;
-            background: var(--gold); transition: var(--transition);
-        }
-        .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
-        .nav-menu a:hover { color: var(--gold); }
-
-        /* ===== HERO SECTION ===== */
-        .contact-hero {
-            padding: 15rem 0 5rem;
-            display: flex;
-            flex-direction: column;
-        }
-        .contact-hero h1 {
-            font-family: 'Playfair Display';
-            font-size: clamp(4rem, 8vw, 10rem);
-            font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            letter-spacing: -2px;
-        }
-        .contact-hero span { color: var(--gold); font-style: italic; }
-
-        /* ===== CONTACT LAYOUT ASYMMETRIC ===== */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 10rem;
-            padding-bottom: 15rem;
-        }
-
-        .contact-info-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 4rem;
-        }
-
-        .info-item h4 {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.7rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-        }
-        .info-item p, .info-item a {
-            font-size: 1.5rem;
-            color: var(--white);
-            font-family: 'Playfair Display';
             text-decoration: none;
-            display: block;
-            transition: var(--transition);
-        }
-        .info-item a:hover { color: var(--gold); transform: translateX(10px); }
-
-        /* ===== FORMULÁRIO DESIGNER ===== */
-        .form-panel {
-            position: relative;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 6rem;
-            border: 1px solid rgba(197, 160, 89, 0.1);
-            backdrop-filter: blur(20px);
-        }
-
-        .form-panel::before {
-            content: ''; position: absolute; top: -1px; left: -1px; width: 50px; height: 50px;
-            border-top: 2px solid var(--gold); border-left: 2px solid var(--gold);
-        }
-
-        .input-wrapper { position: relative; margin-bottom: 4rem; }
-        
-        .input-wrapper input, .input-wrapper textarea {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding: 1rem 0;
             color: var(--white);
-            font-family: 'Montserrat';
-            font-size: 1.1rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .input-wrapper label {
-            position: absolute; top: 1rem; left: 0;
-            text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;
-            color: rgba(255,255,255,0.4); pointer-events: none; transition: var(--transition);
-        }
-
-        .input-wrapper input:focus ~ label, 
-        .input-wrapper input:valid ~ label,
-        .input-wrapper textarea:focus ~ label,
-        .input-wrapper textarea:valid ~ label {
-            top: -20px; color: var(--gold); font-size: 0.6rem;
-        }
-
-        .input-wrapper input:focus, .input-wrapper textarea:focus { border-bottom-color: var(--gold); }
-
-        /* BOTÃO DE IMPACTO */
-        .submit-btn {
-            background: var(--gold);
-            color: var(--navy);
-            border: none;
-            padding: 1.5rem 4rem;
-            font-weight: 900;
+            font-weight: 600;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .menu-mobile {
+            display: none;
+            font-size: 2rem;
+            color: var(--white);
             cursor: pointer;
-            transition: var(--transition);
+        }
+
+        /* ===== HERO CONTATO ===== */
+        .contato-hero {
+            background: linear-gradient(rgba(10, 38, 71, 0.85), rgba(10, 38, 71, 0.85)), url('https://images.unsplash.com/photo-1417733403748-83bbc7c05140?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            height: 60vh;
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
         }
 
-        .submit-btn:hover {
-            background: var(--white);
-            gap: 40px;
+        .contato-hero h1 { color: var(--white); font-size: 4rem; margin-bottom: 1rem; }
+        .contato-hero p { text-transform: uppercase; letter-spacing: 4px; font-weight: 700; color: var(--gold); }
+
+        /* ===== SEÇÃO CONTATO ===== */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
         }
 
-        /* ===== SOCIAL BAR ===== */
-        .social-vertical {
-            position: fixed;
-            right: 4rem;
-            bottom: 4rem;
+        .info-item {
+            margin-bottom: 3rem;
+        }
+
+        .info-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--navy);
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            z-index: 100;
+            align-items: center;
+            gap: 1rem;
         }
-        .social-vertical a { color: var(--white); font-size: 1.2rem; transition: 0.3s; }
-        .social-vertical a:hover { color: var(--gold); transform: scale(1.2); }
 
-        @media (max-width: 1100px) {
-            .main-grid { grid-template-columns: 1fr; gap: 5rem; }
-            .container { padding: 0 2rem; }
-            .form-panel { padding: 3rem; }
+        .info-item h3 i {
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        .info-item p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-left: 3rem;
+            line-height: 1.6;
+        }
+
+        .info-item a {
+            color: var(--navy);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .info-item a:hover {
+            border-bottom-color: var(--gold);
+        }
+
+        .social-links-contato {
+            display: flex;
+            gap: 1.5rem;
+            margin-left: 3rem;
+            margin-top: 1rem;
+        }
+
+        .social-links-contato a {
+            color: var(--navy);
+            background-color: rgba(197,160,89,0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .social-links-contato a:hover {
+            background-color: var(--gold);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        /* ===== FORMULÁRIO ===== */
+        .form-contato {
+            background-color: var(--offwhite);
+            padding: 4rem;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            background-color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(197,160,89,0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-contato {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            border: 2px solid var(--gold);
+            background-color: transparent;
+            color: var(--navy);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        .btn-contato:hover {
+            background-color: var(--gold);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== MAPA ===== */
+        .mapa-section {
+            padding: 0 0 10rem 0;
+        }
+
+        .mapa-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
+        .mapa-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        footer h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        footer p, footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(197,160,89,0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 1024px) {
+            .contato-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .form-contato { padding: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .menu-mobile { display: block; }
+            
+            section { padding: 6rem 0; }
+            
+            .contato-hero h1 { font-size: 3rem; }
+            .contato-hero p { font-size: 0.9rem; }
+            
+            .info-item h3 { font-size: 1.5rem; }
+            .info-item p { margin-left: 0; }
+            .social-links-contato { margin-left: 0; justify-content: center; }
+            
+            .form-contato { padding: 2rem; }
+            
+            footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .contato-hero h1 { font-size: 2.5rem; }
+            .btn-contato { padding: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-text">CONTACT</div>
-
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="Camada-3.png" alt="Logo">
+                <img src="images.png" alt="Kayo Melo Advogados">
             </div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="sobre.html">Escritório</a></li>
-                    <li><a href="areas.html">Expertise</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contato.html" class="active">Contact</a></li>
-                </ul>
-            </nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="areas.html">Áreas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contato.html" class="active">Contato</a></li>
+            </ul>
+            <div class="menu-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
-    <div class="social-vertical">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <div class="contato-hero">
+        <div data-aos="zoom-in">
+            <p>Fale Conosco</p>
+            <h1>Entre em Contato</h1>
+        </div>
     </div>
 
-    <main class="container">
-        <section class="contact-hero">
-            <p data-aos="fade-up" style="letter-spacing: 10px; color: var(--gold); text-transform: uppercase; font-weight: 700; font-size: 0.7rem; margin-bottom: 2rem;">Get in touch</p>
-            <h1 data-aos="fade-up" data-aos-delay="200">Vamos iniciar <span>uma conversa.</span></h1>
-        </section>
-
-        <div class="main-grid">
-            <div class="contact-info-panel" data-aos="fade-up">
+    <section>
+        <div class="container contato-grid">
+            <!-- Informações de Contato -->
+            <div class="info-contato" data-aos="fade-right">
                 <div class="info-item">
-                    <h4>Direct Line</h4>
-                    <a href="tel:558499999999">+55 84 99999.9999</a>
-                </div>
-                
-                <div class="info-item">
-                    <h4>Email Inquiry</h4>
-                    <a href="mailto:contato@kayomelo.adv.br">contato@kayomelo.adv.br</a>
+                    <h3><i class="fas fa-map-marker-alt"></i> Endereço</h3>
+                    <p>Av. Exemplo, 1234 - Sala 101<br>Natal/RN, 59000-000</p>
                 </div>
 
                 <div class="info-item">
-                    <h4>Headquarters</h4>
-                    <p>Av. Senador Salgado Filho, 1718<br>Tirol, Natal - RN</p>
+                    <h3><i class="fas fa-phone-alt"></i> Telefone</h3>
+                    <p><a href="tel:5584999999999">(84) 99999-9999</a></p>
+                    <p><a href="tel:558433333333">(84) 3333-3333</a></p>
                 </div>
 
                 <div class="info-item">
-                    <h4>Social Connect</h4>
-                    <p>@kayomeloadvogados</p>
+                    <h3><i class="fas fa-envelope"></i> E-mail</h3>
+                    <p><a href="mailto:contato@kayomeloadvogados.com.br">contato@kayomeloadvogados.com.br</a></p>
+                    <p><a href="mailto:atendimento@kayomeloadvogados.com.br">atendimento@kayomeloadvogados.com.br</a></p>
+                </div>
+
+                <div class="info-item">
+                    <h3><i class="fas fa-clock"></i> Horário</h3>
+                    <p>Segunda a Sexta: 8h às 18h<br>Sábado: 9h às 13h</p>
+                </div>
+
+                <div class="info-item">
+                    <h3><i class="fas fa-share-alt"></i> Redes Sociais</h3>
+                    <div class="social-links-contato">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-panel" data-aos="fade-left">
-                <form>
-                    <div class="input-wrapper">
-                        <input type="text" required>
-                        <label>Seu Nome</label>
+            <!-- Formulário de Contato -->
+            <div class="form-contato" data-aos="fade-left">
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Envie uma mensagem</h2>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <input type="text" name="nome" placeholder="Seu nome completo" required>
                     </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
-                        <div class="input-wrapper">
-                            <input type="email" required>
-                            <label>Email Corporativo</label>
-                        </div>
-                        <div class="input-wrapper">
-                            <input type="tel" required>
-                            <label>Telefone</label>
-                        </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Seu e-mail" required>
                     </div>
-
-                    <div class="input-wrapper">
-                        <input type="text" required>
-                        <label>Qual a sua necessidade jurídica?</label>
+                    <div class="form-group">
+                        <input type="tel" name="telefone" placeholder="Seu telefone (opcional)">
                     </div>
-
-                    <div class="input-wrapper">
-                        <textarea rows="4" required></textarea>
-                        <label>Mensagem</label>
+                    <div class="form-group">
+                        <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
                     </div>
-
-                    <button type="submit" class="submit-btn">
-                        Enviar Proposta <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <button type="submit" class="btn-contato">Enviar mensagem</button>
                 </form>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Mapa -->
+    <section class="mapa-section">
+        <div class="container">
+            <div class="mapa-container" data-aos="fade-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63496.29463226143!2d-35.22667595!3d-5.794473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b3b1b2b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sNatal%2C%20RN!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <div class="footer-logo"><img src="images.png" alt="Logo Footer"></div>
-                    <p>Referência em advocacia de alta performance, unindo tradição jurídica e inovação tecnológica para proteger seus direitos e patrimônio.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <span class="footer-title">Institucional</span>
-                    <ul class="footer-links">
-                        <li><a href="#">Sobre o Escritório</a></li>
-                        <li><a href="#">Áreas de Atuação</a></li>
-                        <li><a href="#">Equipe Especializada</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <span class="footer-title">Áreas Core</span>
-                    <ul class="footer-links">
-                        <li><a href="#">Direito Previdenciário</a></li>
-                        <li><a href="#">Direito Tributário</a></li>
-                        <li><a href="#">Direito Civil</a></li>
-                        <li><a href="#">Direito à Saúde</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <span class="footer-title">Contato</span>
-                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal, 1000 - Ed. Corporate, Natal/RN</p>
-                    <p><i class="fas fa-phone"></i> (84) 99999-9999</p>
-                    <p><i class="fas fa-envelope"></i> contato@kayomelo.adv.br</p>
+            <div>
+                <h4>Kayo Melo Advogados</h4>
+                <p>Advocacia especializada com tecnologia própria.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Kayo Melo Advogados. OAB/RN 00.000. Todos os direitos reservados.</p>
-                <p>Powered by TechLaw Solutions</p>
+            <div>
+                <h4>Links Rápidos</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="sobre.html">Sobre</a></p>
+                <p><a href="areas.html">Áreas</a></p>
+                <p><a href="blog.html">Blog</a></p>
+                <p><a href="contato.html">Contato</a></p>
             </div>
+            <div>
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone-alt"></i> (84) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@kayomeloadvogados.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Natal/RN</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1500, once: true });
-        
-        // Efeito de movimento no texto de fundo
-        document.addEventListener('mousemove', (e) => {
-            const bgText = document.querySelector('.bg-text');
-            const x = (window.innerWidth - e.pageX * 2) / 100;
-            const y = (window.innerHeight - e.pageY * 2) / 100;
-            bgText.style.transform = `translateX(${x}px) translateY(${y}px)`;
+        AOS.init({ duration: 1000, once: true });
+
+        // Menu mobile simples (igual ao da página áreas)
+        document.querySelector('.menu-mobile').addEventListener('click', function() {
+            alert('Menu mobile em breve! Por enquanto, utilize o menu desktop.');
         });
     </script>
 </body>
