@@ -1,918 +1,608 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós | Kayo Melo Advogados</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre | Kayo Melo Advogados</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
+:root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--parchment)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
 
-    <style>
-        /* ===== VARIÁVEIS GLOBAIS ===== */
-        :root {
-            --navy: #0A2647;
-            --gold: #C5A059;
-            --gold-light: #E5C28E;
-            --offwhite: #F8F9FA;
-            --white: #FFFFFF;
-            --gray: #2D2D2D;
-            --border: rgba(10, 38, 71, 0.08);
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-sm: 0 10px 30px rgba(0,0,0,0.05);
-            --shadow: 0 20px 40px rgba(0,0,0,0.08);
-            --shadow-hover: 0 30px 50px rgba(197,160,89,0.25);
-            --shadow-gold: 0 15px 35px rgba(197,160,89,0.15);
-            --gradient-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            --gradient-navy: linear-gradient(135deg, var(--navy) 0%, #1A3A5F 100%);
-        }
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s,visibility 0.8s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#fff;letter-spacing:0.2em;text-transform:uppercase}
+.loader-logo span{color:var(--gold-light)}
+.loader-bar{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
+.loader-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold-light);animation:loadBar 1.5s ease forwards}
+@keyframes loadBar{to{left:0}}
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;background:rgba(10,22,40,0.15);backdrop-filter:blur(8px)}
+nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
+.nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase}
+.nav-logo span{color:var(--gold-light)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-cta{border:1px solid var(--gold)!important;padding:0.5rem 1.4rem;border-radius:100px;color:var(--gold-light)!important;transition:background 0.3s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:28px;height:1px;background:#fff;transition:all 0.3s;transform-origin:left}
+.hamburger.open span:nth-child(1){transform:rotate(42deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-42deg)}
+.mobile-nav{position:fixed;inset:0;background:var(--navy);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2.5rem;transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.77,0,0.18,1)}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav a{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:#fff;text-decoration:none;transition:color 0.3s}
+.mobile-nav a:hover{color:var(--gold-light)}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--gray);
-            background-color: var(--offwhite);
-            line-height: 1.8;
-            overflow-x: hidden;
-            position: relative;
-        }
+/* PAGE HERO */
+.page-hero{min-height:72vh;background:var(--navy);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(35%);opacity:0.2;display:block}
+.page-hero-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.6) 50%,rgba(10,22,40,0.85) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 0 7rem;width:100%}
+.container{max-width:1280px;margin:0 auto;padding:0 4rem}
+.page-hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.page-hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.page-hero-title{font-family:var(--serif);font-size:clamp(4rem,7vw,8rem);font-weight:300;color:#fff;line-height:0.95;letter-spacing:-0.02em;margin-bottom:2.5rem}
+.page-hero-title em{font-style:italic;color:var(--gold-light);display:block}
+.page-hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.9;max-width:500px}
+.hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,149,42,0.4),transparent)}
 
-        /* Textura sutil de fundo */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(197,160,89,0.02) 0%, transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(10,38,71,0.02) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: -1;
-        }
+/* SHARED */
+.section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:'';width:30px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:2.5rem}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-title.light{color:#fff}
+.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem;cursor:pointer}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 40px rgba(184,149,42,0.35)}
+.btn-outline-gold{display:inline-flex;align-items:center;gap:0.8rem;color:var(--gold-light);font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(184,149,42,0.3);padding-bottom:0.3rem;transition:border-color 0.3s}
+.btn-outline-gold:hover{border-color:var(--gold)}
 
-        h1, h2, h3, h4 { 
-            font-family: 'Playfair Display', serif; 
-            color: var(--navy); 
-            font-weight: 700;
-        }
+/* HISTORIA */
+.section-historia{padding:10rem 0;background:var(--white)}
+.historia-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.historia-img-col{position:relative}
+.historia-img-frame{position:relative}
+.historia-img-frame::before{content:'';position:absolute;top:-20px;left:-20px;right:20px;bottom:20px;border:1px solid rgba(184,149,42,0.2);z-index:0;pointer-events:none}
+.historia-img{width:100%;height:560px;object-fit:cover;object-position:center top;display:block;filter:grayscale(15%);transition:filter 0.6s;position:relative;z-index:1}
+.historia-img:hover{filter:grayscale(0%)}
+.historia-badge{position:absolute;bottom:-2.5rem;right:-2.5rem;background:var(--navy);border:1px solid rgba(184,149,42,0.3);padding:1.8rem 2.2rem;z-index:2;min-width:160px}
+.historia-badge-num{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:var(--gold-light);line-height:1;display:block}
+.historia-badge-txt{font-size:0.68rem;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.4rem;display:block}
+.historia-body p{font-size:0.95rem;font-weight:300;color:var(--smoke);line-height:2;margin-bottom:1.6rem}
 
-        h2 { 
-            font-size: clamp(2rem, 4vw, 3.2rem); 
-            margin-bottom: 2rem; 
-            position: relative;
-            display: inline-block;
-        }
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-gold);
-            border-radius: 4px;
-            box-shadow: var(--shadow-gold);
-        }
+/* VALORES */
+.section-valores{padding:9rem 0;background:var(--parchment);position:relative;overflow:hidden}
+.section-valores::before{content:'VALORES';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(6rem,12vw,16rem);font-weight:700;color:rgba(184,149,42,0.04);white-space:nowrap;pointer-events:none;letter-spacing:0.1em}
+.valores-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(184,149,42,0.2);margin-top:4rem}
+.valor-item{padding:4rem 3rem;border-right:1px solid rgba(184,149,42,0.15);position:relative;overflow:hidden;transition:background 0.5s}
+.valor-item:last-child{border-right:none}
+.valor-item::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:0;background:var(--navy);transition:height 0.5s cubic-bezier(0.77,0,0.18,1);z-index:0}
+.valor-item:hover::before{height:100%}
+.valor-item>*{position:relative;z-index:1}
+.valor-num{font-family:var(--serif);font-size:0.85rem;color:var(--gold);letter-spacing:0.12em;display:block;margin-bottom:1.8rem}
+.valor-icon{width:52px;height:52px;border:1px solid rgba(184,149,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.8rem;transition:border-color 0.3s,background 0.3s}
+.valor-item:hover .valor-icon{border-color:var(--gold);background:rgba(184,149,42,0.1)}
+.valor-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.valor-title{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--ink);margin-bottom:1rem;transition:color 0.3s}
+.valor-item:hover .valor-title{color:#fff}
+.valor-desc{font-size:0.88rem;font-weight:300;color:var(--smoke);line-height:1.8;transition:color 0.3s}
+.valor-item:hover .valor-desc{color:rgba(255,255,255,0.6)}
 
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 1.5rem; 
-            position: relative;
-            z-index: 2;
-        }
-        
-        section { 
-            padding: 6rem 0; 
-            position: relative;
-        }
+/* FUNDADOR */
+.section-fundador{background:var(--navy);position:relative;overflow:hidden}
+.section-fundador::before{content:'\201C';position:absolute;top:-4rem;left:2rem;font-family:var(--serif);font-size:30rem;font-weight:700;color:rgba(184,149,42,0.04);line-height:1;pointer-events:none}
+.fundador-grid{display:grid;grid-template-columns:1fr 1.15fr;min-height:80vh}
+.fundador-img-col{position:relative;overflow:hidden}
+.fundador-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(20%);transition:filter 0.6s,transform 8s ease}
+.fundador-img-col:hover .fundador-img{filter:grayscale(0%);transform:scale(1.03)}
+.fundador-img-col::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 50%,var(--navy) 100%),linear-gradient(180deg,var(--navy) 0%,transparent 15%,transparent 85%,var(--navy) 100%)}
+.fundador-content{padding:7rem 6rem 7rem 5rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.fundador-quote{font-family:var(--serif);font-size:clamp(1.9rem,2.8vw,3rem);font-weight:300;color:#fff;line-height:1.3;font-style:italic;margin-bottom:3rem;padding-left:2rem;position:relative}
+.fundador-quote::before{content:'\201C';position:absolute;left:-0.8rem;top:-2rem;font-size:8rem;color:var(--gold);opacity:0.25;font-family:var(--serif);line-height:1}
+.fundador-author{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
+.fundador-author-line{width:40px;height:1px;background:var(--gold)}
+.fundador-author-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--gold-light)}
+.fundador-author-title{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.25rem}
+.fundador-bio{font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.95;margin-bottom:3rem;max-width:480px}
 
-        /* ===== HEADER PADRÃO ===== */
-        header {
-            background: var(--gradient-navy);
-            padding: 0.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(197,160,89,0.3);
-        }
+/* EQUIPE */
+.section-equipe{padding:10rem 0;background:var(--white)}
+.equipe-intro{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:7rem}
+.equipe-intro-right p{font-size:0.95rem;font-weight:300;color:var(--smoke);line-height:1.9}
+.equipe-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.eq-stat{border-top:1px solid rgba(184,149,42,0.2);padding-top:1.2rem}
+.eq-stat-num{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);display:block;line-height:1}
+.eq-stat-lbl{font-size:0.7rem;color:var(--smoke);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.4rem;display:block}
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* CATEGORY DIVIDER */
+.cat-div{display:flex;align-items:center;gap:2rem;margin:6rem 0 3rem}
+.cat-div-label{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--ink);white-space:nowrap}
+.cat-div-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);background:rgba(184,149,42,0.07);border:1px solid rgba(184,149,42,0.2);padding:0.28rem 0.9rem;border-radius:100px;white-space:nowrap}
+.cat-div-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(184,149,42,0.25),transparent)}
 
-        .logo img {
-            height: 70px;
-            width: auto;
-            max-width: 180px;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
-            transition: transform 0.3s;
-        }
-        .logo img:hover { 
-            transform: scale(1.02); 
-        }
+/* MEMBER CARDS */
+.members-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.members-grid.g3{grid-template-columns:repeat(3,1fr);max-width:860px}
+.members-grid.g2{grid-template-columns:repeat(2,1fr);max-width:580px}
+.mcard{background:var(--white);border:1px solid rgba(184,149,42,0.12);position:relative;overflow:hidden;transition:border-color 0.4s,transform 0.4s,box-shadow 0.4s}
+.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 0.4s}
+.mcard:hover{border-color:rgba(184,149,42,0.4);transform:translateY(-10px);box-shadow:0 35px 55px rgba(184,149,42,0.1)}
+.mcard:hover::before{transform:scaleX(1)}
+.mcard-img-wrap{position:relative;overflow:hidden;height:210px;background:linear-gradient(135deg,var(--navy),rgba(10,22,40,0.8))}
+.mcard-img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(20%);transition:transform 0.7s,filter 0.5s;display:block}
+.mcard:hover .mcard-img{transform:scale(1.06);filter:grayscale(0%)}
+.mcard-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,22,40,0.45) 100%)}
+.mcard-initials{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:4rem;font-weight:300;color:rgba(184,149,42,0.3)}
+.mcard-body{padding:1.6rem 1.5rem}
+.mcard-role{font-size:0.62rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;display:block}
+.mcard-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--ink);margin-bottom:0.6rem;transition:color 0.3s}
+.mcard:hover .mcard-name{color:var(--gold)}
+.mcard-bio{font-size:0.78rem;font-weight:300;color:var(--smoke);line-height:1.7}
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+/* FOOTER */
+footer{background:var(--ink);padding:5rem 0 3rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-logo-text{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:#fff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem}
+.footer-logo-text span{color:var(--gold-light)}
+.footer-tagline{font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.35);line-height:1.7;max-width:260px;margin-bottom:2rem}
+.footer-socials{display:flex;gap:1rem}
+.footer-socials a{width:38px;height:38px;border:1px solid rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s}
+.footer-socials a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h5{font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:1rem}
+.footer-col ul li a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.88rem;font-weight:300;transition:color 0.3s}
+.footer-col ul li a:hover{color:var(--gold-light)}
+.contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
+.footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
 
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            position: relative;
-            padding: 0.5rem 0;
-        }
+/* WA */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.4);transition:transform 0.3s;animation:waPulse 2.5s infinite}
+.wa-btn:hover{transform:scale(1.1)}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-gold);
-            transition: width 0.3s;
-            border-radius: 2px;
-        }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--gold);
-        }
-
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
-        }
-
-        /* Menu mobile */
-        .menu-mobile {
-            display: none;
-            font-size: 2rem;
-            color: var(--white);
-            cursor: pointer;
-            z-index: 1002;
-        }
-
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            z-index: 1001;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 280px;
-            height: 100%;
-            background: var(--gradient-navy);
-            z-index: 1002;
-            padding: 5rem 2rem 2rem;
-            transition: right 0.4s ease;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
-            border-left: 1px solid rgba(197,160,89,0.3);
-        }
-
-        .mobile-menu.active { 
-            right: 0; 
-        }
-
-        .mobile-menu .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: var(--white);
-            cursor: pointer;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            margin-top: 3rem;
-        }
-
-        .mobile-menu ul li {
-            margin-bottom: 1.5rem;
-        }
-
-        .mobile-menu ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            display: block;
-            padding: 0.5rem 0;
-        }
-
-        .mobile-menu ul li a:hover { 
-            color: var(--gold); 
-        }
-
-        /* ===== BOTÕES PADRÃO ===== */
-        .btn {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.4s ease;
-            font-size: 0.9rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 100px; /* Máximo arredondamento */
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary {
-            background: var(--gradient-gold);
-            color: var(--navy);
-            box-shadow: 0 10px 25px rgba(197,160,89,0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(197,160,89,0.5);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--navy);
-            border: 2px solid var(--navy);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--navy);
-            color: var(--white);
-            border-color: var(--navy);
-        }
-
-        /* ===== SEÇÃO HISTÓRIA ===== */
-        .history-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .history-content h2 { 
-            font-size: clamp(2.5rem, 5vw, 3.5rem); 
-            margin-bottom: 2rem; 
-        }
-        .history-content p { 
-            font-size: 1.1rem; 
-            color: #555; 
-        }
-
-        .history-image-wrapper {
-            position: relative;
-            padding: 20px;
-        }
-
-        .history-image-wrapper img {
-            width: 100%;
-            border-radius: 40px;
-            box-shadow: 25px 25px 0px var(--gold);
-            z-index: 2;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .history-image-wrapper img:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 30px 30px 0px var(--gold-light);
-        }
-
-        /* ===== SEÇÃO EQUIPE ELABORADA ===== */
-        .team-section { 
-            background-color: var(--white); 
-            position: relative;
-            overflow: hidden;
-        }
-
-        .team-section::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: var(--gold);
-            opacity: 0.02;
-            border-radius: 50%;
-        }
-
-        .team-intro { 
-            text-align: center; 
-            max-width: 700px; 
-            margin: 0 auto 5rem; 
-        }
-        .team-intro h2 { 
-            font-size: 3rem; 
-            margin-bottom: 1.5rem; 
-        }
-        .team-intro p { 
-            text-transform: uppercase; 
-            color: var(--gold); 
-            letter-spacing: 3px; 
-            font-weight: 700; 
-            font-size: 0.8rem; 
-        }
-
-        .category-label {
-            font-size: 1.5rem;
-            color: var(--navy);
-            margin: 4rem 0 2rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 700;
-        }
-
-        .category-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .membro-card {
-            background: var(--white);
-            padding: 3rem 2rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border-radius: 50px;
-            box-shadow: var(--shadow-sm);
-            backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.9);
-        }
-
-        /* Iniciais em marca d'água no fundo do card */
-        .membro-card::before {
-            content: attr(data-initials);
-            position: absolute;
-            top: 10%;
-            right: -5%;
-            font-size: 8rem;
-            font-family: 'Playfair Display';
-            font-weight: 900;
-            color: rgba(10, 38, 71, 0.03);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .membro-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--gold);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Estilo para as imagens de perfil */
-        .membro-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid var(--gold);
-            object-fit: cover;
-            object-position: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-            box-shadow: var(--shadow);
-            transition: transform 0.4s, border-color 0.4s;
-        }
-
-        .membro-card:hover img {
-            transform: scale(1.05);
-            border-color: var(--navy);
-        }
-
-        .membro-info { 
-            z-index: 1; 
-        }
-        .membro-info h4 { 
-            font-size: 1.6rem; 
-            margin-bottom: 0.3rem; 
-            letter-spacing: -0.5px; 
-            transition: color 0.3s;
-        }
-        .membro-card:hover .membro-info h4 {
-            color: var(--gold);
-        }
-        .membro-info .cargo {
-            display: inline-block;
-            color: var(--gold);
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            background: rgba(197,160,89,0.1);
-            padding: 0.3rem 1rem;
-            border-radius: 100px;
-        }
-        
-        .membro-info .bio {
-            font-size: 0.9rem;
-            color: #777;
-            line-height: 1.6;
-        }
-
-        /* ===== FOOTER PADRÃO ===== */
-        footer {
-            background: var(--gradient-navy);
-            color: var(--white);
-            padding: 4rem 0 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path d="M20,20 Q40,10 60,20 T100,20" stroke="%23C5A059" fill="none" stroke-width="1"/><path d="M0,80 Q20,70 40,80 T80,80" stroke="%23C5A059" fill="none" stroke-width="1"/></svg>');
-            background-size: cover;
-            pointer-events: none;
-        }
-
-        footer .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        footer h4 {
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        footer p, footer a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            line-height: 2;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-        footer a:hover { 
-            color: var(--gold); 
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--white);
-            background: rgba(197,160,89,0.2);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s, transform 0.3s;
-            font-size: 1.2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .social-links a:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateY(-5px);
-        }
-
-        /* ===== WHATSAPP FLOAT ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(37,211,102,0.3);
-            z-index: 1000;
-            transition: all 0.4s;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.15) rotate(5deg);
-            background: #128C7E;
-        }
-
-        /* ===== RESPONSIVIDADE ===== */
-        @media (max-width: 1024px) {
-            .history-grid {
-                gap: 3rem;
-            }
-            .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu { 
-                display: none; 
-            }
-            .menu-mobile { 
-                display: block; 
-            }
-            
-            section { 
-                padding: 4rem 0; 
-            }
-            
-            .history-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .history-content {
-                order: 2;
-                text-align: center;
-            }
-            
-            .history-content h2:after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .history-image-wrapper {
-                order: 1;
-            }
-            
-            .history-image-wrapper img {
-                box-shadow: 15px 15px 0px var(--gold);
-            }
-            
-            .team-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            footer .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .social-links { 
-                justify-content: center; 
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .membro-card {
-                padding: 2rem 1rem;
-            }
-            
-            .membro-card img {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .membro-info h4 {
-                font-size: 1.3rem;
-            }
-            
-            .category-label {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .historia-grid{gap:5rem}
+  .equipe-intro{grid-template-columns:1fr}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .members-grid.g2{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .members-grid.g3{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:3rem}
+  .valores-grid{grid-template-columns:1fr 1fr}
+  .valor-item:nth-child(2){border-right:none}
+  .valor-item:nth-child(3){border-top:1px solid rgba(184,149,42,0.15);grid-column:1/-1;border-right:none}
+}
+@media(max-width:900px){
+  nav{padding:1.5rem 2rem}
+  nav.scrolled{padding:1rem 2rem}
+  .container{padding:0 2rem}
+  .historia-grid{grid-template-columns:1fr}
+  .historia-badge{right:-1rem;bottom:-1.5rem}
+  .fundador-grid{grid-template-columns:1fr}
+  .fundador-img-col{height:55vh}
+  .fundador-content{padding:5rem 2rem}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .members-grid,.members-grid.g2,.members-grid.g3{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .valores-grid{grid-template-columns:1fr}
+  .valor-item{border-right:none!important;border-bottom:1px solid rgba(184,149,42,0.15);grid-column:auto!important}
+  .valor-item:last-child{border-bottom:none}
+}
+@media(max-width:500px){
+  .members-grid,.members-grid.g2,.members-grid.g3{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="images.png" alt="Kayo Melo Advogados">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html" class="active">Sobre</a></li>
-                <li><a href="areas.html">Áreas</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-            <div class="menu-mobile" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="menuOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="close-menu" id="closeMenu"><i class="fas fa-times"></i></div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="areas.html">Áreas</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
+<div class="loader" id="loader">
+  <div class="loader-logo">Kayo <span>Melo</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Kayo <span>Melo</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html" class="active">Sobre</a></li>
+    <li><a href="areas.html">Áreas</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contato.html">Contato</a></li>
+    <li><a href="contato.html" class="nav-cta">Consulta</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="ml">Início</a>
+  <a href="sobre.html" class="ml">Sobre</a>
+  <a href="areas.html" class="ml">Áreas</a>
+  <a href="blog.html" class="ml">Blog</a>
+  <a href="contato.html" class="ml">Contato</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <img class="page-hero-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="">
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content">
+    <div class="container">
+      <div class="page-hero-eyebrow reveal">Escritório</div>
+      <h1 class="page-hero-title reveal">Excelência em<br><em>cada detalhe.</em></h1>
+      <p class="page-hero-sub reveal">Fundados na convicção de que o Direito deve ser exercido com agilidade, precisão técnica e tecnologia própria. Somos o escritório que viabiliza seus objetivos.</p>
+    </div>
+  </div>
+  <div class="hero-bottom-bar"></div>
+</section>
+
+<!-- HISTORIA -->
+<section class="section-historia">
+  <div class="container">
+    <div class="historia-grid">
+      <div class="historia-img-col reveal-left">
+        <div class="historia-img-frame">
+          <img class="historia-img" src="kayomelo.png"
+            onerror="this.src='https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+            alt="Dr. Kayo Melo">
+        </div>
+        <div class="historia-badge">
+          <span class="historia-badge-num">+10</span>
+          <span class="historia-badge-txt">Anos de experiência</span>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">Nossa história</div>
+        <h2 class="section-title">A convicção que<br>nos <em>move</em></h2>
+        <div class="historia-body">
+          <p>O escritório Kayo Melo Advogados nasceu da convicção de que o Direito deve ser exercido com agilidade e precisão técnica. Fundado pelo Dr. Kayo Melo, nossa atuação é pautada pela ética e pela busca constante da inovação no cenário jurídico nacional.</p>
+          <p>Combinamos nossa expertise jurídica com uma infraestrutura tecnológica exclusiva, permitindo que cada cliente receba uma solução personalizada e eficiente para suas demandas mais complexas.</p>
+          <p>Com mais de uma década de atuação, consolidamos nossa presença no Rio Grande do Norte como referência em Direito Previdenciário, Tributário, Civil e da Saúde — sempre com o olhar voltado para o futuro.</p>
+          <a href="contato.html" class="btn-gold">Fale com nossa equipe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="section-valores">
+  <div class="container">
+    <div class="section-label reveal">Pilares</div>
+    <h2 class="section-title reveal">Nossos <em>valores</em></h2>
+  </div>
+  <div class="valores-grid">
+    <div class="valor-item reveal">
+      <span class="valor-num">01</span>
+      <div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="valor-title">Ética Inabalável</div>
+      <p class="valor-desc">Toda decisão e conduta do escritório são guiadas por princípios éticos sólidos. A integridade não é uma opção — é o alicerce sobre o qual construímos cada relação de confiança com nossos clientes.</p>
+    </div>
+    <div class="valor-item reveal" style="transition-delay:.12s">
+      <span class="valor-num">02</span>
+      <div class="valor-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+      <div class="valor-title">Inovação Constante</div>
+      <p class="valor-desc">Investimos continuamente em tecnologia e metodologias modernas para entregar soluções mais ágeis e eficazes. Ser diferente é a nossa maior vantagem competitiva no mercado jurídico.</p>
+    </div>
+    <div class="valor-item reveal" style="transition-delay:.24s">
+      <span class="valor-num">03</span>
+      <div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="valor-title">Foco no Cliente</div>
+      <p class="valor-desc">Cada cliente é único. Por isso, desenvolvemos estratégias completamente personalizadas, ouvindo com atenção e agindo com determinação para superar expectativas a cada caso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDADOR -->
+<section class="section-fundador">
+  <div class="fundador-grid">
+    <div class="fundador-img-col reveal-left">
+      <img class="fundador-img" src="kayomelo.png"
+        onerror="this.src='https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+        alt="Dr. Kayo Melo">
+    </div>
+    <div class="fundador-content reveal-right">
+      <div class="section-label" style="color:var(--gold)">Sócio Fundador</div>
+      <blockquote class="fundador-quote">
+        Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho.
+      </blockquote>
+      <div class="fundador-author">
+        <div class="fundador-author-line"></div>
+        <div>
+          <div class="fundador-author-name">Dr. Kayo Melo</div>
+          <div class="fundador-author-title">Advogado fundador · OAB/RN</div>
+        </div>
+      </div>
+      <p class="fundador-bio">Estrategista jurídico com foco em soluções inovadoras e gestão de alta performance. Ao longo de mais de uma década, construiu um escritório de referência no Rio Grande do Norte, unindo excelência técnica e visão empreendedora para transformar a advocacia em resultados concretos para seus clientes.</p>
+      <a href="contato.html" class="btn-gold">Agendar consulta</a>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="section-equipe">
+  <div class="container">
+
+    <!-- Intro -->
+    <div class="equipe-intro">
+      <div class="reveal-left">
+        <div class="section-label">Nossa equipe</div>
+        <h2 class="section-title" style="margin-bottom:0">A mente por trás<br>do seu <em>direito</em></h2>
+      </div>
+      <div class="equipe-intro-right reveal-right">
+        <p>Profissionais altamente qualificados, cada um especialista em sua área, trabalhando de forma integrada para oferecer soluções jurídicas completas e personalizadas em cada caso.</p>
+        <div class="equipe-stats">
+          <div class="eq-stat"><span class="eq-stat-num">+1000</span><span class="eq-stat-lbl">Atuações judiciais</span></div>
+          <div class="eq-stat"><span class="eq-stat-num">+700</span><span class="eq-stat-lbl">Clientes atendidos</span></div>
+          <div class="eq-stat"><span class="eq-stat-num">11</span><span class="eq-stat-lbl">Profissionais</span></div>
+          <div class="eq-stat"><span class="eq-stat-num">4</span><span class="eq-stat-lbl">Áreas de atuação</span></div>
+        </div>
+      </div>
     </div>
 
-    <!-- Seção História -->
-    <section>
-        <div class="container history-grid">
-            <div class="history-content" data-aos="fade-right">
-                <h2>Excelência em cada detalhe.</h2>
-                <p>O escritório Kayo Melo Advogados nasceu da convicção de que o Direito deve ser exercido com agilidade e precisão técnica. Fundado pelo Dr. Kayo Melo, nossa atuação é pautada pela ética e pela busca constante da inovação no cenário jurídico nacional.</p>
-                <br>
-                <p>Combinamos nossa expertise jurídica com uma infraestrutura tecnológica exclusiva, permitindo que cada cliente receba uma solução personalizada e eficiente para suas demandas mais complexas.</p>
-            </div>
-            <div class="history-image-wrapper" data-aos="fade-left">
-                <img src="kayomelo.png" alt="Sócio Fundador">
-            </div>
+    <!-- Corpo Jurídico -->
+    <div class="cat-div reveal">
+      <span class="cat-div-label">Corpo Jurídico Especializado</span>
+      <span class="cat-div-tag">7 profissionais</span>
+      <div class="cat-div-line"></div>
+    </div>
+    <div class="members-grid reveal">
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/kayo melo equipe.jpg"
+            onerror="this.style.display='none'"
+            alt="Kayo Melo">
+          <div class="mcard-initials">KM</div>
         </div>
-    </section>
-
-    <!-- Seção Equipe -->
-    <section class="team-section">
-        <div class="container">
-            <div class="team-intro" data-aos="fade-up">
-                <p>Nossa Capital Humana</p>
-                <h2>A mente por trás do seu direito</h2>
-            </div>
-
-            <!-- Corpo Jurídico -->
-            <div class="category-label" data-aos="fade-right">Corpo Jurídico Especializado</div>
-            <div class="team-grid">
-                
-                <div class="membro-card" data-aos="fade-up" data-initials="KM">
-                    <img src="fotos equipe/kayo melo equipe.jpg" alt="Kayo Melo">
-                    <div class="membro-info">
-                        <h4>Kayo Melo</h4>
-                        <span class="cargo">Sócio Fundador</span>
-                        <p class="bio">Estrategista jurídico focado em soluções inovadoras e gestão de alta performance.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="MZ">
-                    <img src="fotos equipe/mathues advogado.png" alt="Matheus Zuza">
-                    <div class="membro-info">
-                        <h4>Matheus Zuza</h4>
-                        <span class="cargo">Advogado Associado</span>
-                        <p class="bio">Especialista em Direito Previdenciário e Planejamento de Aposentadoria.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="200" data-initials="IM">
-                    <img src="fotos equipe/israel advogado.jpg" alt="Israel Morais">
-                    <div class="membro-info">
-                        <h4>Israel Morais</h4>
-                        <span class="cargo">Advogado Associado</span>
-                        <p class="bio">Atuação estratégica em Direito Tributário e Recuperação de Créditos Fiscais.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="300" data-initials="AC">
-                    <img src="fotos equipe/ana advogada.jpg" alt="Ana Clara">
-                    <div class="membro-info">
-                        <h4>Ana Clara</h4>
-                        <span class="cargo">Advogada Associada</span>
-                        <p class="bio">Especialista com dupla titulação em Direito Público e Previdenciário. Atua na interface entre a gestão estratégica (Controladoria) e a prática jurídica.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="400" data-initials="MR">
-                    <img src="fotos equipe/ruht advogada.jpg" alt="Maria Ruthillena">
-                    <div class="membro-info">
-                        <h4>Maria Ruthillena</h4>
-                        <span class="cargo">Advogada Associada</span>
-                        <p class="bio">Especialista em Direito Civil e Responsabilidade Civil.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="500" data-initials="LH">
-                    <img src="fotos equipe/luiz henrique.jpeg" alt="Luiz Henrique">
-                    <div class="membro-info">
-                        <h4>Luiz Henrique</h4>
-                        <span class="cargo">Advogado Associado</span>
-                        <p class="bio">Especialista em direito do consumidor e processo civil.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="600" data-initials="D">
-                    <img src="fotos equipe/deyse.jpeg" alt="Deyse">
-                    <div class="membro-info">
-                        <h4>Deyse</h4>
-                        <span class="cargo">Estagiária Jurídica</span>
-                        <p class="bio">Graduanda em Serviços Judiciais dedicada ao suporte processual.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Inteligência & Tecnologia -->
-            <div class="category-label" data-aos="fade-right">Inteligência & Tecnologia</div>
-            <div class="team-grid">
-                <div class="membro-card" data-aos="fade-up" data-initials="LS">
-                    <img src="fotos equipe/leon TI.jpg" alt="Leon Sedov">
-                    <div class="membro-info">
-                        <h4>Leon Sedov</h4>
-                        <span class="cargo">Head of Technology</span>
-                        <p class="bio">Líder do departamento de TI, responsável pela segurança e inovação digital.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="OA">
-                    <img src="fotos equipe/othon ti.jpeg" alt="Othon Anselmo">
-                    <div class="membro-info">
-                        <h4>Othon Anselmo</h4>
-                        <span class="cargo">Estagiário de TI</span>
-                        <p class="bio">Estudante de Engenharia Mecatrônica na UFRN aplicada ao Direito.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gestão & Sucesso do Cliente -->
-            <div class="category-label" data-aos="fade-right">Gestão & Sucesso do Cliente</div>
-            <div class="team-grid">
-                <div class="membro-card" data-aos="fade-up" data-initials="IM">
-                    <img src="fotos equipe/ines gerente.jpeg" alt="Inês Maria">
-                    <div class="membro-info">
-                        <h4>Inês Maria</h4>
-                        <span class="cargo">Gerente & Closer</span>
-                        <p class="bio">Responsável pela gestão de contratos e fechamentos estratégicos.</p>
-                    </div>
-                </div>
-
-                <div class="membro-card" data-aos="fade-up" data-aos-delay="100" data-initials="JS">
-                    <img src="fotos equipe/jessi.jpeg" alt="Jessislyne Silva">
-                    <div class="membro-info">
-                        <h4>Jessislyne Silva</h4>
-                        <span class="cargo">Customer Success</span>
-                        <p class="bio">Garantindo a melhor experiência de atendimento e recepção.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Sócio Fundador</span>
+          <div class="mcard-name">Kayo Melo</div>
+          <p class="mcard-bio">Estrategista jurídico focado em soluções inovadoras e gestão de alta performance.</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div>
-                <h4>Kayo Melo Advogados</h4>
-                <p>Advocacia especializada com tecnologia própria.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4>Links Rápidos</h4>
-                <p><a href="index.html">Home</a></p>
-                <p><a href="sobre.html">Sobre</a></p>
-                <p><a href="areas.html">Áreas</a></p>
-                <p><a href="blog.html">Blog</a></p>
-                <p><a href="contato.html">Contato</a></p>
-            </div>
-            <div>
-                <h4>Contato</h4>
-                <p><i class="fas fa-phone-alt"></i> (84) 99999-9999</p>
-                <p><i class="fas fa-envelope"></i> contato@kayomeloadvogados.com.br</p>
-                <p><i class="fas fa-map-marker-alt"></i> Natal/RN</p>
-            </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/mathues advogado.png"
+            onerror="this.style.display='none'"
+            alt="Matheus Zuza">
+          <div class="mcard-initials">MZ</div>
         </div>
-        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+        <div class="mcard-body">
+          <span class="mcard-role">Advogado Associado</span>
+          <div class="mcard-name">Matheus Zuza</div>
+          <p class="mcard-bio">Especialista em Direito Previdenciário e Planejamento de Aposentadoria.</p>
         </div>
-    </footer>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/israel advogado.jpg"
+            onerror="this.style.display='none'"
+            alt="Israel Morais">
+          <div class="mcard-initials">IM</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Advogado Associado</span>
+          <div class="mcard-name">Israel Morais</div>
+          <p class="mcard-bio">Atuação estratégica em Direito Tributário e Recuperação de Créditos Fiscais.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/ana advogada.jpg"
+            onerror="this.style.display='none'"
+            alt="Ana Clara">
+          <div class="mcard-initials">AC</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Advogada Associada</span>
+          <div class="mcard-name">Ana Clara</div>
+          <p class="mcard-bio">Dupla titulação em Direito Público e Previdenciário, na interface entre Controladoria e prática jurídica.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/ruht advogada.jpg"
+            onerror="this.style.display='none'"
+            alt="Maria Ruthillena">
+          <div class="mcard-initials">MR</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Advogada Associada</span>
+          <div class="mcard-name">Maria Ruthillena</div>
+          <p class="mcard-bio">Especialista em Direito Civil e Responsabilidade Civil.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/luiz henrique.jpeg"
+            onerror="this.style.display='none'"
+            alt="Luiz Henrique">
+          <div class="mcard-initials">LH</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Advogado Associado</span>
+          <div class="mcard-name">Luiz Henrique</div>
+          <p class="mcard-bio">Especialista em Direito do Consumidor e Processo Civil.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/deyse.jpeg"
+            onerror="this.style.display='none'"
+            alt="Deyse">
+          <div class="mcard-initials">D</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Estagiária Jurídica</span>
+          <div class="mcard-name">Deyse</div>
+          <p class="mcard-bio">Graduanda em Serviços Judiciais dedicada ao suporte processual.</p>
+        </div>
+      </div>
+    </div>
 
-    <a href="https://wa.me/5584999999999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- TI -->
+    <div class="cat-div reveal">
+      <span class="cat-div-label">Inteligência & Tecnologia</span>
+      <span class="cat-div-tag">2 profissionais</span>
+      <div class="cat-div-line"></div>
+    </div>
+    <div class="members-grid g2 reveal">
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/leon TI.jpg"
+            onerror="this.style.display='none'"
+            alt="Leon Sedov">
+          <div class="mcard-initials">LS</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Head of Technology</span>
+          <div class="mcard-name">Leon Sedov</div>
+          <p class="mcard-bio">Líder do departamento de TI, responsável pela segurança e inovação digital do escritório.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/othon ti.jpeg"
+            onerror="this.style.display='none'"
+            alt="Othon Anselmo">
+          <div class="mcard-initials">OA</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Estagiário de TI</span>
+          <div class="mcard-name">Othon Anselmo</div>
+          <p class="mcard-bio">Estudante de Engenharia Mecatrônica na UFRN. Aplica tecnologia ao serviço do Direito.</p>
+        </div>
+      </div>
+    </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ 
-            duration: 1000, 
-            once: true,
-            offset: 100
-        });
+    <!-- Gestão -->
+    <div class="cat-div reveal">
+      <span class="cat-div-label">Gestão & Sucesso do Cliente</span>
+      <span class="cat-div-tag">2 profissionais</span>
+      <div class="cat-div-line"></div>
+    </div>
+    <div class="members-grid g2 reveal">
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/ines gerente.jpeg"
+            onerror="this.style.display='none'"
+            alt="Inês Maria">
+          <div class="mcard-initials">IM</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Gerente & Closer</span>
+          <div class="mcard-name">Inês Maria</div>
+          <p class="mcard-bio">Responsável pela gestão de contratos e fechamentos estratégicos do escritório.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/jessi.jpeg"
+            onerror="this.style.display='none'"
+            alt="Jessislyne Silva">
+          <div class="mcard-initials">JS</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Customer Success</span>
+          <div class="mcard-name">Jessislyne Silva</div>
+          <p class="mcard-bio">Garantindo a melhor experiência de atendimento e recepção para cada cliente.</p>
+        </div>
+      </div>
+    </div>
 
-        // Menu mobile
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const closeMenu = document.getElementById('closeMenu');
+  </div>
+</section>
 
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-text">Kayo <span>Melo</span> Advogados</div>
+        <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="areas.html">Áreas de Atuação</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Especialidades</h5>
+        <ul>
+          <li><a href="areas.html">Direito Previdenciário</a></li>
+          <li><a href="areas.html">Direito Tributário</a></li>
+          <li><a href="areas.html">Direito Civil</a></li>
+          <li><a href="areas.html">Direito à Saúde</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <p class="contact-row">📞 (84) 99999-9999</p>
+        <p class="contact-row">✉️ contato@kayomeloadvogados.com.br</p>
+        <p class="contact-row">📍 Natal, Rio Grande do Norte</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+      <p>OAB/RN — Advocacia com ética e responsabilidade</p>
+    </div>
+  </div>
+</footer>
 
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+<a href="https://wa.me/5584999999999" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <div class="wa-btn">
+    <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</a>
 
-        menuToggle.addEventListener('click', openMobileMenu);
-        closeMenu.addEventListener('click', closeMobileMenu);
-        menuOverlay.addEventListener('click', closeMobileMenu);
-    </script>
+<script>
+setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
+
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
+
+var hamburger = document.getElementById('hamburger');
+var mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', function(){ hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+document.querySelectorAll('.ml').forEach(function(l){ l.addEventListener('click', function(){ hamburger.classList.remove('open'); mobileNav.classList.remove('open'); }); });
+
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
+</script>
 </body>
 </html>

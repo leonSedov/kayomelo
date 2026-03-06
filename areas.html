@@ -1,399 +1,512 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Áreas de Atuação | Kayo Melo Advogados</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Áreas de Atuação | Kayo Melo Advogados</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
+:root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--parchment)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
 
-    <style>
-        /* ===== VARIÁVEIS DO PROJETO ===== */
-        :root {
-            --navy: #0A2647;
-            --gold: #C5A059;
-            --offwhite: #F8F9FA;
-            --white: #FFFFFF;
-            --gray: #2D2D2D;
-            --border: rgba(10, 38, 71, 0.08);
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s,visibility 0.8s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#fff;letter-spacing:0.2em;text-transform:uppercase}
+.loader-logo span{color:var(--gold-light)}
+.loader-bar{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
+.loader-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold-light);animation:loadBar 1.5s ease forwards}
+@keyframes loadBar{to{left:0}}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;background:rgba(10,22,40,0.15);backdrop-filter:blur(8px)}
+nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
+.nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase}
+.nav-logo span{color:var(--gold-light)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-cta{border:1px solid var(--gold)!important;padding:0.5rem 1.4rem;border-radius:100px;color:var(--gold-light)!important;transition:background 0.3s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:28px;height:1px;background:#fff;transition:all 0.3s;transform-origin:left}
+.hamburger.open span:nth-child(1){transform:rotate(42deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-42deg)}
+.mobile-nav{position:fixed;inset:0;background:var(--navy);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2.5rem;transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.77,0,0.18,1)}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav a{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:#fff;text-decoration:none;transition:color 0.3s}
+.mobile-nav a:hover{color:var(--gold-light)}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--gray);
-            background-color: var(--white);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
+/* PAGE HERO */
+.page-hero{min-height:72vh;background:var(--navy);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(35%);opacity:0.18;display:block}
+.page-hero-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,0.97) 0%,rgba(10,22,40,0.65) 50%,rgba(10,22,40,0.88) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 0 7rem;width:100%}
+.container{max-width:1280px;margin:0 auto;padding:0 4rem}
+.page-hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.page-hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.page-hero-title{font-family:var(--serif);font-size:clamp(4rem,7vw,8rem);font-weight:300;color:#fff;line-height:0.95;letter-spacing:-0.02em;margin-bottom:2.5rem}
+.page-hero-title em{font-style:italic;color:var(--gold-light);display:block}
+.page-hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.9;max-width:520px}
+.hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,149,42,0.4),transparent)}
 
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--navy); }
+/* AREA NAV TABS */
+.areas-nav{background:var(--parchment);border-bottom:1px solid rgba(184,149,42,0.15);position:sticky;top:0;z-index:100;transition:top 0.3s}
+.areas-nav-inner{display:flex;overflow-x:auto;scrollbar-width:none}
+.areas-nav-inner::-webkit-scrollbar{display:none}
+.area-tab{display:flex;align-items:center;gap:0.8rem;padding:1.5rem 2.5rem;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--smoke);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.3s;white-space:nowrap;flex-shrink:0}
+.area-tab svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.area-tab:hover{color:var(--gold)}
+.area-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        
-        /* ESPAÇAMENTO DE 10REM CONFORME PADRÃO */
-        section { padding: 10rem 0; }
+/* SHARED */
+.section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:'';width:30px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:2.5rem}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-title.light{color:#fff}
+.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem;cursor:pointer}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 40px rgba(184,149,42,0.35)}
 
-        /* ===== HEADER NAVY ===== */
-        header {
-            background-color: var(--navy); /* FUNDO ESCURO PARA COMBINAR COM A LOGO */
-            padding: 0.3rem 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
+/* AREA SECTIONS — alternating bg */
+.area-section{padding:10rem 0;position:relative;overflow:hidden}
+.area-section:nth-child(even){background:var(--parchment)}
+.area-section:nth-child(odd){background:var(--white)}
+.area-section.dark{background:var(--navy)}
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Watermark */
+.area-section::before{content:attr(data-wm);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(6rem,13vw,16rem);font-weight:700;color:rgba(184,149,42,0.04);white-space:nowrap;pointer-events:none;letter-spacing:0.05em;z-index:0}
 
-        .logo img {
-            height: 90px; /* AJUSTE DE ALTURA PARA LOGO */
-            width: 200px;
-        }
+/* AREA MAIN LAYOUT */
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;position:relative;z-index:1}
+.area-grid.reverse{direction:rtl}
+.area-grid.reverse>*{direction:ltr}
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 3rem;
-        }
+/* IMAGE COL */
+.area-img-col{position:relative}
+.area-img-frame{position:relative}
+.area-img-frame::before{content:'';position:absolute;top:-18px;left:-18px;right:18px;bottom:18px;border:1px solid rgba(184,149,42,0.2);z-index:0;pointer-events:none}
+.area-img{width:100%;height:500px;object-fit:cover;display:block;filter:grayscale(15%);transition:filter 0.6s;position:relative;z-index:1}
+.area-img:hover{filter:grayscale(0%)}
+.area-img-badge{position:absolute;bottom:-2.5rem;right:-2.5rem;background:var(--navy);border:1px solid rgba(184,149,42,0.3);padding:1.6rem 2rem;z-index:2;min-width:150px}
+.area-img-badge.on-dark{background:rgba(10,22,40,0.9);border-color:rgba(184,149,42,0.4)}
+.area-img-badge-num{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--gold-light);line-height:1;display:block}
+.area-img-badge-txt{font-size:0.65rem;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.35rem;display:block}
 
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--white); /* COR ALTERADA PARA BRANCO PELO FUNDO NAVY */
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            position: relative;
-            padding: 0.5rem 0;
-        }
+/* TEXT COL */
+.area-text{}
+.area-text p{font-size:0.95rem;font-weight:300;color:var(--smoke);line-height:2;margin-bottom:1.5rem}
+.area-text p.light{color:rgba(255,255,255,0.55)}
 
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--gold);
-            transition: width 0.3s;
-        }
+/* SERVICES LIST */
+.services-list{margin:2.5rem 0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.service-item{display:flex;align-items:flex-start;gap:0.9rem;padding:1rem 0;border-bottom:1px solid rgba(184,149,42,0.12)}
+.service-item:nth-last-child(-n+2){border-bottom:none}
+.service-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:0.55rem}
+.service-text{font-size:0.82rem;font-weight:400;color:var(--ink);line-height:1.5}
+.service-text.light{color:rgba(255,255,255,0.65)}
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--gold);
-        }
+/* dark text adjustments */
+.area-section.dark .section-title{color:#fff}
+.area-section.dark .section-label{color:var(--gold)}
+.area-section.dark .service-item{border-bottom-color:rgba(184,149,42,0.15)}
+.area-section.dark .service-dot{background:var(--gold-light)}
+.area-section.dark .area-img-frame::before{border-color:rgba(184,149,42,0.25)}
+.area-section.dark .area-img-badge{background:rgba(255,255,255,0.05)}
 
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
-        }
+/* CTA SECTION */
+.section-cta{background:var(--navy);padding:9rem 0;position:relative;overflow:hidden;text-align:center}
+.section-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(184,149,42,0.07) 0%,transparent 70%)}
+.cta-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem}
+.cta-eyebrow::before,.cta-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold)}
+.cta-title{font-family:var(--serif);font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#fff;line-height:1.08;margin-bottom:1.5rem}
+.cta-title em{font-style:italic;color:var(--gold-light)}
+.cta-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.9;max-width:540px;margin:0 auto 3.5rem}
+.cta-actions{display:flex;gap:1.5rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.btn-ghost-light{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.7rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:0.25rem}
+.btn-ghost-light:hover{color:var(--gold-light);border-bottom-color:var(--gold)}
 
-        .menu-mobile {
-            display: none;
-            font-size: 2rem;
-            color: var(--white);
-            cursor: pointer;
-        }
+/* FOOTER */
+footer{background:var(--ink);padding:5rem 0 3rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-logo-text{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:#fff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem}
+.footer-logo-text span{color:var(--gold-light)}
+.footer-tagline{font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.35);line-height:1.7;max-width:260px;margin-bottom:2rem}
+.footer-socials{display:flex;gap:1rem}
+.footer-socials a{width:38px;height:38px;border:1px solid rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s}
+.footer-socials a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h5{font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:1rem}
+.footer-col ul li a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.88rem;font-weight:300;transition:color 0.3s}
+.footer-col ul li a:hover{color:var(--gold-light)}
+.contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
+.footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
 
-        /* ===== HERO ÁREAS ===== */
-        .areas-hero {
-            background: linear-gradient(rgba(10, 38, 71, 0.85), rgba(10, 38, 71, 0.85)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-        }
+/* WA */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.4);transition:transform 0.3s;animation:waPulse 2.5s infinite}
+.wa-btn:hover{transform:scale(1.1)}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
-        .areas-hero h1 { color: var(--white); font-size: 4rem; margin-bottom: 1rem; }
-        .areas-hero p { text-transform: uppercase; letter-spacing: 4px; font-weight: 700; color: var(--gold); }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
 
-        /* ===== LAYOUT DE ÁREAS (TOP DE LINHA) ===== */
-        .area-block {
-            display: flex;
-            align-items: center;
-            gap: 6rem;
-            margin-bottom: 10rem;
-        }
-
-        .area-block:nth-child(even) { flex-direction: row-reverse; }
-
-        .area-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .area-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 4px;
-            filter: brightness(0.8);
-            transition: var(--transition);
-        }
-
-        .area-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100px;
-            height: 100px;
-            border-top: 5px solid var(--gold);
-            border-left: 5px solid var(--gold);
-            z-index: 1;
-        }
-
-        .area-content { flex: 1; }
-
-        .area-number {
-            font-family: 'Playfair Display';
-            font-size: 5rem;
-            font-weight: 900;
-            color: rgba(10, 38, 71, 0.05);
-            line-height: 1;
-            margin-bottom: -2rem;
-        }
-
-        .area-content h2 { font-size: 3rem; margin-bottom: 1.5rem; position: relative; }
-        .area-content p { font-size: 1.1rem; color: #555; margin-bottom: 2rem; }
-
-        .feature-list { list-style: none; }
-        .feature-list li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 600;
-            color: var(--navy);
-        }
-
-        .feature-list li i { color: var(--gold); font-size: 0.8rem; }
-
-        /* ===== BOTÃO ESTILO ORIGINAL REFINADO ===== */
-        .btn-area {
-            display: inline-block;
-            padding: 1.2rem 2.5rem;
-            border: 2px solid var(--gold);
-            color: var(--navy);
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 4px;
-            transition: var(--transition);
-            margin-top: 2rem;
-        }
-
-        .btn-area:hover {
-            background-color: var(--gold);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background-color: var(--navy);
-            color: var(--white);
-            padding: 5rem 0 2rem;
-        }
-
-        footer .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-        }
-
-        footer h4 {
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        footer p, footer a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            line-height: 2;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--white);
-            background-color: rgba(197,160,89,0.2);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-            font-size: 1.3rem;
-        }
-
-        .social-links a:hover {
-            background-color: var(--gold);
-            color: var(--navy);
-        }
-
-    </style>
+/* RESPONSIVE */
+@media(max-width:1100px){.area-grid{gap:5rem}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}}
+@media(max-width:900px){
+  nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}
+  .container{padding:0 2rem}
+  .area-grid{grid-template-columns:1fr;gap:4rem}
+  .area-grid.reverse{direction:ltr}
+  .area-img-badge{right:-1rem;bottom:-1.5rem}
+  .services-list{grid-template-columns:1fr}
+  .service-item:nth-last-child(-n+2){border-bottom:1px solid rgba(184,149,42,0.12)}
+  .service-item:last-child{border-bottom:none}
+}
+@media(max-width:768px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .area-tab{padding:1.2rem 1.5rem}
+  .page-hero-title{font-size:clamp(3.2rem,10vw,5.5rem)}
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="images.png" alt="Kayo Melo Advogados">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="areas.html" class="active">Áreas</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-            <div class="menu-mobile">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
+<div class="loader" id="loader">
+  <div class="loader-logo">Kayo <span>Melo</span></div>
+  <div class="loader-bar"></div>
+</div>
 
-    <div class="areas-hero">
-        <div data-aos="zoom-in">
-            <p>Especialidades</p>
-            <h1>Nossa Expertise</h1>
-        </div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Kayo <span>Melo</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="areas.html" class="active">Áreas</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contato.html">Contato</a></li>
+    <li><a href="contato.html" class="nav-cta">Consulta</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="ml">Início</a>
+  <a href="sobre.html" class="ml">Sobre</a>
+  <a href="areas.html" class="ml">Áreas</a>
+  <a href="blog.html" class="ml">Blog</a>
+  <a href="contato.html" class="ml">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <img class="page-hero-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="">
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content">
+    <div class="container">
+      <div class="page-hero-eyebrow reveal">Especialidades</div>
+      <h1 class="page-hero-title reveal">Direito que<br><em>transforma.</em></h1>
+      <p class="page-hero-sub reveal">Atuamos com precisão técnica e visão estratégica nas áreas de Previdenciário, Tributário, Civil e Saúde. Cada caso, uma solução única.</p>
     </div>
+  </div>
+  <div class="hero-bottom-bar"></div>
+</section>
 
-    <section>
-        <div class="container">
-            
-            <div class="area-block" data-aos="fade-up">
-                <div class="area-image">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Direito Previdenciário">
-                </div>
-                <div class="area-content">
-                    <div class="area-number">01</div>
-                    <h2>Direito Previdenciário</h2>
-                    <p>Planejamento estratégico para garantir sua tranquilidade futura. Atuamos com inteligência tecnológica para acelerar processos e revisões.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-circle"></i> Planejamento de Aposentadoria</li>
-                        <li><i class="fas fa-circle"></i> Revisão de Benefícios (Vida Toda)</li>
-                        <li><i class="fas fa-circle"></i> BPC / LOAS</li>
-                        <li><i class="fas fa-circle"></i> Auxílio-Doença e Invalidez</li>
-                    </ul>
-                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
-                </div>
-            </div>
+<!-- AREA TABS NAV -->
+<nav class="areas-nav" id="areasNav">
+  <div class="container">
+    <div class="areas-nav-inner">
+      <a href="#previdenciario" class="area-tab active" data-area="previdenciario">
+        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        Previdenciário
+      </a>
+      <a href="#tributario" class="area-tab" data-area="tributario">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Tributário
+      </a>
+      <a href="#civil" class="area-tab" data-area="civil">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Civil
+      </a>
+      <a href="#saude" class="area-tab" data-area="saude">
+        <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        Saúde
+      </a>
+    </div>
+  </div>
+</nav>
 
-            <div class="area-block" data-aos="fade-up">
-                <div class="area-image">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Direito Tributário">
-                </div>
-                <div class="area-content">
-                    <div class="area-number">02</div>
-                    <h2>Direito Tributário</h2>
-                    <p>Proteção patrimonial e otimização fiscal para empresas e indivíduos. Foco em recuperação de créditos e defesa contra execuções fiscais.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-circle"></i> Recuperação de Créditos Fiscais</li>
-                        <li><i class="fas fa-circle"></i> Planejamento Tributário</li>
-                        <li><i class="fas fa-circle"></i> Defesa em Execução Fiscal</li>
-                        <li><i class="fas fa-circle"></i> Consultoria para Pequenas e Médias Empresas</li>
-                    </ul>
-                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
-                </div>
-            </div>
-
-            <div class="area-block" data-aos="fade-up">
-                <div class="area-image">
-                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80" alt="Direito Civil">
-                </div>
-                <div class="area-content">
-                    <div class="area-number">03</div>
-                    <h2>Direito Civil</h2>
-                    <p>Segurança jurídica nas relações interpessoais e contratuais. Do direito das famílias às indenizações complexas.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-circle"></i> Responsabilidade Civil e Indenizações</li>
-                        <li><i class="fas fa-circle"></i> Elaboração e Análise de Contratos</li>
-                        <li><i class="fas fa-circle"></i> Inventários e Sucessões</li>
-                        <li><i class="fas fa-circle"></i> Direito das Famílias</li>
-                    </ul>
-                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
-                </div>
-            </div>
-
-            <div class="area-block" data-aos="fade-up">
-                <div class="area-image">
-                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Direito à Saúde">
-                </div>
-                <div class="area-content">
-                    <div class="area-number">04</div>
-                    <h2>Direito à Saúde</h2>
-                    <p>Ações rápidas e eficazes para garantir acesso a tratamentos, cirurgias e medicamentos de alto custo negados pelos planos ou estado.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-circle"></i> Negativa de Cirurgias e Exames</li>
-                        <li><i class="fas fa-circle"></i> Fornecimento de Medicamentos de Alto Custo</li>
-                        <li><i class="fas fa-circle"></i> Erro Médico e Responsabilidade Hospitalar</li>
-                        <li><i class="fas fa-circle"></i> Reajustes Abusivos em Planos de Saúde</li>
-                    </ul>
-                    <a href="contato.html" class="btn-area">Consultar Especialista</a>
-                </div>
-            </div>
-
+<!-- ── 01 PREVIDENCIÁRIO ── -->
+<section class="area-section" id="previdenciario" data-wm="PREV">
+  <div class="container">
+    <div class="area-grid">
+      <div class="area-img-col reveal-left">
+        <div class="area-img-frame">
+          <img class="area-img"
+            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+            alt="Direito Previdenciário">
         </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div>
-                <h4>Kayo Melo Advogados</h4>
-                <p>Advocacia especializada com tecnologia própria.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4>Links Rápidos</h4>
-                <p><a href="index.html">Home</a></p>
-                <p><a href="sobre.html">Sobre</a></p>
-                <p><a href="areas.html">Áreas</a></p>
-                <p><a href="blog.html">Blog</a></p>
-                <p><a href="contato.html">Contato</a></p>
-            </div>
-            <div>
-                <h4>Contato</h4>
-                <p><i class="fas fa-phone-alt"></i> (84) 99999-9999</p>
-                <p><i class="fas fa-envelope"></i> contato@kayomeloadvogados.com.br</p>
-                <p><i class="fas fa-map-marker-alt"></i> Natal/RN</p>
-            </div>
+        <div class="area-img-badge">
+          <span class="area-img-badge-num">+800</span>
+          <span class="area-img-badge-txt">Benefícios conquistados</span>
         </div>
-        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+      </div>
+      <div class="area-text reveal-right">
+        <div class="section-label">01 — Especialidade</div>
+        <h2 class="section-title">Direito<br><em>Previdenciário</em></h2>
+        <p>O planejamento previdenciário correto pode significar anos de diferença na aposentadoria e milhares de reais a mais de benefício. Nossa equipe domina cada detalhe da legislação do INSS e das reformas para garantir que você receba tudo aquilo a que tem direito.</p>
+        <p>Seja para quem ainda está planejando ou para quem já teve um benefício negado, nossa atuação é estratégica e orientada a resultados concretos.</p>
+        <div class="services-list">
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria por Tempo de Contribuição</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria por Idade</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria por Invalidez</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria Especial</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Revisão de Benefícios do INSS</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Pensão por Morte e Auxílio-Reclusão</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Auxílio por Incapacidade Temporária</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Planejamento de Aposentadoria</span></div>
         </div>
-    </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-    </script>
+        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 02 TRIBUTÁRIO ── -->
+<section class="area-section" id="tributario" data-wm="TRIB">
+  <div class="container">
+    <div class="area-grid reverse">
+      <div class="area-img-col reveal-right">
+        <div class="area-img-frame">
+          <img class="area-img"
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+            alt="Direito Tributário">
+        </div>
+        <div class="area-img-badge">
+          <span class="area-img-badge-num">R$M+</span>
+          <span class="area-img-badge-txt">Em créditos recuperados</span>
+        </div>
+      </div>
+      <div class="area-text reveal-left">
+        <div class="section-label">02 — Especialidade</div>
+        <h2 class="section-title">Direito<br><em>Tributário</em></h2>
+        <p>A carga tributária brasileira é uma das mais complexas do mundo. Empresas e pessoas físicas frequentemente pagam mais impostos do que devem por falta de uma estratégia adequada. Nossa atuação tributária combina planejamento preventivo com defesa eficaz em litígios.</p>
+        <p>Identificamos oportunidades legais de redução de carga fiscal e recuperamos créditos tributários pagos indevidamente, gerando economia real para nossos clientes.</p>
+        <div class="services-list">
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Planejamento Tributário Estratégico</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Recuperação de Créditos Fiscais</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Defesa em Autuações Fiscais</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Contencioso Administrativo</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Revisão de Tributos Pagos a Maior</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Exclusão do ICMS do PIS/COFINS</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Parcelamento e Negociação de Dívidas</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Consultoria em Reforma Tributária</span></div>
+        </div>
+        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 CIVIL ── -->
+<section class="area-section dark" id="civil" data-wm="CIVIL">
+  <div class="container">
+    <div class="area-grid">
+      <div class="area-img-col reveal-left">
+        <div class="area-img-frame">
+          <img class="area-img"
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+            alt="Direito Civil">
+        </div>
+        <div class="area-img-badge">
+          <span class="area-img-badge-num">+150</span>
+          <span class="area-img-badge-txt">Casos resolvidos/ano</span>
+        </div>
+      </div>
+      <div class="area-text reveal-right">
+        <div class="section-label">03 — Especialidade</div>
+        <h2 class="section-title light">Direito<br><em>Civil</em></h2>
+        <p class="light">O Direito Civil permeia as relações mais cotidianas da vida — contratos, família, propriedade, responsabilidade. Nossa atuação nessa área é ampla e detalhista, protegendo seus interesses nas situações que mais importam.</p>
+        <p class="light">Com profissionais especializados em responsabilidade civil, relações de consumo e direito contratual, oferecemos defesa sólida tanto na via extrajudicial quanto no contencioso.</p>
+        <div class="services-list">
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Direito do Consumidor</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Responsabilidade Civil</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Elaboração e Revisão de Contratos</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Direito de Família e Sucessões</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Inventários e Partilha de Bens</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Cobranças e Execuções Cíveis</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Indenizações por Danos Morais</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Direito Imobiliário</span></div>
+        </div>
+        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 SAÚDE ── -->
+<section class="area-section" id="saude" data-wm="SAÚDE">
+  <div class="container">
+    <div class="area-grid reverse">
+      <div class="area-img-col reveal-right">
+        <div class="area-img-frame">
+          <img class="area-img"
+            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+            alt="Direito à Saúde">
+        </div>
+        <div class="area-img-badge">
+          <span class="area-img-badge-num">96%</span>
+          <span class="area-img-badge-txt">Taxa de êxito</span>
+        </div>
+      </div>
+      <div class="area-text reveal-left">
+        <div class="section-label">04 — Especialidade</div>
+        <h2 class="section-title">Direito<br>à <em>Saúde</em></h2>
+        <p>O direito à saúde é fundamental e inegociável. Quando planos de saúde negam tratamentos, cirurgias ou medicamentos, nossa equipe age com rapidez para garantir o acesso imediato às coberturas que você já paga.</p>
+        <p>Atuamos com urgência em tutelas de evidência e antecipações de tutela, garantindo que a negativa do plano não atrase o tratamento do nosso cliente.</p>
+        <div class="services-list">
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Negativa de Cobertura de Plano</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Cirurgias e Procedimentos Negados</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Medicamentos de Alto Custo</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Internação em UTI Negada</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Reembolso de Despesas Médicas</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Cancelamento Abusivo de Plano</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Tratamentos Oncológicos</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text">Fornecimento de Medicamentos pelo SUS</span></div>
+        </div>
+        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta">
+  <div class="container">
+    <div class="cta-eyebrow reveal">Próximo passo</div>
+    <h2 class="cta-title reveal">Seu caso merece<br>atenção <em>especializada.</em></h2>
+    <p class="cta-sub reveal">Agende uma consulta gratuita e descubra como podemos transformar sua situação jurídica. Nossa equipe está pronta para ouvir você.</p>
+    <div class="cta-actions reveal">
+      <a href="contato.html" class="btn-gold">
+        <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Consulta gratuita
+      </a>
+      <a href="sobre.html" class="btn-ghost-light">Conhecer a equipe →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-text">Kayo <span>Melo</span> Advogados</div>
+        <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="areas.html">Áreas de Atuação</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Especialidades</h5>
+        <ul>
+          <li><a href="#previdenciario">Direito Previdenciário</a></li>
+          <li><a href="#tributario">Direito Tributário</a></li>
+          <li><a href="#civil">Direito Civil</a></li>
+          <li><a href="#saude">Direito à Saúde</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <p class="contact-row">📞 (84) 99999-9999</p>
+        <p class="contact-row">✉️ contato@kayomeloadvogados.com.br</p>
+        <p class="contact-row">📍 Natal, Rio Grande do Norte</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+      <p>OAB/RN — Advocacia com ética e responsabilidade</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5584999999999" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <div class="wa-btn">
+    <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</a>
+
+<script>
+setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
+
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
+
+var hamburger = document.getElementById('hamburger');
+var mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', function(){ hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+document.querySelectorAll('.ml').forEach(function(l){ l.addEventListener('click', function(){ hamburger.classList.remove('open'); mobileNav.classList.remove('open'); }); });
+
+// REVEAL
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
+
+// ACTIVE TAB on scroll
+var sections = ['previdenciario','tributario','civil','saude'];
+var tabs = document.querySelectorAll('.area-tab');
+var scrollObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var id = e.target.id;
+      tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.area === id); });
+    }
+  });
+}, {threshold:0.4});
+sections.forEach(function(id){
+  var el = document.getElementById(id);
+  if(el) scrollObs.observe(el);
+});
+
+// Smooth scroll for tabs
+tabs.forEach(function(tab){
+  tab.addEventListener('click', function(e){
+    e.preventDefault();
+    var target = document.querySelector(tab.getAttribute('href'));
+    if(target){
+      var offset = 120;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({top:top, behavior:'smooth'});
+    }
+  });
+});
+</script>
 </body>
 </html>
