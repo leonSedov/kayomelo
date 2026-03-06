@@ -1,1328 +1,717 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayo Melo Advogados | Advocacia Especializada e Inovadora</title>
-    <meta name="description" content="Escritório de advocacia especializado em Direito Previdenciário, Tributário, Civil e Saúde. Tecnologia própria e atendimento humanizado.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <style>
-        /* ===== RESET E VARIÁVEIS ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a1a1a;
-            --secondary: #2d2d2d;
-            --accent: #dc2626;
-            --accent-light: #ef4444;
-            --green: #16a34a;
-            --white: #ffffff;
-            --light-gray: #f5f5f5;
-            --border: #e5e5e5;
-            --text: #333333;
-            --text-light: #666666;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
-            background-color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2rem; }
-        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-        h4 { font-size: 1.3rem; }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 5rem 0;
-            position: relative;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            background: var(--white);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-            max-width: 200px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--accent);
-        }
-
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
-        }
-
-        .menu-mobile {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-            z-index: 1002;
-        }
-
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1001;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 280px;
-            height: 100%;
-            background: var(--white);
-            z-index: 1002;
-            padding: 5rem 2rem 2rem;
-            transition: right 0.4s ease;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            margin-top: 3rem;
-        }
-
-        .mobile-menu ul li {
-            margin-bottom: 1.5rem;
-        }
-
-        .mobile-menu ul li a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .mobile-menu ul li a:hover {
-            color: var(--accent);
-        }
-
-        /* ===== BOTÕES ===== */
-        .btn {
-            display: inline-block;
-            padding: 0.9rem 2.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--white);
-            border: 2px solid var(--accent);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-light);
-            border-color: var(--accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(220, 38, 38, 0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .hero-slider {
-            display: flex;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
-
-        .slide {
-            display: none;
-            width: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .slide.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: -1;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 90vh;
-            z-index: 3;
-        }
-
-        .slide-text {
-            max-width: 700px;
-        }
-
-        .hero-highlight {
-            background: var(--accent);
-            color: var(--white);
-            padding: 0.6rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-        }
-
-        .hero h1 {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            line-height: 1.8;
-        }
-
-        .hero-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 25;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid var(--white);
-            color: var(--white);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.8rem 1rem;
-            opacity: 0;
-            transition: all 0.3s;
-            border-radius: 4px;
-            backdrop-filter: blur(5px);
-        }
-
-        .hero:hover .hero-arrow {
-            opacity: 0.7;
-        }
-
-        .hero-arrow:hover {
-            opacity: 1 !important;
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .arrow-prev { left: 30px; }
-        .arrow-next { right: 30px; }
-
-        .hero-nav-wrapper {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-
-        .hero-nav-container {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .nav-item {
-            background: rgba(255,255,255,0.1);
-            color: var(--white);
-            padding: 1rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .nav-item:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.4);
-        }
-
-        .nav-item.active {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* ===== ESTATÍSTICAS ===== */
-        .stats {
-            background: var(--light-gray);
-            padding: 4rem 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        /* ===== ÁREAS DE ATUAÇÃO ===== */
-        .areas-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .area-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: transform 0.3s;
-        }
-
-        .area-card-link:hover {
-            transform: translateY(-8px);
-        }
-
-        .area-card {
-            background: var(--white);
-            padding: 2.5rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-        }
-
-        .area-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-            transform-origin: left;
-        }
-
-        .area-card-link:hover .area-card::before {
-            transform: scaleX(1);
-        }
-
-        .area-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .area-card-link:hover .area-icon {
-            transform: scale(1.1);
-        }
-
-        .area-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .area-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        /* ===== SOBRE ===== */
-        .sobre-section {
-            background: var(--light-gray);
-        }
-
-        .sobre-content {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .sobre-text {
-            flex: 1 1 300px;
-        }
-
-        .sobre-text p {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .sobre-photo {
-            flex: 1 1 300px;
-            min-height: 400px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sobre-photo-overlay {
-            z-index: 2;
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-
-        .sobre-quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .sobre-author {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        /* ===== DIFERENCIAL ===== */
-        .diferencial {
-            background: var(--white);
-            border-radius: 8px;
-            padding: 3rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid var(--border);
-        }
-
-        .diferencial-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .tech-badge {
-            background: var(--accent);
-            color: var(--white);
-            padding: 0.6rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 700;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-icon {
-            max-width: 350px;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .tech-icon:hover {
-            transform: scale(1.02);
-        }
-
-        /* ===== FAQ ===== */
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .faq-item {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            background: var(--light-gray);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: background 0.3s;
-        }
-
-        .faq-item.active .faq-question {
-            background: var(--accent);
-            color: var(--white);
-        }
-
-        .faq-question i {
-            font-size: 1.2rem;
-            color: var(--accent);
-            transition: color 0.3s;
-        }
-
-        .faq-item.active .faq-question i {
-            color: var(--white);
-        }
-
-        .faq-question h3 {
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        .faq-answer {
-            padding: 1.5rem;
-            display: none;
-            background: var(--white);
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        .faq-answer p {
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        /* ===== BLOG ===== */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .post-card {
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-
-        .post-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-        }
-
-        .post-image {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.3s;
-        }
-
-        .post-card:hover .post-image {
-            transform: scale(1.05);
-        }
-
-        .post-content {
-            padding: 1.5rem;
-        }
-
-        .post-content h4 {
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-
-        .post-content p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .post-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .post-link:hover {
-            gap: 1rem;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 3rem 0 1.5rem;
-        }
-
-        footer .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        footer h4 {
-            color: var(--white);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        footer p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-        }
-
-        footer a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--white);
-            background: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            font-size: 1rem;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .social-links a:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-        }
-
-        /* ===== WHATSAPP FLOAT ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
-            z-index: 999;
-            transition: all 0.3s;
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-            70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background: #128C7E;
-        }
-
-        /* ===== RESPONSIVIDADE ===== */
-        @media (max-width: 1024px) {
-            .areas-grid { grid-template-columns: repeat(2, 1fr); }
-            .blog-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .faq-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .menu-mobile { display: block; }
-
-            section { padding: 3rem 0; }
-            h2 { font-size: 1.8rem; }
-
-            .hero-nav-wrapper { display: none; }
-            .hero-arrow { display: none; }
-
-            .diferencial-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .sobre-content {
-                flex-direction: column;
-            }
-
-            .areas-grid { grid-template-columns: 1fr; }
-            .blog-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-
-            footer .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.8rem;
-            }
-
-            .area-card {
-                padding: 1.5rem 1rem;
-            }
-
-            .area-icon {
-                font-size: 2rem;
-            }
-
-            .post-image {
-                height: 150px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kayo Melo Advogados</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
+
+:root {
+  --ink: #0D0D0D;
+  --parchment: #F5F0E8;
+  --gold: #B8952A;
+  --gold-light: #D4AF5A;
+  --smoke: #6B6560;
+  --white: #FDFCFA;
+  --navy: #0A1628;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); overflow-x: hidden; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--parchment); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* LOADER */
+.loader { position: fixed; inset: 0; background: var(--navy); z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2rem; transition: opacity 0.8s, visibility 0.8s; }
+.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: #fff; letter-spacing: 0.2em; text-transform: uppercase; }
+.loader-logo span { color: var(--gold-light); }
+.loader-bar { width: 160px; height: 1px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+.loader-bar::after { content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: var(--gold-light); animation: loadBar 1.8s ease forwards; }
+@keyframes loadBar { to { left: 0; } }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.8rem 4rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.5s ease; }
+nav.scrolled { background: rgba(10,22,40,0.96); backdrop-filter: blur(20px); padding: 1.2rem 4rem; border-bottom: 1px solid rgba(184,149,42,0.2); }
+.nav-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; color: #fff; text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; }
+.nav-logo span { color: var(--gold-light); }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; position: relative; padding-bottom: 4px; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold-light); transition: width 0.3s; }
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { border: 1px solid var(--gold) !important; padding: 0.5rem 1.4rem; border-radius: 100px; color: var(--gold-light) !important; transition: background 0.3s !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+.nav-cta::after { display: none !important; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { display: block; width: 28px; height: 1px; background: #fff; transition: all 0.3s; transform-origin: left; }
+.hamburger.open span:nth-child(1) { transform: rotate(42deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-42deg); }
+.mobile-nav { position: fixed; inset: 0; background: var(--navy); z-index: 999; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2.5rem; transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.77,0,0.18,1); }
+.mobile-nav.open { transform: translateX(0); }
+.mobile-nav a { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: #fff; text-decoration: none; transition: color 0.3s; }
+.mobile-nav a:hover { color: var(--gold-light); }
+
+/* HERO */
+.hero { min-height: 100vh; background: var(--navy); position: relative; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(184,149,42,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 80% at 10% 80%, rgba(10,22,40,0.9) 0%, transparent 50%); }
+.hero-left { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: 10rem 5rem 8rem 8rem; }
+.hero-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; transition: opacity 0.4s; }
+.hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+.hero-title { font-family: var(--serif); font-size: clamp(3rem,5vw,5.5rem); font-weight: 300; color: #fff; line-height: 1.08; margin-bottom: 2.5rem; transition: opacity 0.4s; }
+.hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-sub { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 400px; margin-bottom: 3.5rem; }
+.hero-actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+
+.btn-gold { background: var(--gold); color: var(--navy); border: none; padding: 1rem 2.5rem; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 100px; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 15px 40px rgba(184,149,42,0.35); }
+.btn-ghost { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; display: inline-flex; align-items: center; gap: 0.7rem; }
+.btn-ghost:hover { color: var(--gold-light); }
+.btn-ghost .circ { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: border-color 0.3s; }
+.btn-ghost:hover .circ { border-color: var(--gold); }
+
+.hero-right { position: relative; z-index: 2; overflow: hidden; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(25%); opacity: 0.55; transition: opacity 0.5s; display: block; }
+.hero-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy) 0%, transparent 40%, transparent 60%, var(--navy) 100%), linear-gradient(180deg, var(--navy) 0%, transparent 20%, transparent 80%, var(--navy) 100%); }
+
+.hero-indicator { position: absolute; left: 8rem; bottom: 3rem; z-index: 20; display: flex; gap: 0.7rem; align-items: center; }
+.indicator-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; }
+.indicator-dot.active { background: var(--gold); width: 24px; border-radius: 3px; }
+
+.hero-scroll { position: absolute; bottom: 3rem; right: 4rem; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 1rem; color: rgba(255,255,255,0.35); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; writing-mode: vertical-rl; }
+.hero-scroll::after { content: ''; width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollLine 2s ease infinite; }
+@keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+
+/* STATS */
+.section-stats { background: var(--navy); padding: 5rem 0; border-top: 1px solid rgba(184,149,42,0.15); border-bottom: 1px solid rgba(184,149,42,0.15); }
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); }
+.stat-col { text-align: center; padding: 2rem; border-right: 1px solid rgba(184,149,42,0.1); }
+.stat-col:last-child { border-right: none; }
+.stat-number { font-family: var(--serif); font-size: clamp(3rem,5vw,5.5rem); font-weight: 300; color: var(--gold-light); display: block; line-height: 1; }
+.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.8rem; display: block; }
+
+/* SHARED */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 4rem; }
+.section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.section-title { font-family: var(--serif); font-size: clamp(2.5rem,4vw,4rem); font-weight: 400; color: var(--ink); line-height: 1.1; margin-bottom: 4rem; }
+.section-title em { font-style: italic; color: var(--gold); }
+.section-title.light { color: #fff; }
+
+/* AREAS */
+.section-areas { background: var(--parchment); padding: 9rem 0; position: relative; overflow: hidden; }
+.section-areas::before { content: 'ADVOCACIA'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--serif); font-size: clamp(6rem,12vw,14rem); font-weight: 700; color: rgba(184,149,42,0.035); white-space: nowrap; pointer-events: none; letter-spacing: 0.1em; }
+.areas-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid rgba(184,149,42,0.2); }
+.area-item { padding: 3.5rem 2.5rem; border-right: 1px solid rgba(184,149,42,0.15); position: relative; overflow: hidden; transition: background 0.5s; text-decoration: none; color: inherit; display: block; }
+.area-item:last-child { border-right: none; }
+.area-item::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0; background: var(--navy); transition: height 0.5s cubic-bezier(0.77,0,0.18,1); z-index: 0; }
+.area-item:hover::before { height: 100%; }
+.area-item > * { position: relative; z-index: 1; }
+.area-num { font-family: var(--serif); font-size: 0.9rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 2rem; display: block; }
+.area-icon-wrap { width: 52px; height: 52px; border: 1px solid rgba(184,149,42,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; transition: border-color 0.3s, background 0.3s; }
+.area-item:hover .area-icon-wrap { border-color: var(--gold); background: rgba(184,149,42,0.1); }
+.area-icon-wrap svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.area-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; transition: color 0.3s; }
+.area-item:hover .area-title { color: #fff; }
+.area-desc { font-size: 0.88rem; font-weight: 300; color: var(--smoke); line-height: 1.7; transition: color 0.3s; }
+.area-item:hover .area-desc { color: rgba(255,255,255,0.6); }
+.area-arrow { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 2rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); transition: gap 0.3s; }
+.area-item:hover .area-arrow { gap: 1rem; }
+
+/* SOBRE */
+.section-sobre { background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; overflow: hidden; }
+.sobre-img-col { position: relative; overflow: hidden; }
+.sobre-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: transform 8s ease; display: block; }
+.section-sobre:hover .sobre-img { transform: scale(1.03); }
+.sobre-img-col::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 60%, var(--navy) 100%), linear-gradient(180deg, rgba(10,22,40,0.3) 0%, transparent 30%); }
+.sobre-content { padding: 7rem 6rem 7rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+.sobre-quote { font-family: var(--serif); font-size: clamp(1.7rem,2.5vw,2.6rem); font-weight: 300; color: #fff; line-height: 1.4; font-style: italic; margin-bottom: 3rem; position: relative; padding-left: 2rem; }
+.sobre-quote::before { content: '\201C'; position: absolute; left: -0.5rem; top: -1rem; font-size: 6rem; color: var(--gold); opacity: 0.3; font-family: var(--serif); line-height: 1; }
+.sobre-author { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; }
+.sobre-author-line { width: 40px; height: 1px; background: var(--gold); }
+.sobre-author-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; color: var(--gold-light); }
+.sobre-author-title { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem; }
+.sobre-text { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.9; max-width: 460px; margin-bottom: 3rem; }
+.btn-outline-gold { display: inline-flex; align-items: center; gap: 0.8rem; color: var(--gold-light); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(184,149,42,0.3); padding-bottom: 0.3rem; transition: border-color 0.3s; }
+.btn-outline-gold:hover { border-color: var(--gold); }
+
+/* TI SECTION */
+.section-ti { background: var(--navy); padding: 9rem 0; position: relative; overflow: hidden; }
+.section-ti::before { content: 'TECH'; position: absolute; top: 50%; right: -2rem; transform: translateY(-50%); font-family: var(--serif); font-size: clamp(8rem,15vw,18rem); font-weight: 700; color: rgba(184,149,42,0.04); white-space: nowrap; pointer-events: none; }
+.ti-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; flex-wrap: wrap; gap: 2rem; }
+.ti-header-desc { max-width: 380px; font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.85; }
+.ti-team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 5rem; }
+.ti-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(184,149,42,0.2); border-radius: 4px; overflow: hidden; position: relative; transition: border-color 0.4s; }
+.ti-card:hover { border-color: rgba(184,149,42,0.5); }
+.ti-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.ti-card-img { width: 100%; height: 220px; object-fit: cover; filter: grayscale(40%); transition: filter 0.5s, transform 0.6s; display: block; }
+.ti-card:hover .ti-card-img { filter: grayscale(10%); transform: scale(1.04); }
+.ti-card-body { padding: 2.5rem; }
+.ti-card-role { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.ti-card-name { font-family: var(--serif); font-size: 1.8rem; font-weight: 500; color: #fff; margin-bottom: 1rem; }
+.ti-card-desc { font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 1.5rem; }
+.ti-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ti-tag { background: rgba(184,149,42,0.08); border: 1px solid rgba(184,149,42,0.15); color: rgba(212,175,90,0.85); padding: 0.3rem 0.9rem; border-radius: 100px; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.ti-innov-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+.ti-innov-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.ti-innovations { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+.ti-innov-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(184,149,42,0.1); border-radius: 4px; padding: 2rem 1.5rem; transition: background 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+.ti-innov-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s; }
+.ti-innov-item:hover { background: rgba(184,149,42,0.05); border-color: rgba(184,149,42,0.3); }
+.ti-innov-item:hover::after { width: 100%; }
+.ti-innov-icon { width: 44px; height: 44px; border: 1px solid rgba(184,149,42,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; transition: border-color 0.3s; }
+.ti-innov-item:hover .ti-innov-icon { border-color: var(--gold); }
+.ti-innov-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.ti-innov-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: #fff; margin-bottom: 0.6rem; }
+.ti-innov-desc { font-size: 0.8rem; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.7; }
+
+/* FAQ */
+.section-faq { background: var(--parchment); padding: 9rem 0; }
+.faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; }
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid rgba(184,149,42,0.15); overflow: hidden; }
+.faq-q { padding: 1.8rem 0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 2rem; }
+.faq-q-text { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--ink); transition: color 0.3s; }
+.faq-item.open .faq-q-text { color: var(--gold); }
+.faq-icon { width: 32px; height: 32px; flex-shrink: 0; border: 1px solid rgba(184,149,42,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; font-size: 1rem; color: var(--gold); }
+.faq-item.open .faq-icon { background: var(--gold); color: var(--navy); transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.77,0,0.18,1); }
+.faq-item.open .faq-a { max-height: 200px; }
+.faq-a p { padding: 0 0 2rem; font-size: 0.92rem; font-weight: 300; color: var(--smoke); line-height: 1.85; }
+
+/* BLOG */
+.section-blog { background: var(--white); padding: 9rem 0; }
+.blog-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; margin-top: 4rem; }
+.post-card { position: relative; overflow: hidden; border-radius: 4px; text-decoration: none; display: block; }
+.post-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform 0.7s ease, filter 0.5s; filter: grayscale(30%); display: block; }
+.post-card:hover .post-img { transform: scale(1.05); filter: grayscale(0%); }
+.post-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,22,40,0.92) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+.post-tag { display: inline-block; background: rgba(184,149,42,0.9); color: var(--navy); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 100px; margin-bottom: 0.8rem; width: fit-content; }
+.post-title { font-family: var(--serif); font-weight: 500; color: #fff; line-height: 1.25; transition: color 0.3s; font-size: 1.3rem; }
+.post-card:first-child .post-title { font-size: 1.8rem; }
+.post-card:hover .post-title { color: var(--gold-light); }
+.post-meta { margin-top: 0.6rem; font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 5rem 0 3rem; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-logo-text { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: #fff; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.footer-logo-text span { color: var(--gold-light); }
+.footer-tagline { font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 260px; margin-bottom: 2rem; }
+.footer-socials { display: flex; gap: 1rem; }
+.footer-socials a { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.3s; }
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col h5 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 1rem; }
+.footer-col ul li a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.88rem; font-weight: 300; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(--gold-light); }
+.contact-row { margin-bottom: 1.2rem; color: rgba(255,255,255,0.4); font-size: 0.85rem; font-weight: 300; line-height: 1.5; }
+.footer-bottom { padding-top: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.2); font-weight: 300; }
+
+/* WHATSAPP */
+.wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 500; text-decoration: none; }
+.wa-btn { width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(37,211,102,0.4); transition: transform 0.3s; animation: waPulse 2.5s infinite; }
+.wa-btn:hover { transform: scale(1.1); }
+@keyframes waPulse { 0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)} 70%{box-shadow:0 0 0 14px rgba(37,211,102,0)} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .areas-grid { grid-template-columns: repeat(2,1fr); }
+  .area-item { border-bottom: 1px solid rgba(184,149,42,0.15); }
+  .area-item:nth-child(2) { border-right: none; }
+  .ti-innovations { grid-template-columns: repeat(2,1fr); }
+  .blog-grid { grid-template-columns: 1fr 1fr; }
+  .blog-grid .post-card:first-child { grid-column: 1/-1; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
+@media (max-width: 900px) {
+  nav { padding: 1.5rem 2rem; }
+  nav.scrolled { padding: 1rem 2rem; }
+  .container { padding: 0 2rem; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 10rem 2rem 10rem; }
+  .hero-indicator { left: 2rem; }
+  .hero-scroll { display: none; }
+  .section-sobre { grid-template-columns: 1fr; }
+  .sobre-img-col { height: 50vh; }
+  .sobre-content { padding: 4rem 2rem; }
+  .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .ti-team-grid { grid-template-columns: 1fr; }
+  .ti-header { flex-direction: column; align-items: flex-start; }
+  .stats-row { grid-template-columns: 1fr; }
+  .stat-col { border-right: none; border-bottom: 1px solid rgba(184,149,42,0.1); }
+  .stat-col:last-child { border-bottom: none; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .ti-innovations { grid-template-columns: 1fr; }
+  .areas-grid { grid-template-columns: 1fr; }
+  .area-item { border-right: none; }
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="images.png" alt="Kayo Melo Advogados">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="areas.html">Áreas</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-            <div class="menu-mobile" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="menuOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="close-menu" id="closeMenu"><i class="fas fa-times"></i></div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="areas.html">Áreas</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contato.html">Contato</a></li>
-        </ul>
+<div class="loader" id="loader">
+  <div class="loader-logo">Kayo <span>Melo</span></div>
+  <div class="loader-bar"></div>
+</div>
+
+<nav id="navbar">
+  <a href="#home" class="nav-logo">Kayo <span>Melo</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#areas">Áreas</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#ti">TI & Inovação</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="https://wa.me/5584999999999" class="nav-cta" target="_blank">Consulta</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" class="ml">Home</a>
+  <a href="#areas" class="ml">Áreas</a>
+  <a href="#sobre" class="ml">Sobre</a>
+  <a href="#ti" class="ml">TI & Inovação</a>
+  <a href="#faq" class="ml">FAQ</a>
+  <a href="#blog" class="ml">Blog</a>
+  <a href="https://wa.me/5584999999999" class="ml" target="_blank">Consulta</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow reveal" id="heroEyebrow">Direito Previdenciário</div>
+    <h1 class="hero-title reveal" id="heroTitle">Planeje sua<br><em>aposentadoria</em><br>com segurança</h1>
+    <p class="hero-sub reveal">Soluções jurídicas personalizadas aliando conhecimento tradicional à mais moderna tecnologia. Atendimento humanizado, resultados precisos.</p>
+    <div class="hero-actions reveal">
+      <a href="https://wa.me/5584999999999" class="btn-gold" target="_blank">
+        <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Consulta gratuita
+      </a>
+      <a href="#areas" class="btn-ghost">Nossas áreas <span class="circ">→</span></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" id="heroImg"
+      src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+      alt="Escritório Jurídico">
+  </div>
+  <div class="hero-indicator">
+    <div class="indicator-dot active" data-s="0"></div>
+    <div class="indicator-dot" data-s="1"></div>
+    <div class="indicator-dot" data-s="2"></div>
+    <div class="indicator-dot" data-s="3"></div>
+  </div>
+  <div class="hero-scroll">Rolar</div>
+</section>
+
+<!-- STATS -->
+<section class="section-stats">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-col reveal">
+        <span class="stat-number" data-target="1000">+1000</span>
+        <span class="stat-label">Atuações judiciais e extrajudiciais</span>
+      </div>
+      <div class="stat-col reveal" style="transition-delay:.15s">
+        <span class="stat-number" data-target="700">+700</span>
+        <span class="stat-label">Clientes atendidos</span>
+      </div>
+      <div class="stat-col reveal" style="transition-delay:.3s">
+        <span class="stat-number" data-target="10">+10</span>
+        <span class="stat-label">Anos de experiência</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="section-areas" id="areas">
+  <div class="container">
+    <div class="section-label reveal">Especialidades</div>
+    <h2 class="section-title reveal">Áreas de <em>atuação</em></h2>
+  </div>
+  <div class="areas-grid">
+    <a href="previdenciario.html" class="area-item reveal">
+      <span class="area-num">01</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <div class="area-title">Previdenciário</div>
+      <p class="area-desc">Aposentadorias, revisões de benefício e planejamento estratégico para o seu futuro.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+    <a href="tributario.html" class="area-item reveal" style="transition-delay:.1s">
+      <span class="area-num">02</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="area-title">Tributário</div>
+      <p class="area-desc">Planejamento tributário, litígios fiscais e recuperação de créditos com eficiência.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+    <a href="civil.html" class="area-item reveal" style="transition-delay:.2s">
+      <span class="area-num">03</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="area-title">Civil</div>
+      <p class="area-desc">Contratos, responsabilidade civil e direito das famílias com abordagem personalizada.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+    <a href="saude.html" class="area-item reveal" style="transition-delay:.3s">
+      <span class="area-num">04</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+      <div class="area-title">Saúde</div>
+      <p class="area-desc">Planos de saúde, tratamentos negados e defesa do seu direito ao tratamento digno.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section-sobre" id="sobre">
+  <div class="sobre-img-col">
+    <img class="sobre-img"
+      src="kayomelo.png"
+      onerror="this.src='https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+      alt="Dr. Kayo Melo">
+  </div>
+  <div class="sobre-content">
+    <div class="section-label reveal-right">Sobre o escritório</div>
+    <blockquote class="sobre-quote reveal-right">
+      Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho.
+    </blockquote>
+    <div class="sobre-author reveal-right">
+      <div class="sobre-author-line"></div>
+      <div>
+        <div class="sobre-author-name">Dr. Kayo Melo</div>
+        <div class="sobre-author-title">Advogado fundador · OAB/RN</div>
+      </div>
+    </div>
+    <p class="sobre-text reveal-right">Fundado com o propósito de oferecer soluções jurídicas personalizadas, aliando conhecimento tradicional à mais moderna tecnologia. Nossa trajetória é marcada pela ética, transparência e busca incessante pela atualização.</p>
+    <a href="sobre.html" class="btn-outline-gold reveal-right">Conheça nossa história →</a>
+  </div>
+</section>
+
+<!-- TI & INOVAÇÃO -->
+<section class="section-ti" id="ti">
+  <div class="container">
+    <div class="ti-header">
+      <div>
+        <div class="section-label reveal">Departamento de TI</div>
+        <h2 class="section-title light reveal" style="margin-bottom:0">Nossa equipe de <em>tecnologia</em></h2>
+      </div>
+      <p class="ti-header-desc reveal">Um dos únicos escritórios do RN com TI própria dedicada — porque a advocacia moderna exige ferramentas modernas.</p>
     </div>
 
-    <section class="hero" id="home">
-        <button class="hero-arrow arrow-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="hero-arrow arrow-next"><i class="fas fa-chevron-right"></i></button>
-
-        <div class="hero-slider">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
-                <div class="container hero-content">
-                    <div class="slide-text">
-                        <span class="hero-highlight">Direito Previdenciário</span>
-                        <h1>Planeje sua aposentadoria com segurança</h1>
-                        <p>Estratégias modernas para garantir o melhor benefício para o seu futuro. Atendimento ágil e consultoria especializada.</p>
-                        <a href="contato.html" class="btn btn-primary">Quero me aposentar</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
-                <div class="container hero-content">
-                    <div class="slide-text">
-                        <span class="hero-highlight">Direito à Saúde</span>
-                        <h1>Defendendo seu acesso ao tratamento digno</h1>
-                        <p>Atuação contra negativas de planos de saúde e fornecimento de medicamentos de alto custo com rapidez processual.</p>
-                        <a href="contato.html" class="btn btn-primary">Garantir meus direitos</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
-                <div class="container hero-content">
-                    <div class="slide-text">
-                        <span class="hero-highlight">Direito Civil</span>
-                        <h1>Soluções jurídicas para seus desafios cotidianos</h1>
-                        <p>Dos contratos à responsabilidade civil, oferecemos segurança jurídica para você e sua família no mundo moderno.</p>
-                        <a href="contato.html" class="btn btn-primary">Falar com advogado</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
-                <div class="container hero-content">
-                    <div class="slide-text">
-                        <span class="hero-highlight">Direito Tributário</span>
-                        <h1>Inteligência fiscal para proteger seu patrimônio</h1>
-                        <p>Recuperação de créditos e planejamento tributário estratégico com uso de tecnologia de ponta e análise criteriosa.</p>
-                        <a href="contato.html" class="btn btn-primary">Otimizar impostos</a>
-                    </div>
-                </div>
-            </div>
+    <div class="ti-team-grid">
+      <div class="ti-card reveal">
+        <img class="ti-card-img"
+          src="equipeOmin.webp"
+          onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+          alt="Leon - Head de TI">
+        <div class="ti-card-body">
+          <div class="ti-card-role">Head de TI</div>
+          <div class="ti-card-name">Leon</div>
+          <p class="ti-card-desc">Responsável por toda a infraestrutura tecnológica do escritório. Leon lidera o desenvolvimento de sistemas internos, segurança de dados e automação de processos jurídicos, garantindo que a equipe tenha sempre as melhores ferramentas disponíveis.</p>
+          <div class="ti-tags">
+            <span class="ti-tag">Segurança de Dados</span>
+            <span class="ti-tag">Automação</span>
+            <span class="ti-tag">Cloud</span>
+            <span class="ti-tag">LGPD</span>
+          </div>
         </div>
-
-        <div class="hero-nav-wrapper">
-            <div class="hero-nav-container">
-                <div class="nav-item active" data-index="0">
-                    <i class="fas fa-id-card"></i>
-                    <span>Previdenciário</span>
-                </div>
-                <div class="nav-item" data-index="1">
-                    <i class="fas fa-heartbeat"></i>
-                    <span>Saúde</span>
-                </div>
-                <div class="nav-item" data-index="2">
-                    <i class="fas fa-gavel"></i>
-                    <span>Civil</span>
-                </div>
-                <div class="nav-item" data-index="3">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Tributário</span>
-                </div>
-            </div>
+      </div>
+      <div class="ti-card reveal" style="transition-delay:.15s">
+        <img class="ti-card-img"
+          src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Othon - Estagiário TI">
+        <div class="ti-card-body">
+          <div class="ti-card-role">Estagiário de TI</div>
+          <div class="ti-card-name">Othon</div>
+          <p class="ti-card-desc">Apoia o departamento no desenvolvimento de soluções digitais e suporte ao time jurídico. Com foco em inovação, Othon contribui na pesquisa de novas tecnologias aplicadas ao direito e na manutenção dos sistemas do escritório.</p>
+          <div class="ti-tags">
+            <span class="ti-tag">Desenvolvimento</span>
+            <span class="ti-tag">Suporte</span>
+            <span class="ti-tag">IA Jurídica</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="stats" data-aos="fade-up">
-        <div class="container stats-grid">
-            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                <h3>+1000</h3>
-                <p>Atuações judiciais e extrajudiciais</p>
-            </div>
-            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                <h3>+700</h3>
-                <p>Clientes atendidos</p>
-            </div>
-            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
-                <h3>+10</h3>
-                <p>Anos de experiência</p>
-            </div>
+    <div class="ti-innov-label reveal">Nossas Inovações</div>
+    <div class="ti-innovations">
+      <div class="ti-innov-item reveal">
+        <div class="ti-innov-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="ti-innov-title">Segurança Total</div>
+        <p class="ti-innov-desc">Infraestrutura criptografada e em conformidade com a LGPD. Seus dados protegidos com os mais altos padrões do mercado.</p>
+      </div>
+      <div class="ti-innov-item reveal" style="transition-delay:.1s">
+        <div class="ti-innov-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49m-8.48-.01a6 6 0 010-8.49m11.31-2.82a10 10 0 010 14.14m-14.14 0a10 10 0 010-14.14"/></svg></div>
+        <div class="ti-innov-title">Portal do Cliente</div>
+        <p class="ti-innov-desc">Acompanhamento processual em tempo real. O cliente acessa o andamento do seu caso de qualquer lugar, a qualquer hora.</p>
+      </div>
+      <div class="ti-innov-item reveal" style="transition-delay:.2s">
+        <div class="ti-innov-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="ti-innov-title">IA Jurídica</div>
+        <p class="ti-innov-desc">Análise inteligente de jurisprudência e automatização de documentos, acelerando o trabalho do time e reduzindo custos.</p>
+      </div>
+      <div class="ti-innov-item reveal" style="transition-delay:.3s">
+        <div class="ti-innov-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="ti-innov-title">Gestão Ágil</div>
+        <p class="ti-innov-desc">Sistemas de gestão de processos e prazos que garantem que nenhum detalhe seja perdido durante a atuação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-faq" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <div class="section-label reveal">FAQ</div>
+        <h2 class="section-title reveal" style="margin-bottom:1.5rem">Dúvidas sobre <em>aposentadoria</em></h2>
+        <p class="reveal" style="font-size:.95rem;font-weight:300;color:var(--smoke);line-height:1.8;margin-bottom:2.5rem">As perguntas mais comuns respondidas com clareza. Tem mais dúvidas? Fale com um especialista.</p>
+        <a href="https://wa.me/5584999999999" class="btn-gold" target="_blank">Falar com advogado</a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Qual a idade mínima para se aposentar?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Após a Reforma da Previdência (EC 103/2019), a idade mínima é de 65 anos para homens e 62 para mulheres, com tempo de contribuição de 15 anos (mulheres) e 20 anos (homens), dependendo da regra de transição aplicável.</p></div>
         </div>
-    </section>
-
-    <section class="container" id="areas">
-        <h2 data-aos="fade-right">Áreas de Atuação Core</h2>
-        <div class="areas-grid">
-            <a href="previdenciario.html" class="area-card-link" data-aos="flip-left" data-aos-delay="100">
-                <div class="area-card">
-                    <i class="fas fa-id-card area-icon"></i>
-                    <h3>Previdenciário</h3>
-                    <p>Aposentadorias, revisões de benefício e planejamento previdenciário.</p>
-                </div>
-            </a>
-            <a href="tributario.html" class="area-card-link" data-aos="flip-left" data-aos-delay="200">
-                <div class="area-card">
-                    <i class="fas fa-chart-line area-icon"></i>
-                    <h3>Tributário</h3>
-                    <p>Planejamento tributário, litígios fiscais e recuperação de créditos.</p>
-                </div>
-            </a>
-            <a href="civil.html" class="area-card-link" data-aos="flip-left" data-aos-delay="300">
-                <div class="area-card">
-                    <i class="fas fa-gavel area-icon"></i>
-                    <h3>Civil</h3>
-                    <p>Contratos, responsabilidade civil e direito das famílias.</p>
-                </div>
-            </a>
-            <a href="saude.html" class="area-card-link" data-aos="flip-left" data-aos-delay="400">
-                <div class="area-card">
-                    <i class="fas fa-heartbeat area-icon"></i>
-                    <h3>Saúde</h3>
-                    <p>Planos de saúde, tratamentos negados e direito hospitalar.</p>
-                </div>
-            </a>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Posso me aposentar sem atingir a idade mínima?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Sim, é possível pelas regras de transição (como pedágio de 50% ou 100%) ou aposentadoria por tempo de contribuição para quem já estava no sistema antes da reforma, desde que cumpridos os requisitos.</p></div>
         </div>
-    </section>
-
-    <section class="sobre-section">
-        <div class="container">
-            <h2 data-aos="fade-right">Sobre Nós</h2>
-            <div class="sobre-content">
-                <div class="sobre-text" data-aos="fade-right">
-                    <p>Fundado pelo Dr. Kayo Melo, nosso escritório nasceu com o propósito de oferecer soluções jurídicas personalizadas, aliando o conhecimento tradicional à mais moderna tecnologia.</p>
-                    <p>Nossa trajetória é marcada pela ética, transparência e pela busca incessante da atualização.</p>
-                    <a href="sobre.html" class="btn btn-outline">Leia mais</a>
-                </div>
-                <div class="sobre-photo" data-aos="fade-left">
-                    <div class="sobre-photo-overlay">
-                        <i class="fas fa-quote-right quote-icon"></i>
-                        <p class="sobre-quote">"Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho."</p>
-                        <p class="sobre-author">Dr. Kayo Melo</p>
-                    </div>
-                </div>
-            </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">O que é o fator previdenciário?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>É uma fórmula que considera idade, tempo de contribuição e expectativa de vida, podendo reduzir o valor da aposentadoria. Hoje a aposentadoria programada tem cálculo baseado na média de 100% dos salários.</p></div>
         </div>
-    </section>
-
-    <section class="container" data-aos="fade-up">
-        <div class="diferencial">
-            <div class="diferencial-content">
-                <div>
-                    <span class="tech-badge"><i class="fas fa-microchip"></i> Tech Law</span>
-                    <h2 style="margin-top: 1rem;">Inovação que protege seu patrimônio</h2>
-                    <p style="font-size: 1.05rem; color: var(--text-light); line-height: 1.8;">Com nosso <strong>departamento de TI</strong>. Leon (Head de TI) e Othon (Estagiário) garantem a segurança dos seus dados e agilidade processual com tecnologia de ponta.</p>
-                    <a href="sobre.html" class="btn btn-outline" style="margin-top: 2rem;">Conheça nosso time</a>
-                </div>
-                <img src="equipeOmin.webp" alt="Equipe de TI" class="tech-icon">
-            </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Como é calculado o valor da aposentadoria?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>É feita a média de 100% de todos os salários de contribuição desde julho de 1994. O valor inicial é 60% dessa média + 2% para cada ano que ultrapassar 20 anos (homens) ou 15 anos (mulheres).</p></div>
         </div>
-    </section>
-
-    <section style="background: var(--light-gray);">
-        <div class="container">
-            <h2 data-aos="fade-right">Perguntas Frequentes sobre Aposentadoria</h2>
-            <div class="faq-grid">
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="faq-question">
-                        <i class="fas fa-question-circle"></i>
-                        <h3>Qual a idade mínima para se aposentar?</h3>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Após a Reforma da Previdência (EC 103/2019), a idade mínima é de 65 anos para homens e 62 para mulheres, com tempo de contribuição de 15 anos (mulheres) e 20 anos (homens), dependendo da regra de transição aplicável.</p>
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="faq-question">
-                        <i class="fas fa-question-circle"></i>
-                        <h3>Posso me aposentar sem ter atingido a idade mínima?</h3>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim, é possível pelas regras de transição (como pedágio de 50% ou 100%) ou aposentadoria por tempo de contribuição (para quem já estava no sistema antes da reforma), desde que cumpridos os requisitos.</p>
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="faq-question">
-                        <i class="fas fa-question-circle"></i>
-                        <h3>O que é o fator previdenciário?</h3>
-                    </div>
-                    <div class="faq-answer">
-                        <p>É uma fórmula que considera idade, tempo de contribuição e expectativa de vida, podendo reduzir o valor da aposentadoria por tempo de contribuição. Hoje, a aposentadoria programada tem o cálculo baseado na média de 100% dos salários.</p>
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="faq-question">
-                        <i class="fas fa-question-circle"></i>
-                        <h3>Como é calculado o valor da aposentadoria?</h3>
-                    </div>
-                    <div class="faq-answer">
-                        <p>É feita a média de 100% de todos os salários de contribuição desde julho de 1994. O valor inicial é 60% dessa média + 2% para cada ano que ultrapassar 20 anos de contribuição (homens) ou 15 anos (mulheres).</p>
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="faq-question">
-                        <i class="fas fa-question-circle"></i>
-                        <h3>Posso continuar trabalhando depois de aposentado?</h3>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim, é possível, mas você continuará contribuindo para o INSS (não obrigatoriamente) e poderá ter direito a outros benefícios, como salário-maternidade ou reabilitação profissional.</p>
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
-                    <div class="faq-question">
-                        <i class="fas fa-question-circle"></i>
-                        <h3>O que fazer se o INSS negar meu pedido?</h3>
-                    </div>
-                    <div class="faq-answer">
-                        <p>É possível entrar com recurso administrativo ou ação judicial. Recomenda-se buscar um advogado especializado para avaliar as chances de êxito e orientar sobre a melhor estratégia.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">O que fazer se o INSS negar meu pedido?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>É possível entrar com recurso administrativo ou ação judicial. Recomenda-se buscar um advogado especializado para avaliar as chances de êxito e orientar sobre a melhor estratégia para o seu caso.</p></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="container" id="blog">
-        <h2 data-aos="fade-right">Últimas do Blog</h2>
-        <div class="blog-grid">
-            <article class="post-card" data-aos="fade-up">
-                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="post-content">
-                    <h4>Reforma Tributária: o que muda para você</h4>
-                    <p>Entenda os principais pontos e como isso pode impactar seu bolso.</p>
-                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-            <article class="post-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="post-content">
-                    <h4>Novas regras para aposentadoria em 2025</h4>
-                    <p>Planeje-se com antecedência e garanta seus direitos.</p>
-                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-            <article class="post-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="post-content">
-                    <h4>Planos de saúde: como garantir seu tratamento</h4>
-                    <p>Saiba quais são seus direitos em caso de negativa.</p>
-                    <a href="#" class="post-link">Leia mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
+<!-- BLOG -->
+<section class="section-blog" id="blog">
+  <div class="container">
+    <div class="section-label reveal">Conteúdo</div>
+    <h2 class="section-title reveal">Últimas do <em>blog</em></h2>
+    <div class="blog-grid">
+      <a href="#" class="post-card reveal">
+        <img class="post-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reforma Tributária">
+        <div class="post-overlay">
+          <span class="post-tag">Tributário</span>
+          <h3 class="post-title">Reforma Tributária: o que muda para você e sua empresa em 2025</h3>
+          <div class="post-meta">5 min de leitura · Jan 2025</div>
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="blog.html" class="btn btn-outline">Ver todos os posts</a>
+      </a>
+      <a href="#" class="post-card reveal" style="transition-delay:.15s">
+        <img class="post-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aposentadoria">
+        <div class="post-overlay">
+          <span class="post-tag">Previdenciário</span>
+          <h3 class="post-title">Novas regras para aposentadoria em 2025</h3>
+          <div class="post-meta">4 min de leitura · Fev 2025</div>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div>
-                <h4>Kayo Melo Advogados</h4>
-                <p>Advocacia especializada com tecnologia própria.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4>Links Rápidos</h4>
-                <p><a href="index.html">Home</a></p>
-                <p><a href="sobre.html">Sobre</a></p>
-                <p><a href="areas.html">Áreas</a></p>
-                <p><a href="blog.html">Blog</a></p>
-                <p><a href="contato.html">Contato</a></p>
-            </div>
-            <div>
-                <h4>Contato</h4>
-                <p><i class="fas fa-phone-alt"></i> (84) 99999-9999</p>
-                <p><i class="fas fa-envelope"></i> contato@kayomeloadvogados.com.br</p>
-                <p><i class="fas fa-map-marker-alt"></i> Natal/RN</p>
-            </div>
+      </a>
+      <a href="#" class="post-card reveal" style="transition-delay:.3s">
+        <img class="post-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Planos de saúde">
+        <div class="post-overlay">
+          <span class="post-tag">Saúde</span>
+          <h3 class="post-title">Planos de saúde: como garantir seu tratamento</h3>
+          <div class="post-meta">3 min de leitura · Mar 2025</div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a href="blog.html" class="btn-gold">Ver todos os posts</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-text">Kayo <span>Melo</span> Advogados</div>
+        <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
         </div>
-    </footer>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#areas">Áreas de Atuação</a></li>
+          <li><a href="#sobre">Sobre o Escritório</a></li>
+          <li><a href="#ti">TI & Inovação</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Especialidades</h5>
+        <ul>
+          <li><a href="previdenciario.html">Direito Previdenciário</a></li>
+          <li><a href="tributario.html">Direito Tributário</a></li>
+          <li><a href="civil.html">Direito Civil</a></li>
+          <li><a href="saude.html">Direito à Saúde</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <p class="contact-row">📞 (84) 99999-9999</p>
+        <p class="contact-row">✉️ contato@kayomeloadvogados.com.br</p>
+        <p class="contact-row">📍 Natal, Rio Grande do Norte</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+      <p>OAB/RN — Advocacia com ética e responsabilidade</p>
+    </div>
+  </div>
+</footer>
 
-    <a href="https://wa.me/5584999999999" class="whatsapp-float" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<a href="https://wa.me/5584999999999" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <div class="wa-btn">
+    <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</a>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+<script>
+// LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1800);
+});
 
-        // Lógica do Carrossel Hero
-        const slides = document.querySelectorAll('.slide');
-        const navItems = document.querySelectorAll('.nav-item');
-        const btnNext = document.querySelector('.arrow-next');
-        const btnPrev = document.querySelector('.arrow-prev');
-        let currentSlide = 0;
-        let slideInterval;
+// NAV SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
 
-        function showSlide(n) {
-            slides.forEach(s => s.classList.remove('active'));
-            navItems.forEach(n => n.classList.remove('active'));
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+document.querySelectorAll('.ml').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+  });
+});
 
-            currentSlide = (n + slides.length) % slides.length;
+// REVEAL ON SCROLL
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
 
-            slides[currentSlide].classList.add('active');
-            navItems[currentSlide].classList.add('active');
-        }
+// COUNTER
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target);
+    const t0 = performance.now();
+    const run = now => {
+      const p = Math.min((now - t0) / 2000, 1);
+      el.textContent = '+' + Math.floor((1 - Math.pow(1-p,3)) * target);
+      if (p < 1) requestAnimationFrame(run);
+    };
+    requestAnimationFrame(run);
+    cObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-number[data-target]').forEach(el => cObs.observe(el));
 
-        function nextSlide() { showSlide(currentSlide + 1); }
-        function prevSlide() { showSlide(currentSlide - 1); }
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
 
-        if (btnNext && btnPrev) {
-            btnNext.addEventListener('click', () => {
-                nextSlide();
-                resetTimer();
-            });
+// HERO SLIDES
+const eyebrow = document.getElementById('heroEyebrow');
+const title = document.getElementById('heroTitle');
+const img = document.getElementById('heroImg');
+const dots = document.querySelectorAll('.indicator-dot');
 
-            btnPrev.addEventListener('click', () => {
-                prevSlide();
-                resetTimer();
-            });
-        }
+const slides = [
+  { e: 'Direito Previdenciário', t: 'Planeje sua<br><em>aposentadoria</em><br>com segurança', i: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80' },
+  { e: 'Direito Tributário',     t: 'Inteligência fiscal<br>para proteger seu<br><em>patrimônio</em>',  i: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80' },
+  { e: 'Direito Civil',          t: 'Soluções para seus<br><em>desafios</em><br>cotidianos',           i: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80' },
+  { e: 'Direito à Saúde',        t: 'Defendendo seu<br>direito ao <em>tratamento</em><br>digno',       i: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80' }
+];
 
-        navItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                showSlide(index);
-                resetTimer();
-            });
-        });
+let cur = 0;
+eyebrow.style.transition = title.style.transition = 'opacity 0.4s';
+if (img) img.style.transition = 'opacity 0.5s';
 
-        function resetTimer() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 7000);
-        }
+function go(n) {
+  cur = n;
+  dots.forEach((d,i) => d.classList.toggle('active', i===n));
+  eyebrow.style.opacity = title.style.opacity = '0';
+  if (img) img.style.opacity = '0.2';
+  setTimeout(() => {
+    eyebrow.textContent = slides[n].e;
+    title.innerHTML = slides[n].t;
+    if (img) { img.src = slides[n].i; img.style.opacity = '0.55'; }
+    eyebrow.style.opacity = title.style.opacity = '1';
+  }, 400);
+}
 
-        slideInterval = setInterval(nextSlide, 7000);
-
-        // Menu mobile funcional
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const closeMenu = document.getElementById('closeMenu');
-
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        menuToggle.addEventListener('click', openMobileMenu);
-        closeMenu.addEventListener('click', closeMobileMenu);
-        menuOverlay.addEventListener('click', closeMobileMenu);
-
-        // FAQ Toggle
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-                faqItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-            });
-        });
-    </script>
+dots.forEach((d,i) => d.addEventListener('click', () => { go(i); reset(); }));
+let timer;
+function reset() { clearInterval(timer); timer = setInterval(() => go((cur+1)%4), 6000); }
+reset();
+</script>
 </body>
 </html>
