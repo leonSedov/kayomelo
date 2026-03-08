@@ -113,22 +113,34 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 </head>
 <body>
 <div class="loader" id="loader">
-  <div class="loader-logo">Kayo <span>Melo</span></div>
+  <!-- LOADER LOGO SUBSTITUÍDO POR IMAGEM images.png -->
+  <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
   <div class="loader-bar"></div>
 </div>
 
 <nav id="navbar">
-  <a href="index.html" class="nav-logo">Kayo <span>Melo</span></a>
+  <!-- NAV LOGO SUBSTITUÍDO POR IMAGEM images.png -->
+  <a href="index.html" class="nav-logo">
+    <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
+  </a>
   <ul class="nav-links">
     <li><a href="index.html">Início</a></li>
     <li><a href="sobre.html">Sobre</a></li>
     <li><a href="areas.html">Áreas</a></li>
     <li><a href="blog.html">Blog</a></li>
-    <li><a href="contato.html" style="color:var(--gold-light);">Contato</a></li>
+    <li><a href="contato.html">Contato</a></li>
     <li><a href="contato.html" class="nav-cta">Consulta</a></li>
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="ml">Início</a>
+  <a href="sobre.html" class="ml">Sobre</a>
+  <a href="areas.html" class="ml">Áreas</a>
+  <a href="blog.html" class="ml">Blog</a>
+  <a href="contato.html" class="ml">Contato</a>
+</div>
 
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html" class="ml">Início</a>
