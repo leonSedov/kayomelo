@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kayo Melo Advogados</title>
+<title>Sobre | Kayo Melo Advogados</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
 :root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
@@ -11,6 +11,8 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--parchment)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* LOADER */
 .loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s,visibility 0.8s}
 .loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .loader-logo{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#fff;letter-spacing:0.2em;text-transform:uppercase}
@@ -18,15 +20,17 @@ body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x
 .loader-bar{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
 .loader-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold-light);animation:loadBar 1.5s ease forwards}
 @keyframes loadBar{to{left:0}}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease}
-nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;background:rgba(10,22,40,0.15);backdrop-filter:blur(8px)}
+nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
 .nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase}
 .nav-logo span{color:var(--gold-light)}
 .nav-links{display:flex;gap:2.2rem;list-style:none}
 .nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
-.nav-links a:hover{color:var(--gold-light)}
-.nav-links a:hover::after{width:100%}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
 .nav-cta{border:1px solid var(--gold)!important;padding:0.5rem 1.4rem;border-radius:100px;color:var(--gold-light)!important;transition:background 0.3s!important}
 .nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
 .nav-cta::after{display:none!important}
@@ -39,241 +43,114 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
 .mobile-nav.open{transform:translateX(0)}
 .mobile-nav a{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:#fff;text-decoration:none;transition:color 0.3s}
 .mobile-nav a:hover{color:var(--gold-light)}
-.hero{min-height:100vh;background:var(--navy);position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(184,149,42,0.07) 0%,transparent 60%),radial-gradient(ellipse 50% 80% at 10% 80%,rgba(10,22,40,0.9) 0%,transparent 50%)}
-.hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:10rem 5rem 8rem 8rem}
-.hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:1rem;transition:opacity 0.4s}
-.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
-.hero-title{font-family:var(--serif);font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#fff;line-height:1.08;margin-bottom:2.5rem;transition:opacity 0.4s}
-.hero-title em{font-style:italic;color:var(--gold-light)}
-.hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.8;max-width:400px;margin-bottom:3.5rem}
-.hero-actions{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
-.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem;cursor:pointer}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 40px rgba(184,149,42,0.35)}
-.btn-ghost{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.8rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.7rem}
-.btn-ghost:hover{color:var(--gold-light)}
-.btn-ghost .circ{width:32px;height:32px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s}
-.btn-ghost:hover .circ{border-color:var(--gold)}
-.hero-right{position:relative;z-index:2;overflow:hidden}
-.hero-img{width:100%;height:100%;object-fit:cover;filter:grayscale(25%);opacity:0.55;transition:opacity 0.5s;display:block}
-.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 40%,transparent 60%,var(--navy) 100%),linear-gradient(180deg,var(--navy) 0%,transparent 20%,transparent 80%,var(--navy) 100%)}
-.hero-indicator{position:absolute;left:8rem;bottom:3rem;z-index:20;display:flex;gap:0.7rem;align-items:center}
-.indicator-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s}
-.indicator-dot.active{background:var(--gold);width:24px;border-radius:3px}
-.hero-scroll{position:absolute;bottom:3rem;right:4rem;z-index:3;display:flex;flex-direction:column;align-items:center;gap:1rem;color:rgba(255,255,255,0.35);font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;writing-mode:vertical-rl}
-.hero-scroll::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2s ease infinite}
-@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-.section-stats{background:var(--navy);padding:5rem 0;border-top:1px solid rgba(184,149,42,0.15);border-bottom:1px solid rgba(184,149,42,0.15)}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr)}
-.stat-col{text-align:center;padding:2rem;border-right:1px solid rgba(184,149,42,0.1)}
-.stat-col:last-child{border-right:none}
-.stat-number{font-family:var(--serif);font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:var(--gold-light);display:block;line-height:1}
-.stat-label{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.8rem;display:block}
+
+/* PAGE HERO */
+.page-hero{min-height:72vh;background:var(--navy);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(35%);opacity:0.2;display:block}
+.page-hero-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.6) 50%,rgba(10,22,40,0.85) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 0 7rem;width:100%}
 .container{max-width:1280px;margin:0 auto;padding:0 4rem}
+.page-hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.page-hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.page-hero-title{font-family:var(--serif);font-size:clamp(4rem,7vw,8rem);font-weight:300;color:#fff;line-height:0.95;letter-spacing:-0.02em;margin-bottom:2.5rem}
+.page-hero-title em{font-style:italic;color:var(--gold-light);display:block}
+.page-hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.9;max-width:500px}
+.hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,149,42,0.4),transparent)}
+
+/* SHARED */
 .section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
 .section-label::before{content:'';width:30px;height:1px;background:var(--gold)}
-.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:4rem}
+.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:2.5rem}
 .section-title em{font-style:italic;color:var(--gold)}
 .section-title.light{color:#fff}
-.section-areas{background:var(--parchment);padding:9rem 0;position:relative;overflow:hidden}
-.section-areas::before{content:'ADVOCACIA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(6rem,12vw,14rem);font-weight:700;color:rgba(184,149,42,0.035);white-space:nowrap;pointer-events:none;letter-spacing:0.1em}
-.areas-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid rgba(184,149,42,0.2)}
-.area-item{padding:3.5rem 2.5rem;border-right:1px solid rgba(184,149,42,0.15);position:relative;overflow:hidden;transition:background 0.5s;text-decoration:none;color:inherit;display:block}
-.area-item:last-child{border-right:none}
-.area-item::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:0;background:var(--navy);transition:height 0.5s cubic-bezier(0.77,0,0.18,1);z-index:0}
-.area-item:hover::before{height:100%}
-.area-item>*{position:relative;z-index:1}
-.area-num{font-family:var(--serif);font-size:0.9rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:2rem;display:block}
-.area-icon-wrap{width:52px;height:52px;border:1px solid rgba(184,149,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;transition:border-color 0.3s,background 0.3s}
-.area-item:hover .area-icon-wrap{border-color:var(--gold);background:rgba(184,149,42,0.1)}
-.area-icon-wrap svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.area-title{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--ink);margin-bottom:1rem;transition:color 0.3s}
-.area-item:hover .area-title{color:#fff}
-.area-desc{font-size:0.88rem;font-weight:300;color:var(--smoke);line-height:1.7;transition:color 0.3s}
-.area-item:hover .area-desc{color:rgba(255,255,255,0.6)}
-.area-arrow{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2rem;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);transition:gap 0.3s}
-.area-item:hover .area-arrow{gap:1rem}
-.section-sobre{background:var(--navy);display:grid;grid-template-columns:1fr 1fr;min-height:80vh;overflow:hidden}
-.sobre-img-col{position:relative;overflow:hidden}
-.sobre-img{width:100%;height:100%;object-fit:cover;filter:grayscale(30%);transition:transform 8s ease;display:block}
-.section-sobre:hover .sobre-img{transform:scale(1.03)}
-.sobre-img-col::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--navy) 100%),linear-gradient(180deg,rgba(10,22,40,0.3) 0%,transparent 30%)}
-.sobre-content{padding:7rem 6rem 7rem 5rem;display:flex;flex-direction:column;justify-content:center}
-.sobre-quote{font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.6rem);font-weight:300;color:#fff;line-height:1.4;font-style:italic;margin-bottom:3rem;position:relative;padding-left:2rem}
-.sobre-quote::before{content:'"';position:absolute;left:-0.5rem;top:-1rem;font-size:6rem;color:var(--gold);opacity:0.3;font-family:var(--serif);line-height:1}
-.sobre-author{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
-.sobre-author-line{width:40px;height:1px;background:var(--gold)}
-.sobre-author-name{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--gold-light)}
-.sobre-author-title{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.2rem}
-.sobre-text{font-size:0.95rem;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.9;max-width:460px;margin-bottom:3rem}
+.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem;cursor:pointer}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 40px rgba(184,149,42,0.35)}
 .btn-outline-gold{display:inline-flex;align-items:center;gap:0.8rem;color:var(--gold-light);font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(184,149,42,0.3);padding-bottom:0.3rem;transition:border-color 0.3s}
 .btn-outline-gold:hover{border-color:var(--gold)}
 
-/* ===== NOVA SEÇÃO: CORPO JURÍDICO ===== */
-.section-juridico {
-  background: var(--white);
-  padding: 9rem 0;
-  position: relative;
-  overflow: hidden;
-}
-.section-juridico::before {
-  content: 'ASSOCIADOS';
-  position: absolute;
-  top: 50%;
-  right: -2rem;
-  transform: translateY(-50%);
-  font-family: var(--serif);
-  font-size: clamp(8rem, 15vw, 18rem);
-  font-weight: 700;
-  color: rgba(184,149,42,0.04);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-}
-.cat-div {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-.cat-div-label {
-  font-family: var(--serif);
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-}
-.cat-div-tag {
-  background: rgba(184,149,42,0.08);
-  padding: 0.3rem 1.2rem;
-  border-radius: 100px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid rgba(184,149,42,0.2);
-}
-.cat-div-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-  min-width: 60px;
-}
-.members-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-.mcard {
-  background: var(--white);
-  border: 1px solid rgba(184,149,42,0.15);
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.mcard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 30px -10px rgba(10,22,40,0.15);
-  border-color: var(--gold);
-}
-.mcard-img-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1.1;
-  background: var(--parchment);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.mcard-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(20%) contrast(1.05);
-  transition: filter 0.4s;
-}
-.mcard:hover .mcard-img {
-  filter: grayscale(0%) contrast(1.1);
-}
-.mcard-initials {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--serif);
-  font-size: 3rem;
-  font-weight: 300;
-  color: rgba(184,149,42,0.15);
-  pointer-events: none;
-  z-index: 1;
-  transition: opacity 0.3s;
-}
-.mcard-img[style*="display: none"] ~ .mcard-initials {
-  color: rgba(184,149,42,0.5);
-  font-size: 4rem;
-}
-.mcard-body {
-  padding: 1.8rem 1.5rem 2rem;
-  background: var(--white);
-  position: relative;
-}
-.mcard-role {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  background: rgba(184,149,42,0.06);
-  padding: 0.2rem 0.8rem;
-  border-radius: 100px;
-  margin-bottom: 0.8rem;
-  border: 1px solid rgba(184,149,42,0.15);
-}
-.mcard-name {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 0.6rem;
-  line-height: 1.2;
-}
-.mcard-bio {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--smoke);
-  line-height: 1.7;
-}
-/* ===== FIM NOVA SEÇÃO ===== */
+/* HISTORIA */
+.section-historia{padding:10rem 0;background:var(--white)}
+.historia-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.historia-img-col{position:relative}
+.historia-img-frame{position:relative}
+.historia-img-frame::before{content:'';position:absolute;top:-20px;left:-20px;right:20px;bottom:20px;border:1px solid rgba(184,149,42,0.2);z-index:0;pointer-events:none}
+.historia-img{width:100%;height:560px;object-fit:cover;object-position:center top;display:block;filter:grayscale(15%);transition:filter 0.6s;position:relative;z-index:1}
+.historia-img:hover{filter:grayscale(0%)}
+.historia-badge{position:absolute;bottom:-2.5rem;right:-2.5rem;background:var(--navy);border:1px solid rgba(184,149,42,0.3);padding:1.8rem 2.2rem;z-index:2;min-width:160px}
+.historia-badge-num{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:var(--gold-light);line-height:1;display:block}
+.historia-badge-txt{font-size:0.68rem;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.4rem;display:block}
+.historia-body p{font-size:0.95rem;font-weight:300;color:var(--smoke);line-height:2;margin-bottom:1.6rem}
 
-.section-faq{background:var(--parchment);padding:9rem 0}
-.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:6rem}
-.faq-list{display:flex;flex-direction:column}
-.faq-item{border-bottom:1px solid rgba(184,149,42,0.15);overflow:hidden}
-.faq-q{padding:1.8rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:2rem}
-.faq-q-text{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink);transition:color 0.3s}
-.faq-item.open .faq-q-text{color:var(--gold)}
-.faq-icon{width:32px;height:32px;flex-shrink:0;border:1px solid rgba(184,149,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:1rem;color:var(--gold)}
-.faq-item.open .faq-icon{background:var(--gold);color:var(--navy);transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.77,0,0.18,1)}
-.faq-item.open .faq-a{max-height:200px}
-.faq-a p{padding:0 0 2rem;font-size:0.92rem;font-weight:300;color:var(--smoke);line-height:1.85}
-.section-blog{background:var(--white);padding:9rem 0}
-.blog-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-top:4rem}
-.post-card{position:relative;overflow:hidden;border-radius:4px;text-decoration:none;display:block}
-.post-img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 0.7s ease,filter 0.5s;filter:grayscale(30%);display:block}
-.post-card:hover .post-img{transform:scale(1.05);filter:grayscale(0%)}
-.post-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,22,40,0.92) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
-.post-tag{display:inline-block;background:rgba(184,149,42,0.9);color:var(--navy);font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:100px;margin-bottom:0.8rem;width:fit-content}
-.post-title{font-family:var(--serif);font-weight:500;color:#fff;line-height:1.25;transition:color 0.3s;font-size:1.3rem}
-.post-card:first-child .post-title{font-size:1.8rem}
-.post-card:hover .post-title{color:var(--gold-light)}
-.post-meta{margin-top:0.6rem;font-size:0.72rem;color:rgba(255,255,255,0.45)}
+/* VALORES */
+.section-valores{padding:9rem 0;background:var(--parchment);position:relative;overflow:hidden}
+.section-valores::before{content:'VALORES';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(6rem,12vw,16rem);font-weight:700;color:rgba(184,149,42,0.04);white-space:nowrap;pointer-events:none;letter-spacing:0.1em}
+.valores-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(184,149,42,0.2);margin-top:4rem}
+.valor-item{padding:4rem 3rem;border-right:1px solid rgba(184,149,42,0.15);position:relative;overflow:hidden;transition:background 0.5s}
+.valor-item:last-child{border-right:none}
+.valor-item::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:0;background:var(--navy);transition:height 0.5s cubic-bezier(0.77,0,0.18,1);z-index:0}
+.valor-item:hover::before{height:100%}
+.valor-item>*{position:relative;z-index:1}
+.valor-num{font-family:var(--serif);font-size:0.85rem;color:var(--gold);letter-spacing:0.12em;display:block;margin-bottom:1.8rem}
+.valor-icon{width:52px;height:52px;border:1px solid rgba(184,149,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.8rem;transition:border-color 0.3s,background 0.3s}
+.valor-item:hover .valor-icon{border-color:var(--gold);background:rgba(184,149,42,0.1)}
+.valor-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.valor-title{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--ink);margin-bottom:1rem;transition:color 0.3s}
+.valor-item:hover .valor-title{color:#fff}
+.valor-desc{font-size:0.88rem;font-weight:300;color:var(--smoke);line-height:1.8;transition:color 0.3s}
+.valor-item:hover .valor-desc{color:rgba(255,255,255,0.6)}
+
+/* FUNDADOR */
+.section-fundador{background:var(--navy);position:relative;overflow:hidden}
+.section-fundador::before{content:'\201C';position:absolute;top:-4rem;left:2rem;font-family:var(--serif);font-size:30rem;font-weight:700;color:rgba(184,149,42,0.04);line-height:1;pointer-events:none}
+.fundador-grid{display:grid;grid-template-columns:1fr 1.15fr;min-height:80vh}
+.fundador-img-col{position:relative;overflow:hidden}
+.fundador-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(20%);transition:filter 0.6s,transform 8s ease}
+.fundador-img-col:hover .fundador-img{filter:grayscale(0%);transform:scale(1.03)}
+.fundador-img-col::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 50%,var(--navy) 100%),linear-gradient(180deg,var(--navy) 0%,transparent 15%,transparent 85%,var(--navy) 100%)}
+.fundador-content{padding:7rem 6rem 7rem 5rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.fundador-quote{font-family:var(--serif);font-size:clamp(1.9rem,2.8vw,3rem);font-weight:300;color:#fff;line-height:1.3;font-style:italic;margin-bottom:3rem;padding-left:2rem;position:relative}
+.fundador-quote::before{content:'\201C';position:absolute;left:-0.8rem;top:-2rem;font-size:8rem;color:var(--gold);opacity:0.25;font-family:var(--serif);line-height:1}
+.fundador-author{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
+.fundador-author-line{width:40px;height:1px;background:var(--gold)}
+.fundador-author-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--gold-light)}
+.fundador-author-title{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.25rem}
+.fundador-bio{font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.95;margin-bottom:3rem;max-width:480px}
+
+/* EQUIPE */
+.section-equipe{padding:10rem 0;background:var(--white)}
+.equipe-intro{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:7rem}
+.equipe-intro-right p{font-size:0.95rem;font-weight:300;color:var(--smoke);line-height:1.9}
+.equipe-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.eq-stat{border-top:1px solid rgba(184,149,42,0.2);padding-top:1.2rem}
+.eq-stat-num{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);display:block;line-height:1}
+.eq-stat-lbl{font-size:0.7rem;color:var(--smoke);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.4rem;display:block}
+
+/* CATEGORY DIVIDER */
+.cat-div{display:flex;align-items:center;gap:2rem;margin:6rem 0 3rem}
+.cat-div-label{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--ink);white-space:nowrap}
+.cat-div-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);background:rgba(184,149,42,0.07);border:1px solid rgba(184,149,42,0.2);padding:0.28rem 0.9rem;border-radius:100px;white-space:nowrap}
+.cat-div-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(184,149,42,0.25),transparent)}
+
+/* MEMBER CARDS */
+.members-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.members-grid.g3{grid-template-columns:repeat(3,1fr);max-width:860px}
+.members-grid.g2{grid-template-columns:repeat(2,1fr);max-width:580px}
+.mcard{background:var(--white);border:1px solid rgba(184,149,42,0.12);position:relative;overflow:hidden;transition:border-color 0.4s,transform 0.4s,box-shadow 0.4s}
+.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 0.4s}
+.mcard:hover{border-color:rgba(184,149,42,0.4);transform:translateY(-10px);box-shadow:0 35px 55px rgba(184,149,42,0.1)}
+.mcard:hover::before{transform:scaleX(1)}
+.mcard-img-wrap{position:relative;overflow:hidden;height:210px;background:linear-gradient(135deg,var(--navy),rgba(10,22,40,0.8))}
+.mcard-img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(20%);transition:transform 0.7s,filter 0.5s;display:block}
+.mcard:hover .mcard-img{transform:scale(1.06);filter:grayscale(0%)}
+.mcard-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,22,40,0.45) 100%)}
+.mcard-initials{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:4rem;font-weight:300;color:rgba(184,149,42,0.3)}
+.mcard-body{padding:1.6rem 1.5rem}
+.mcard-role{font-size:0.62rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;display:block}
+.mcard-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--ink);margin-bottom:0.6rem;transition:color 0.3s}
+.mcard:hover .mcard-name{color:var(--gold)}
+.mcard-bio{font-size:0.78rem;font-weight:300;color:var(--smoke);line-height:1.7}
+
+/* FOOTER */
 footer{background:var(--ink);padding:5rem 0 3rem}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
 .footer-logo-text{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:#fff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem}
@@ -290,20 +167,58 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 .contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
 .footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
+
+/* WA */
 .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
 .wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.4);transition:transform 0.3s;animation:waPulse 2.5s infinite}
 .wa-btn:hover{transform:scale(1.1)}
 @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
-.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity 0.9s ease,transform 0.9s ease}
-.reveal-right{opacity:0;transform:translateX(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
-@media(max-width:1100px){.areas-grid{grid-template-columns:repeat(2,1fr)}.area-item{border-bottom:1px solid rgba(184,149,42,0.15)}.area-item:nth-child(2){border-right:none}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .post-card:first-child{grid-column:1/-1}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.members-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:900px){nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}.container{padding:0 2rem}.hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:10rem 2rem 10rem}.hero-indicator{left:2rem}.hero-scroll{display:none}.section-sobre{grid-template-columns:1fr}.sobre-img-col{height:50vh}.sobre-content{padding:4rem 2rem}.faq-layout{grid-template-columns:1fr;gap:3rem}.stats-row{grid-template-columns:1fr}.stat-col{border-right:none;border-bottom:1px solid rgba(184,149,42,0.1)}.stat-col:last-child{border-bottom:none}}
-@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.areas-grid{grid-template-columns:1fr}.area-item{border-right:none}.members-grid{grid-template-columns:1fr}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .historia-grid{gap:5rem}
+  .equipe-intro{grid-template-columns:1fr}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .members-grid.g2{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .members-grid.g3{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:3rem}
+  .valores-grid{grid-template-columns:1fr 1fr}
+  .valor-item:nth-child(2){border-right:none}
+  .valor-item:nth-child(3){border-top:1px solid rgba(184,149,42,0.15);grid-column:1/-1;border-right:none}
+}
+@media(max-width:900px){
+  nav{padding:1.5rem 2rem}
+  nav.scrolled{padding:1rem 2rem}
+  .container{padding:0 2rem}
+  .historia-grid{grid-template-columns:1fr}
+  .historia-badge{right:-1rem;bottom:-1.5rem}
+  .fundador-grid{grid-template-columns:1fr}
+  .fundador-img-col{height:55vh}
+  .fundador-content{padding:5rem 2rem}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .members-grid,.members-grid.g2,.members-grid.g3{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .valores-grid{grid-template-columns:1fr}
+  .valor-item{border-right:none!important;border-bottom:1px solid rgba(184,149,42,0.15);grid-column:auto!important}
+  .valor-item:last-child{border-bottom:none}
+}
+@media(max-width:500px){
+  .members-grid,.members-grid.g2,.members-grid.g3{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
 <div class="loader" id="loader">
   <!-- LOADER LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
@@ -317,7 +232,7 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Início</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="sobre.html" class="active">Sobre</a></li>
     <li><a href="areas.html">Áreas</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contato.html">Contato</a></li>
@@ -333,123 +248,131 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   <a href="blog.html" class="ml">Blog</a>
   <a href="contato.html" class="ml">Contato</a>
 </div>
-
-
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-left">
-    <div class="hero-eyebrow" id="heroEyebrow">Direito Previdenciário</div>
-    <h1 class="hero-title" id="heroTitle">Planeje sua<br><em>aposentadoria</em><br>com segurança</h1>
-    <p class="hero-sub">Soluções jurídicas personalizadas aliando conhecimento tradicional à mais moderna tecnologia. Atendimento humanizado, resultados precisos.</p>
-    <div class="hero-actions">
-      <a href="https://api.whatsapp.com/send/?phone=558441412470&text&type=phone_number&app_absent=0" class="btn-gold">
-        <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Consulta gratuita
-      </a>
-      <a href="areas.html" class="btn-ghost">Nossas áreas <span class="circ">→</span></a>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <img class="page-hero-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="">
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content">
+    <div class="container">
+      <div class="page-hero-eyebrow reveal">Escritório</div>
+      <h1 class="page-hero-title reveal">Excelência em<br><em>cada detalhe.</em></h1>
+      <p class="page-hero-sub reveal">Fundados na convicção de que o Direito deve ser exercido com agilidade, precisão técnica e tecnologia própria. Somos o escritório que viabiliza seus objetivos.</p>
     </div>
   </div>
-  <div class="hero-right">
-    <img class="hero-img" id="heroImg" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Escritório Jurídico">
-  </div>
-  <div class="hero-indicator">
-    <div class="indicator-dot active" data-s="0"></div>
-    <div class="indicator-dot" data-s="1"></div>
-    <div class="indicator-dot" data-s="2"></div>
-    <div class="indicator-dot" data-s="3"></div>
-  </div>
-  <div class="hero-scroll">Rolar</div>
+  <div class="hero-bottom-bar"></div>
 </section>
 
-<section class="section-stats">
+<!-- HISTORIA -->
+<section class="section-historia">
   <div class="container">
-    <div class="stats-row">
-      <div class="stat-col reveal"><span class="stat-number" data-target="1000">+1000</span><span class="stat-label">Atuações judiciais e extrajudiciais</span></div>
-      <div class="stat-col reveal" style="transition-delay:.15s"><span class="stat-number" data-target="700">+700</span><span class="stat-label">Clientes atendidos</span></div>
-      <div class="stat-col reveal" style="transition-delay:.3s"><span class="stat-number" data-target="10">+10</span><span class="stat-label">Anos de experiência</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-areas" id="areas">
-  <div class="container">
-    <div class="section-label reveal">Especialidades</div>
-    <h2 class="section-title reveal">Áreas de <em>atuação</em></h2>
-  </div>
-  <div class="areas-grid">
-    <a href="areas.html" class="area-item reveal">
-      <span class="area-num">01</span>
-      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
-      <div class="area-title">Previdenciário</div>
-      <p class="area-desc">Aposentadorias, revisões de benefício e planejamento estratégico para o seu futuro.</p>
-      <div class="area-arrow">Saiba mais →</div>
-    </a>
-    <a href="areas.html" class="area-item reveal" style="transition-delay:.1s">
-      <span class="area-num">02</span>
-      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div class="area-title">Tributário</div>
-      <p class="area-desc">Planejamento tributário, litígios fiscais e recuperação de créditos com eficiência.</p>
-      <div class="area-arrow">Saiba mais →</div>
-    </a>
-    <a href="areas.html" class="area-item reveal" style="transition-delay:.2s">
-      <span class="area-num">03</span>
-      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div class="area-title">Civil</div>
-      <p class="area-desc">Contratos, responsabilidade civil e direito das famílias com abordagem personalizada.</p>
-      <div class="area-arrow">Saiba mais →</div>
-    </a>
-    <a href="areas.html" class="area-item reveal" style="transition-delay:.3s">
-      <span class="area-num">04</span>
-      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
-      <div class="area-title">Saúde</div>
-      <p class="area-desc">Planos de saúde, tratamentos negados e defesa do seu direito ao tratamento digno.</p>
-      <div class="area-arrow">Saiba mais →</div>
-    </a>
-    <!-- NOVO ITEM: Energia, Petróleo e Gás -->
-    <a href="areas.html" class="area-item reveal" style="transition-delay:.4s">
-      <span class="area-num">05</span>
-      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg></div>
-      <div class="area-title">Energia, Petróleo e Gás</div>
-      <p class="area-desc">Assessoria jurídica especializada nos setores de energia, óleo e gás, incluindo regulação, contratos e conformidade.</p>
-      <div class="area-arrow">Saiba mais →</div>
-    </a>
-  </div>
-</section>
-
-<section class="section-sobre" id="sobre">
-  <div class="sobre-img-col">
-    <img class="sobre-img" src="kayomelo.png" onerror="this.src='https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Dr. Kayo Melo">
-  </div>
-  <div class="sobre-content">
-    <div class="section-label reveal-right">Sobre o escritório</div>
-    <blockquote class="sobre-quote reveal-right">Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho.</blockquote>
-    <div class="sobre-author reveal-right">
-      <div class="sobre-author-line"></div>
-      <div>
-        <div class="sobre-author-name">Dr. Kayo Melo</div>
-        <div class="sobre-author-title">Advogado fundador · OAB/RN</div>
+    <div class="historia-grid">
+      <div class="historia-img-col reveal-left">
+        <div class="historia-img-frame">
+          <img class="historia-img" src="kayomelo.png"
+            onerror="this.src='https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+            alt="Dr. Kayo Melo">
+        </div>
+        <div class="historia-badge">
+          <span class="historia-badge-num">+10</span>
+          <span class="historia-badge-txt">Anos de experiência</span>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">Nossa história</div>
+        <h2 class="section-title">A convicção que<br>nos <em>move</em></h2>
+        <div class="historia-body">
+          <p>O escritório Kayo Melo Advogados nasceu da convicção de que o Direito deve ser exercido com agilidade e precisão técnica. Fundado pelo Dr. Kayo Melo, nossa atuação é pautada pela ética e pela busca constante da inovação no cenário jurídico nacional.</p>
+          <p>Combinamos nossa expertise jurídica com uma infraestrutura tecnológica exclusiva, permitindo que cada cliente receba uma solução personalizada e eficiente para suas demandas mais complexas.</p>
+          <p>Com mais de uma década de atuação, consolidamos nossa presença no Rio Grande do Norte como referência em Direito Previdenciário, Tributário, Civil e da Saúde — sempre com o olhar voltado para o futuro.</p>
+          <a href="contato.html" class="btn-gold">Fale com nossa equipe</a>
+        </div>
       </div>
     </div>
-    <p class="sobre-text reveal-right">Fundado com o propósito de oferecer soluções jurídicas personalizadas, aliando conhecimento tradicional à mais moderna tecnologia. Nossa trajetória é marcada pela ética, transparência e busca incessante pela atualização.</p>
-    <a href="sobre.html" class="btn-outline-gold reveal-right">Conheça nossa história →</a>
   </div>
 </section>
 
-<!-- ===== NOVA SEÇÃO: CORPO JURÍDICO (SUBSTITUI A EQUIPE DE TI) ===== -->
-<section class="section-juridico" id="equipe">
+<!-- VALORES -->
+<section class="section-valores">
   <div class="container">
-    <div class="section-label reveal">Nosso time</div>
-    <h2 class="section-title reveal">Corpo Jurídico <em>Especializado</em></h2>
+    <div class="section-label reveal">Pilares</div>
+    <h2 class="section-title reveal">Nossos <em>valores</em></h2>
+  </div>
+  <div class="valores-grid">
+    <div class="valor-item reveal">
+      <span class="valor-num">01</span>
+      <div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="valor-title">Ética Inabalável</div>
+      <p class="valor-desc">Toda decisão e conduta do escritório são guiadas por princípios éticos sólidos. A integridade não é uma opção — é o alicerce sobre o qual construímos cada relação de confiança com nossos clientes.</p>
+    </div>
+    <div class="valor-item reveal" style="transition-delay:.12s">
+      <span class="valor-num">02</span>
+      <div class="valor-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+      <div class="valor-title">Inovação Constante</div>
+      <p class="valor-desc">Investimos continuamente em tecnologia e metodologias modernas para entregar soluções mais ágeis e eficazes. Ser diferente é a nossa maior vantagem competitiva no mercado jurídico.</p>
+    </div>
+    <div class="valor-item reveal" style="transition-delay:.24s">
+      <span class="valor-num">03</span>
+      <div class="valor-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="valor-title">Foco no Cliente</div>
+      <p class="valor-desc">Cada cliente é único. Por isso, desenvolvemos estratégias completamente personalizadas, ouvindo com atenção e agindo com determinação para superar expectativas a cada caso.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- bloco com a linha e tag (exatamente como solicitado) -->
+<!-- FUNDADOR -->
+<section class="section-fundador">
+  <div class="fundador-grid">
+    <div class="fundador-img-col reveal-left">
+      <img class="fundador-img" src="kayomelo.png"
+        onerror="this.src='https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+        alt="Dr. Kayo Melo">
+    </div>
+    <div class="fundador-content reveal-right">
+      <div class="section-label" style="color:var(--gold)">Sócio Fundador</div>
+      <blockquote class="fundador-quote">
+        Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho.
+      </blockquote>
+      <div class="fundador-author">
+        <div class="fundador-author-line"></div>
+        <div>
+          <div class="fundador-author-name">Dr. Kayo Melo</div>
+          <div class="fundador-author-title">Advogado fundador · OAB/RN</div>
+        </div>
+      </div>
+      <p class="fundador-bio">Estrategista jurídico com foco em soluções inovadoras e gestão de alta performance. Ao longo de mais de uma década, construiu um escritório de referência no Rio Grande do Norte, unindo excelência técnica e visão empreendedora para transformar a advocacia em resultados concretos para seus clientes.</p>
+      <a href="contato.html" class="btn-gold">Agendar consulta</a>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="section-equipe">
+  <div class="container">
+
+    <!-- Intro -->
+    <div class="equipe-intro">
+      <div class="reveal-left">
+        <div class="section-label">Nossa equipe</div>
+        <h2 class="section-title" style="margin-bottom:0">A mente por trás<br>do seu <em>direito</em></h2>
+      </div>
+      <div class="equipe-intro-right reveal-right">
+        <p>Profissionais altamente qualificados, cada um especialista em sua área, trabalhando de forma integrada para oferecer soluções jurídicas completas e personalizadas em cada caso.</p>
+        <div class="equipe-stats">
+          <div class="eq-stat"><span class="eq-stat-num">+1000</span><span class="eq-stat-lbl">Atuações judiciais</span></div>
+          <div class="eq-stat"><span class="eq-stat-num">+700</span><span class="eq-stat-lbl">Clientes atendidos</span></div>
+          <div class="eq-stat"><span class="eq-stat-num">11</span><span class="eq-stat-lbl">Profissionais</span></div>
+          <div class="eq-stat"><span class="eq-stat-num">4</span><span class="eq-stat-lbl">Áreas de atuação</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corpo Jurídico Especializado (1) -->
     <div class="cat-div reveal">
       <span class="cat-div-label">Corpo Jurídico Especializado</span>
       <span class="cat-div-tag">7 profissionais</span>
       <div class="cat-div-line"></div>
     </div>
-
     <div class="members-grid reveal">
-      <!-- KAYO MELO -->
       <div class="mcard">
         <div class="mcard-img-wrap">
           <img class="mcard-img" src="fotos equipe/kayo melo equipe.jpg"
@@ -463,7 +386,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
           <p class="mcard-bio">Estrategista jurídico focado em soluções inovadoras e gestão de alta performance.</p>
         </div>
       </div>
-      <!-- MATHEUS ZUZA -->
       <div class="mcard">
         <div class="mcard-img-wrap">
           <img class="mcard-img" src="fotos equipe/mathues advogado.png"
@@ -477,7 +399,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
           <p class="mcard-bio">Especialista em Direito Previdenciário e Planejamento de Aposentadoria.</p>
         </div>
       </div>
-      <!-- ISRAEL MORAIS -->
       <div class="mcard">
         <div class="mcard-img-wrap">
           <img class="mcard-img" src="fotos equipe/israel advogado.jpg"
@@ -491,7 +412,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
           <p class="mcard-bio">Atuação estratégica em Direito Tributário e Recuperação de Créditos Fiscais.</p>
         </div>
       </div>
-      <!-- ANA CLARA -->
       <div class="mcard">
         <div class="mcard-img-wrap">
           <img class="mcard-img" src="fotos equipe/ana advogada.jpg"
@@ -505,7 +425,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
           <p class="mcard-bio">Dupla titulação em Direito Público e Previdenciário, na interface entre Controladoria e prática jurídica.</p>
         </div>
       </div>
-      <!-- MARIA RUTHILLENA -->
       <div class="mcard">
         <div class="mcard-img-wrap">
           <img class="mcard-img" src="fotos equipe/ruht advogada.jpg"
@@ -519,7 +438,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
           <p class="mcard-bio">Especialista em Direito Civil e Responsabilidade Civil.</p>
         </div>
       </div>
-      <!-- LUIZ HENRIQUE -->
       <div class="mcard">
         <div class="mcard-img-wrap">
           <img class="mcard-img" src="fotos equipe/luiz henrique.jpeg"
@@ -533,68 +451,96 @@ footer{background:var(--ink);padding:5rem 0 3rem}
           <p class="mcard-bio">Especialista em Direito do Consumidor e Processo Civil.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- ===== FIM NOVA SEÇÃO ===== -->
-
-<section class="section-faq" id="faq">
-  <div class="container">
-    <div class="faq-layout">
-      <div>
-        <div class="section-label reveal">FAQ</div>
-        <h2 class="section-title reveal" style="margin-bottom:1.5rem">Dúvidas sobre <em>aposentadoria</em></h2>
-        <p class="reveal" style="font-size:.95rem;font-weight:300;color:var(--smoke);line-height:1.8;margin-bottom:2.5rem">As perguntas mais comuns respondidas com clareza. Tem mais dúvidas? Fale com um especialista.</p>
-        <a href="contato.html" class="btn-gold">Falar com advogado</a>
-      </div>
-      <div class="faq-list reveal">
-        <div class="faq-item">
-          <div class="faq-q"><span class="faq-q-text">Qual a idade mínima para se aposentar?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><p>Após a Reforma da Previdência (EC 103/2019), a idade mínima é de 65 anos para homens e 62 para mulheres, com tempo de contribuição de 15 anos (mulheres) e 20 anos (homens), dependendo da regra de transição aplicável.</p></div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/deyse.jpeg"
+            onerror="this.style.display='none'"
+            alt="Deyse">
+          <div class="mcard-initials">D</div>
         </div>
-        <div class="faq-item">
-          <div class="faq-q"><span class="faq-q-text">Posso me aposentar sem atingir a idade mínima?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><p>Sim, é possível pelas regras de transição (pedágio de 50% ou 100%) ou aposentadoria por tempo de contribuição para quem já estava no sistema antes da reforma, cumpridos os requisitos.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span class="faq-q-text">O que é o fator previdenciário?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><p>É uma fórmula que considera idade, tempo de contribuição e expectativa de vida. Hoje a aposentadoria programada tem cálculo baseado na média de 100% dos salários de contribuição.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span class="faq-q-text">Como é calculado o valor da aposentadoria?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><p>Média de 100% dos salários desde julho/1994. O valor inicial é 60% dessa média + 2% para cada ano que ultrapassar 20 anos (homens) ou 15 anos (mulheres).</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span class="faq-q-text">O que fazer se o INSS negar meu pedido?</span><div class="faq-icon">+</div></div>
-          <div class="faq-a"><p>É possível entrar com recurso administrativo ou ação judicial. Recomenda-se buscar um advogado especializado para avaliar as chances de êxito e a melhor estratégia.</p></div>
+        <div class="mcard-body">
+          <span class="mcard-role">Estagiária Jurídica</span>
+          <div class="mcard-name">Deyse</div>
+          <p class="mcard-bio">Graduanda em Serviços Judiciais dedicada ao suporte processual.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="section-blog" id="blog">
-  <div class="container">
-    <div class="section-label reveal">Conteúdo</div>
-    <h2 class="section-title reveal">Últimas do <em>blog</em></h2>
-    <div class="blog-grid">
-      <a href="blog.html" class="post-card reveal">
-        <img class="post-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reforma Tributária">
-        <div class="post-overlay"><span class="post-tag">Tributário</span><h3 class="post-title">Reforma Tributária: o que muda para você e sua empresa em 2025</h3><div class="post-meta">5 min · Jan 2025</div></div>
-      </a>
-      <a href="blog.html" class="post-card reveal" style="transition-delay:.15s">
-        <img class="post-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aposentadoria">
-        <div class="post-overlay"><span class="post-tag">Previdenciário</span><h3 class="post-title">Novas regras para aposentadoria em 2025</h3><div class="post-meta">4 min · Fev 2025</div></div>
-      </a>
-      <a href="blog.html" class="post-card reveal" style="transition-delay:.3s">
-        <img class="post-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Planos de saúde">
-        <div class="post-overlay"><span class="post-tag">Saúde</span><h3 class="post-title">Planos de saúde: como garantir seu tratamento</h3><div class="post-meta">3 min · Mar 2025</div></div>
-      </a>
+    <!-- Gestão & Sucesso do Cliente (2) - AGORA EM SEGUNDO LUGAR -->
+    <div class="cat-div reveal">
+      <span class="cat-div-label">Gestão & Sucesso do Cliente</span>
+      <span class="cat-div-tag">2 profissionais</span>
+      <div class="cat-div-line"></div>
     </div>
-    <div style="text-align:center;margin-top:3rem"><a href="blog.html" class="btn-gold">Ver todos os posts</a></div>
+    <div class="members-grid g2 reveal">
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/ines gerente.jpeg"
+            onerror="this.style.display='none'"
+            alt="Inês Maria">
+          <div class="mcard-initials">IM</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Gerente & Closer</span>
+          <div class="mcard-name">Inês Maria</div>
+          <p class="mcard-bio">Responsável pela gestão de contratos e fechamentos estratégicos do escritório.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/jessi.jpeg"
+            onerror="this.style.display='none'"
+            alt="Jessislyne Silva">
+          <div class="mcard-initials">JS</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Customer Success</span>
+          <div class="mcard-name">Jessislyne Silva</div>
+          <p class="mcard-bio">Garantindo a melhor experiência de atendimento e recepção para cada cliente.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parceria Tecnológica: Ominus Tech (3) - AGORA COM MENÇÃO À PARCERIA -->
+    <div class="cat-div reveal">
+      <span class="cat-div-label">Parceria Tecnológica: Ominus Tech</span>
+      <span class="cat-div-tag">Inovação & Infraestrutura</span>
+      <div class="cat-div-line"></div>
+    </div>
+    <p style="margin-bottom:2rem; font-size:0.95rem; color:var(--smoke); max-width:600px;">A Kayo Melo Advogados mantém uma parceria estratégica com a <strong>Ominus Tech</strong>, empresa responsável por toda a infraestrutura de TI, desenvolvimento de soluções digitais e inovação tecnológica do escritório. Juntos, garantimos segurança, eficiência e modernidade em cada processo.</p>
+    <div class="members-grid g2 reveal">
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/leon TI.jpg"
+            onerror="this.style.display='none'"
+            alt="Leon Sedov">
+          <div class="mcard-initials">LS</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Head of Technology (Ominus Tech)</span>
+          <div class="mcard-name">Leon Sedov</div>
+          <p class="mcard-bio">Líder do time de tecnologia da Ominus Tech, responsável pela segurança e inovação digital do escritório.</p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img-wrap">
+          <img class="mcard-img" src="fotos equipe/othon ti.jpeg"
+            onerror="this.style.display='none'"
+            alt="Othon Anselmo">
+          <div class="mcard-initials">OA</div>
+        </div>
+        <div class="mcard-body">
+          <span class="mcard-role">Estagiário de TI (Ominus Tech)</span>
+          <div class="mcard-name">Othon Anselmo</div>
+          <p class="mcard-bio">Estudante de Engenharia Mecatrônica na UFRN. Aplica tecnologia ao serviço do Direito por meio da parceria com a Ominus Tech.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -626,7 +572,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
           <li><a href="areas.html">Direito Tributário</a></li>
           <li><a href="areas.html">Direito Civil</a></li>
           <li><a href="areas.html">Direito à Saúde</a></li>
-          <li><a href="areas.html">Energia, Petróleo e Gás</a></li> <!-- NOVO ITEM -->
         </ul>
       </div>
       <div class="footer-col">
@@ -638,7 +583,7 @@ footer{background:var(--ink);padding:5rem 0 3rem}
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Kayo Melo Advogados. Todos os direitos reservados.</p>
+<p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light); text-decoration: none; transition: color 0.3s;">Ominus Tech</a>. Todos os direitos reservados.</p>
       <p>OAB/RN — Advocacia com ética e responsabilidade</p>
     </div>
   </div>
@@ -651,91 +596,20 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 </a>
 
 <script>
-// LOADER - usa timeout curto sem depender do evento load
 setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
 
-// NAV SCROLL
 var navbar = document.getElementById('navbar');
 window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
 
-// HAMBURGER
 var hamburger = document.getElementById('hamburger');
 var mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click', function(){
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-});
-document.querySelectorAll('.ml').forEach(function(link){
-  link.addEventListener('click', function(){
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-  });
-});
+hamburger.addEventListener('click', function(){ hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+document.querySelectorAll('.ml').forEach(function(l){ l.addEventListener('click', function(){ hamburger.classList.remove('open'); mobileNav.classList.remove('open'); }); });
 
-// REVEAL ON SCROLL
 var obs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
-
-// COUNTER ANIMATION
-var cObs = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(!e.isIntersecting) return;
-    var el = e.target;
-    var target = parseInt(el.dataset.target);
-    var t0 = performance.now();
-    function run(now){
-      var p = Math.min((now - t0) / 2000, 1);
-      el.textContent = '+' + Math.floor((1 - Math.pow(1-p, 3)) * target);
-      if(p < 1) requestAnimationFrame(run);
-    }
-    requestAnimationFrame(run);
-    cObs.unobserve(el);
-  });
-}, {threshold:0.5});
-document.querySelectorAll('.stat-number[data-target]').forEach(function(el){ cObs.observe(el); });
-
-// FAQ
-document.querySelectorAll('.faq-q').forEach(function(q){
-  q.addEventListener('click', function(){
-    var item = q.parentElement;
-    var wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
-    if(!wasOpen) item.classList.add('open');
-  });
-});
-
-// HERO SLIDESHOW
-var eyebrow = document.getElementById('heroEyebrow');
-var title   = document.getElementById('heroTitle');
-var img     = document.getElementById('heroImg');
-var dots    = document.querySelectorAll('.indicator-dot');
-var slides  = [
-  {e:'Direito Previdenciário', t:'Planeje sua<br><em>aposentadoria</em><br>com segurança',          i:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'},
-  {e:'Direito Tributário',     t:'Inteligência fiscal<br>para proteger seu<br><em>patrimônio</em>',  i:'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'},
-  {e:'Direito Civil',          t:'Soluções para seus<br><em>desafios</em><br>cotidianos',            i:'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'},
-  {e:'Direito à Saúde',        t:'Defendendo seu<br>direito ao <em>tratamento</em><br>digno',        i:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'}
-];
-var cur = 0;
-eyebrow.style.transition = title.style.transition = 'opacity 0.4s';
-if(img) img.style.transition = 'opacity 0.5s';
-function go(n){
-  cur = n;
-  dots.forEach(function(d,i){ d.classList.toggle('active', i===n); });
-  eyebrow.style.opacity = title.style.opacity = '0';
-  if(img) img.style.opacity = '0.2';
-  setTimeout(function(){
-    eyebrow.textContent = slides[n].e;
-    title.innerHTML = slides[n].t;
-    if(img){ img.src = slides[n].i; img.style.opacity = '0.55'; }
-    eyebrow.style.opacity = title.style.opacity = '1';
-  }, 400);
-}
-dots.forEach(function(d,i){ d.addEventListener('click', function(){ go(i); reset(); }); });
-var timer;
-function reset(){ clearInterval(timer); timer = setInterval(function(){ go((cur+1)%4); }, 6000); }
-reset();
 </script>
 </body>
 </html>
