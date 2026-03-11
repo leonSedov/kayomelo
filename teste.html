@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Áreas de Atuação | Kayo Melo Advogados</title>
+<title>Kayo Melo Advogados</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
 :root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
@@ -11,8 +11,6 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--parchment)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
-
-/* LOADER */
 .loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s,visibility 0.8s}
 .loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .loader-logo{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#fff;letter-spacing:0.2em;text-transform:uppercase}
@@ -20,17 +18,15 @@ body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x
 .loader-bar{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
 .loader-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold-light);animation:loadBar 1.5s ease forwards}
 @keyframes loadBar{to{left:0}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;background:rgba(10,22,40,0.15);backdrop-filter:blur(8px)}
-nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease}
+nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
 .nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase}
 .nav-logo span{color:var(--gold-light)}
 .nav-links{display:flex;gap:2.2rem;list-style:none}
 .nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-links a:hover::after{width:100%}
 .nav-cta{border:1px solid var(--gold)!important;padding:0.5rem 1.4rem;border-radius:100px;color:var(--gold-light)!important;transition:background 0.3s!important}
 .nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
 .nav-cta::after{display:none!important}
@@ -43,97 +39,347 @@ nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1
 .mobile-nav.open{transform:translateX(0)}
 .mobile-nav a{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:#fff;text-decoration:none;transition:color 0.3s}
 .mobile-nav a:hover{color:var(--gold-light)}
-
-/* PAGE HERO */
-.page-hero{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:flex-end;overflow:hidden}
-.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(35%);opacity:0.18;display:block}
-.page-hero-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,0.97) 0%,rgba(10,22,40,0.65) 50%,rgba(10,22,40,0.88) 100%)}
-.page-hero-content{position:relative;z-index:2;padding:0 0 7rem;width:100%}
-.container{max-width:1280px;margin:0 auto;padding:0 4rem}
-.page-hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
-.page-hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
-.page-hero-title{font-family:var(--serif);font-size:clamp(4rem,7vw,8rem);font-weight:300;color:#fff;line-height:0.95;letter-spacing:-0.02em;margin-bottom:2.5rem}
-.page-hero-title em{font-style:italic;color:var(--gold-light);display:block}
-.page-hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.9;max-width:520px}
-.hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,149,42,0.4),transparent)}
-
-/* AREA NAV TABS */
-.areas-nav{background:var(--parchment);border-bottom:1px solid rgba(184,149,42,0.15);position:sticky;top:0;z-index:100;transition:top 0.3s}
-.areas-nav-inner{display:flex;overflow-x:auto;scrollbar-width:none}
-.areas-nav-inner::-webkit-scrollbar{display:none}
-.area-tab{display:flex;align-items:center;gap:0.8rem;padding:1.5rem 2.5rem;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--smoke);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.3s;white-space:nowrap;flex-shrink:0}
-.area-tab svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.area-tab:hover{color:var(--gold)}
-.area-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
-
-/* SHARED */
-.section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
-.section-label::before{content:'';width:30px;height:1px;background:var(--gold)}
-.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:2.5rem}
-.section-title em{font-style:italic;color:var(--gold)}
-.section-title.light{color:#fff}
+.hero{min-height:100vh;background:var(--navy);position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(184,149,42,0.07) 0%,transparent 60%),radial-gradient(ellipse 50% 80% at 10% 80%,rgba(10,22,40,0.9) 0%,transparent 50%)}
+.hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:10rem 5rem 8rem 8rem}
+.hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:1rem;transition:opacity 0.4s}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.hero-title{font-family:var(--serif);font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#fff;line-height:1.08;margin-bottom:2.5rem;transition:opacity 0.4s}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.8;max-width:400px;margin-bottom:3.5rem}
+.hero-actions{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
 .btn-gold{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem;cursor:pointer}
 .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 40px rgba(184,149,42,0.35)}
+.btn-ghost{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.8rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.7rem}
+.btn-ghost:hover{color:var(--gold-light)}
+.btn-ghost .circ{width:32px;height:32px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s}
+.btn-ghost:hover .circ{border-color:var(--gold)}
+.hero-right{position:relative;z-index:2;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:grayscale(25%);opacity:0.55;transition:opacity 0.5s;display:block}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 40%,transparent 60%,var(--navy) 100%),linear-gradient(180deg,var(--navy) 0%,transparent 20%,transparent 80%,var(--navy) 100%)}
+.hero-indicator{position:absolute;left:8rem;bottom:3rem;z-index:20;display:flex;gap:0.7rem;align-items:center}
+.indicator-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s}
+.indicator-dot.active{background:var(--gold);width:24px;border-radius:3px}
+.hero-scroll{position:absolute;bottom:3rem;right:4rem;z-index:3;display:flex;flex-direction:column;align-items:center;gap:1rem;color:rgba(255,255,255,0.35);font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;writing-mode:vertical-rl}
+.hero-scroll::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2s ease infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.section-stats{background:var(--navy);padding:5rem 0;border-top:1px solid rgba(184,149,42,0.15);border-bottom:1px solid rgba(184,149,42,0.15)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr)}
+.stat-col{text-align:center;padding:2rem;border-right:1px solid rgba(184,149,42,0.1)}
+.stat-col:last-child{border-right:none}
+.stat-number{font-family:var(--serif);font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:var(--gold-light);display:block;line-height:1}
+.stat-label{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.8rem;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 4rem}
+.section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:'';width:30px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:4rem}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-title.light{color:#fff}
+.section-areas{background:var(--parchment);padding:9rem 0;position:relative;overflow:hidden}
+.section-areas::before{content:'ADVOCACIA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(6rem,12vw,14rem);font-weight:700;color:rgba(184,149,42,0.035);white-space:nowrap;pointer-events:none;letter-spacing:0.1em}
+.areas-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid rgba(184,149,42,0.2)}
+.area-item{padding:3.5rem 2.5rem;border-right:1px solid rgba(184,149,42,0.15);position:relative;overflow:hidden;transition:background 0.5s;text-decoration:none;color:inherit;display:block}
+.area-item:last-child{border-right:none}
+.area-item::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:0;background:var(--navy);transition:height 0.5s cubic-bezier(0.77,0,0.18,1);z-index:0}
+.area-item:hover::before{height:100%}
+.area-item>*{position:relative;z-index:1}
+.area-num{font-family:var(--serif);font-size:0.9rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:2rem;display:block}
+.area-icon-wrap{width:52px;height:52px;border:1px solid rgba(184,149,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;transition:border-color 0.3s,background 0.3s}
+.area-item:hover .area-icon-wrap{border-color:var(--gold);background:rgba(184,149,42,0.1)}
+.area-icon-wrap svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.area-title{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--ink);margin-bottom:1rem;transition:color 0.3s}
+.area-item:hover .area-title{color:#fff}
+.area-desc{font-size:0.88rem;font-weight:300;color:var(--smoke);line-height:1.7;transition:color 0.3s}
+.area-item:hover .area-desc{color:rgba(255,255,255,0.6)}
+.area-arrow{display:inline-flex;align-items:center;gap:0.6rem;margin-top:2rem;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);transition:gap 0.3s}
+.area-item:hover .area-arrow{gap:1rem}
+.section-sobre{background:var(--navy);display:grid;grid-template-columns:1fr 1fr;min-height:80vh;overflow:hidden}
+.sobre-img-col{position:relative;overflow:hidden}
+.sobre-img{width:100%;height:100%;object-fit:cover;filter:grayscale(30%);transition:transform 8s ease;display:block}
+.section-sobre:hover .sobre-img{transform:scale(1.03)}
+.sobre-img-col::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--navy) 100%),linear-gradient(180deg,rgba(10,22,40,0.3) 0%,transparent 30%)}
+.sobre-content{padding:7rem 6rem 7rem 5rem;display:flex;flex-direction:column;justify-content:center}
+.sobre-quote{font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.6rem);font-weight:300;color:#fff;line-height:1.4;font-style:italic;margin-bottom:3rem;position:relative;padding-left:2rem}
+.sobre-quote::before{content:'"';position:absolute;left:-0.5rem;top:-1rem;font-size:6rem;color:var(--gold);opacity:0.3;font-family:var(--serif);line-height:1}
+.sobre-author{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
+.sobre-author-line{width:40px;height:1px;background:var(--gold)}
+.sobre-author-name{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--gold-light)}
+.sobre-author-title{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.2rem}
+.sobre-text{font-size:0.95rem;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.9;max-width:460px;margin-bottom:3rem}
+.btn-outline-gold{display:inline-flex;align-items:center;gap:0.8rem;color:var(--gold-light);font-size:0.78rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(184,149,42,0.3);padding-bottom:0.3rem;transition:border-color 0.3s}
+.btn-outline-gold:hover{border-color:var(--gold)}
 
-/* AREA SECTIONS — alternating bg */
-.area-section{padding:10rem 0;position:relative;overflow:hidden}
-.area-section:nth-child(even){background:var(--parchment)}
-.area-section:nth-child(odd){background:var(--white)}
-.area-section.dark{background:var(--navy)}
+/* ===== NOVA SEÇÃO: CORPO JURÍDICO ===== */
+.section-juridico {
+  background: var(--white);
+  padding: 9rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.section-juridico::before {
+  content: 'ASSOCIADOS';
+  position: absolute;
+  top: 50%;
+  right: -2rem;
+  transform: translateY(-50%);
+  font-family: var(--serif);
+  font-size: clamp(8rem, 15vw, 18rem);
+  font-weight: 700;
+  color: rgba(184,149,42,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+.cat-div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.cat-div-label {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.cat-div-tag {
+  background: rgba(184,149,42,0.08);
+  padding: 0.3rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(184,149,42,0.2);
+}
+.cat-div-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  min-width: 60px;
+}
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+.mcard {
+  background: var(--white);
+  border: 1px solid rgba(184,149,42,0.15);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.mcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(10,22,40,0.15);
+  border-color: var(--gold);
+}
+.mcard-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  background: var(--parchment);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mcard-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(1.05);
+  transition: filter 0.4s;
+}
+.mcard:hover .mcard-img {
+  filter: grayscale(0%) contrast(1.1);
+}
+.mcard-initials {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(184,149,42,0.15);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s;
+}
+.mcard-img[style*="display: none"] ~ .mcard-initials {
+  color: rgba(184,149,42,0.5);
+  font-size: 4rem;
+}
+.mcard-body {
+  padding: 1.8rem 1.5rem 2rem;
+  background: var(--white);
+  position: relative;
+}
+.mcard-role {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(184,149,42,0.06);
+  padding: 0.2rem 0.8rem;
+  border-radius: 100px;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(184,149,42,0.15);
+}
+.mcard-name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+.mcard-bio {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--smoke);
+  line-height: 1.7;
+}
+/* ===== FIM NOVA SEÇÃO ===== */
 
-/* Watermark */
-.area-section::before{content:attr(data-wm);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(6rem,13vw,16rem);font-weight:700;color:rgba(184,149,42,0.04);white-space:nowrap;pointer-events:none;letter-spacing:0.05em;z-index:0}
+/* ===== NOVA SEÇÃO: DEPOIMENTOS ===== */
+.section-testimonials {
+  background: var(--white);
+  padding: 9rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.section-testimonials::before {
+  content: 'DEPOIMENTOS';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: clamp(8rem, 15vw, 18rem);
+  font-weight: 700;
+  color: rgba(184,149,42,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+.testimonial-card {
+  background: var(--white);
+  border: 1px solid rgba(184,149,42,0.15);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(10,22,40,0.1);
+  border-color: var(--gold);
+}
+.testimonial-card::after {
+  content: '“';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-family: var(--serif);
+  font-size: 8rem;
+  color: rgba(184,149,42,0.05);
+  line-height: 1;
+  pointer-events: none;
+}
+.testimonial-stars {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+.testimonial-stars svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--gold);
+}
+.testimonial-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--smoke);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--parchment);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-weight: 500;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  border: 1px solid rgba(184,149,42,0.2);
+}
+.testimonial-info h4 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+.testimonial-info p {
+  font-size: 0.75rem;
+  color: var(--smoke);
+  font-weight: 300;
+}
+/* ===== FIM DEPOIMENTOS ===== */
 
-/* AREA MAIN LAYOUT */
-.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;position:relative;z-index:1}
-.area-grid.reverse{direction:rtl}
-.area-grid.reverse>*{direction:ltr}
-
-/* IMAGE COL */
-.area-img-col{position:relative}
-.area-img-frame{position:relative}
-.area-img-frame::before{content:'';position:absolute;top:-18px;left:-18px;right:18px;bottom:18px;border:1px solid rgba(184,149,42,0.2);z-index:0;pointer-events:none}
-.area-img{width:100%;height:500px;object-fit:cover;display:block;filter:grayscale(15%);transition:filter 0.6s;position:relative;z-index:1}
-.area-img:hover{filter:grayscale(0%)}
-.area-img-badge{position:absolute;bottom:-2.5rem;right:-2.5rem;background:var(--navy);border:1px solid rgba(184,149,42,0.3);padding:1.6rem 2rem;z-index:2;min-width:150px}
-.area-img-badge.on-dark{background:rgba(10,22,40,0.9);border-color:rgba(184,149,42,0.4)}
-.area-img-badge-num{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--gold-light);line-height:1;display:block}
-.area-img-badge-txt{font-size:0.65rem;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.35rem;display:block}
-
-/* TEXT COL */
-.area-text{}
-.area-text p{font-size:0.95rem;font-weight:300;color:var(--smoke);line-height:2;margin-bottom:1.5rem}
-.area-text p.light{color:rgba(255,255,255,0.55)}
-
-/* SERVICES LIST */
-.services-list{margin:2.5rem 0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:0}
-.service-item{display:flex;align-items:flex-start;gap:0.9rem;padding:1rem 0;border-bottom:1px solid rgba(184,149,42,0.12)}
-.service-item:nth-last-child(-n+2){border-bottom:none}
-.service-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:0.55rem}
-.service-text{font-size:0.82rem;font-weight:400;color:var(--ink);line-height:1.5}
-.service-text.light{color:rgba(255,255,255,0.65)}
-
-/* dark text adjustments */
-.area-section.dark .section-title{color:#fff}
-.area-section.dark .section-label{color:var(--gold)}
-.area-section.dark .service-item{border-bottom-color:rgba(184,149,42,0.15)}
-.area-section.dark .service-dot{background:var(--gold-light)}
-.area-section.dark .area-img-frame::before{border-color:rgba(184,149,42,0.25)}
-.area-section.dark .area-img-badge{background:rgba(255,255,255,0.05)}
-
-/* CTA SECTION */
-.section-cta{background:var(--navy);padding:9rem 0;position:relative;overflow:hidden;text-align:center}
-.section-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(184,149,42,0.07) 0%,transparent 70%)}
-.cta-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem}
-.cta-eyebrow::before,.cta-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold)}
-.cta-title{font-family:var(--serif);font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#fff;line-height:1.08;margin-bottom:1.5rem}
-.cta-title em{font-style:italic;color:var(--gold-light)}
-.cta-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.9;max-width:540px;margin:0 auto 3.5rem}
-.cta-actions{display:flex;gap:1.5rem;align-items:center;justify-content:center;flex-wrap:wrap}
-.btn-ghost-light{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.7rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:0.25rem}
-.btn-ghost-light:hover{color:var(--gold-light);border-bottom-color:var(--gold)}
-
-/* FOOTER */
+.section-faq{background:var(--parchment);padding:9rem 0}
+.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:6rem}
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid rgba(184,149,42,0.15);overflow:hidden}
+.faq-q{padding:1.8rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:2rem}
+.faq-q-text{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink);transition:color 0.3s}
+.faq-item.open .faq-q-text{color:var(--gold)}
+.faq-icon{width:32px;height:32px;flex-shrink:0;border:1px solid rgba(184,149,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:1rem;color:var(--gold)}
+.faq-item.open .faq-icon{background:var(--gold);color:var(--navy);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.77,0,0.18,1)}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a p{padding:0 0 2rem;font-size:0.92rem;font-weight:300;color:var(--smoke);line-height:1.85}
+.section-blog{background:var(--white);padding:9rem 0}
+.blog-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-top:4rem}
+.post-card{position:relative;overflow:hidden;border-radius:4px;text-decoration:none;display:block}
+.post-img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 0.7s ease,filter 0.5s;filter:grayscale(30%);display:block}
+.post-card:hover .post-img{transform:scale(1.05);filter:grayscale(0%)}
+.post-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,22,40,0.92) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
+.post-tag{display:inline-block;background:rgba(184,149,42,0.9);color:var(--navy);font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:100px;margin-bottom:0.8rem;width:fit-content}
+.post-title{font-family:var(--serif);font-weight:500;color:#fff;line-height:1.25;transition:color 0.3s;font-size:1.3rem}
+.post-card:first-child .post-title{font-size:1.8rem}
+.post-card:hover .post-title{color:var(--gold-light)}
+.post-meta{margin-top:0.6rem;font-size:0.72rem;color:rgba(255,255,255,0.45)}
 footer{background:var(--ink);padding:5rem 0 3rem}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
 .footer-logo-text{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:#fff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem}
@@ -150,38 +396,19 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 .contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
 .footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
-
-/* WA */
+.footer-bottom a{color:var(--gold-light);text-decoration:none;transition:color 0.3s}
+.footer-bottom a:hover{color:var(--gold)}
 .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
 .wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.4);transition:transform 0.3s;animation:waPulse 2.5s infinite}
 .wa-btn:hover{transform:scale(1.1)}
 @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
-.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.9s ease,transform 0.9s ease}
-.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
-
-/* RESPONSIVE */
-@media(max-width:1100px){.area-grid{gap:5rem}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}}
-@media(max-width:900px){
-  nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}
-  .container{padding:0 2rem}
-  .area-grid{grid-template-columns:1fr;gap:4rem}
-  .area-grid.reverse{direction:ltr}
-  .area-img-badge{right:-1rem;bottom:-1.5rem}
-  .services-list{grid-template-columns:1fr}
-  .service-item:nth-last-child(-n+2){border-bottom:1px solid rgba(184,149,42,0.12)}
-  .service-item:last-child{border-bottom:none}
-}
-@media(max-width:768px){
-  .nav-links{display:none}.hamburger{display:flex}
-  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .area-tab{padding:1.2rem 1.5rem}
-  .page-hero-title{font-size:clamp(3.2rem,10vw,5.5rem)}
-}
+@media(max-width:1100px){.areas-grid{grid-template-columns:repeat(2,1fr)}.area-item{border-bottom:1px solid rgba(184,149,42,0.15)}.area-item:nth-child(2){border-right:none}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .post-card:first-child{grid-column:1/-1}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.members-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}.container{padding:0 2rem}.hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:10rem 2rem 10rem}.hero-indicator{left:2rem}.hero-scroll{display:none}.section-sobre{grid-template-columns:1fr}.sobre-img-col{height:50vh}.sobre-content{padding:4rem 2rem}.faq-layout{grid-template-columns:1fr;gap:3rem}.stats-row{grid-template-columns:1fr}.stat-col{border-right:none;border-bottom:1px solid rgba(184,149,42,0.1)}.stat-col:last-child{border-bottom:none}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.areas-grid{grid-template-columns:1fr}.area-item{border-right:none}.members-grid{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -199,7 +426,7 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   <ul class="nav-links">
     <li><a href="index.html">Início</a></li>
     <li><a href="sobre.html">Sobre</a></li>
-    <li><a href="areas.html"class="active" >Áreas</a></li>
+    <li><a href="areas.html">Áreas</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contato.html">Contato</a></li>
   </ul>
@@ -214,258 +441,255 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   <a href="contato.html" class="ml">Contato</a>
 </div>
 
-<!-- HERO -->
-<section class="page-hero">
-  <img class="page-hero-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="">
-  <div class="page-hero-grad"></div>
-  <div class="page-hero-content">
-    <div class="container">
-      <div class="page-hero-eyebrow reveal">Especialidades</div>
-      <h1 class="page-hero-title reveal">Direito que<br><em>transforma.</em></h1>
-      <p class="page-hero-sub reveal">Atuamos com precisão técnica e visão estratégica nas áreas de Previdenciário, Tributário, Civil, Saúde e Energia. Cada caso, uma solução única.</p>
-    </div>
-  </div>
-  <div class="hero-bottom-bar"></div>
-</section>
 
-<!-- AREA TABS NAV (agora com 5 abas) -->
-<nav class="areas-nav" id="areasNav">
-  <div class="container">
-    <div class="areas-nav-inner">
-      <a href="#previdenciario" class="area-tab active" data-area="previdenciario">
-        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-        Previdenciário
-      </a>
-      <a href="#tributario" class="area-tab" data-area="tributario">
-        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        Tributário
-      </a>
-      <a href="#civil" class="area-tab" data-area="civil">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Civil
-      </a>
-      <a href="#saude" class="area-tab" data-area="saude">
-        <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-        Saúde
-      </a>
-      <a href="#energia" class="area-tab" data-area="energia">
-        <svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
-        Energia, Petróleo & Gás
-      </a>
-    </div>
-  </div>
-</nav>
-
-<!-- ── 01 PREVIDENCIÁRIO ── -->
-<section class="area-section" id="previdenciario" data-wm="PREV">
-  <div class="container">
-    <div class="area-grid">
-      <div class="area-img-col reveal-left">
-        <div class="area-img-frame">
-          <img class="area-img"
-            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-            alt="Direito Previdenciário">
-        </div>
-        <div class="area-img-badge">
-          <span class="area-img-badge-num">+800</span>
-          <span class="area-img-badge-txt">Benefícios conquistados</span>
-        </div>
-      </div>
-      <div class="area-text reveal-right">
-        <div class="section-label">01 — Especialidade</div>
-        <h2 class="section-title">Direito<br><em>Previdenciário</em></h2>
-        <p>O planejamento previdenciário correto pode significar anos de diferença na aposentadoria e milhares de reais a mais de benefício. Nossa equipe domina cada detalhe da legislação do INSS e das reformas para garantir que você receba tudo aquilo a que tem direito.</p>
-        <p>Seja para quem ainda está planejando ou para quem já teve um benefício negado, nossa atuação é estratégica e orientada a resultados concretos.</p>
-        <div class="services-list">
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria por Tempo de Contribuição</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria por Idade</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria por Invalidez</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Aposentadoria Especial</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Revisão de Benefícios do INSS</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Pensão por Morte e Auxílio-Reclusão</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Auxílio por Incapacidade Temporária</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Planejamento de Aposentadoria</span></div>
-        </div>
-        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 02 TRIBUTÁRIO ── -->
-<section class="area-section" id="tributario" data-wm="TRIB">
-  <div class="container">
-    <div class="area-grid reverse">
-      <div class="area-img-col reveal-right">
-        <div class="area-img-frame">
-          <img class="area-img"
-            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-            alt="Direito Tributário">
-        </div>
-        <div class="area-img-badge">
-          <span class="area-img-badge-num">R$M+</span>
-          <span class="area-img-badge-txt">Em créditos recuperados</span>
-        </div>
-      </div>
-      <div class="area-text reveal-left">
-        <div class="section-label">02 — Especialidade</div>
-        <h2 class="section-title">Direito<br><em>Tributário</em></h2>
-        <p>A carga tributária brasileira é uma das mais complexas do mundo. Empresas e pessoas físicas frequentemente pagam mais impostos do que devem por falta de uma estratégia adequada. Nossa atuação tributária combina planejamento preventivo com defesa eficaz em litígios.</p>
-        <p>Identificamos oportunidades legais de redução de carga fiscal e recuperamos créditos tributários pagos indevidamente, gerando economia real para nossos clientes.</p>
-        <div class="services-list">
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Planejamento Tributário Estratégico</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Recuperação de Créditos Fiscais</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Defesa em Autuações Fiscais</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Contencioso Administrativo</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Revisão de Tributos Pagos a Maior</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Exclusão do ICMS do PIS/COFINS</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Parcelamento e Negociação de Dívidas</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Consultoria em Reforma Tributária</span></div>
-        </div>
-        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 03 CIVIL ── -->
-<section class="area-section dark" id="civil" data-wm="CIVIL">
-  <div class="container">
-    <div class="area-grid">
-      <div class="area-img-col reveal-left">
-        <div class="area-img-frame">
-          <img class="area-img"
-            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-            alt="Direito Civil">
-        </div>
-        <div class="area-img-badge">
-          <span class="area-img-badge-num">+150</span>
-          <span class="area-img-badge-txt">Casos resolvidos/ano</span>
-        </div>
-      </div>
-      <div class="area-text reveal-right">
-        <div class="section-label">03 — Especialidade</div>
-        <h2 class="section-title light">Direito<br><em>Civil</em></h2>
-        <p class="light">O Direito Civil permeia as relações mais cotidianas da vida — contratos, família, propriedade, responsabilidade. Nossa atuação nessa área é ampla e detalhista, protegendo seus interesses nas situações que mais importam.</p>
-        <p class="light">Com profissionais especializados em responsabilidade civil, relações de consumo e direito contratual, oferecemos defesa sólida tanto na via extrajudicial quanto no contencioso.</p>
-        <div class="services-list">
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Direito do Consumidor</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Responsabilidade Civil</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Elaboração e Revisão de Contratos</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Direito de Família e Sucessões</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Inventários e Partilha de Bens</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Cobranças e Execuções Cíveis</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Indenizações por Danos Morais</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Direito Imobiliário</span></div>
-        </div>
-        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 04 SAÚDE ── -->
-<section class="area-section" id="saude" data-wm="SAÚDE">
-  <div class="container">
-    <div class="area-grid reverse">
-      <div class="area-img-col reveal-right">
-        <div class="area-img-frame">
-          <img class="area-img"
-            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-            alt="Direito à Saúde">
-        </div>
-        <div class="area-img-badge">
-          <span class="area-img-badge-num">96%</span>
-          <span class="area-img-badge-txt">Taxa de êxito</span>
-        </div>
-      </div>
-      <div class="area-text reveal-left">
-        <div class="section-label">04 — Especialidade</div>
-        <h2 class="section-title">Direito<br>à <em>Saúde</em></h2>
-        <p>O direito à saúde é fundamental e inegociável. Quando planos de saúde negam tratamentos, cirurgias ou medicamentos, nossa equipe age com rapidez para garantir o acesso imediato às coberturas que você já paga.</p>
-        <p>Atuamos com urgência em tutelas de evidência e antecipações de tutela, garantindo que a negativa do plano não atrase o tratamento do nosso cliente.</p>
-        <div class="services-list">
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Negativa de Cobertura de Plano</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Cirurgias e Procedimentos Negados</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Medicamentos de Alto Custo</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Internação em UTI Negada</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Reembolso de Despesas Médicas</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Cancelamento Abusivo de Plano</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Tratamentos Oncológicos</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text">Fornecimento de Medicamentos pelo SUS</span></div>
-        </div>
-        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 05 ENERGIA, PETRÓLEO E GÁS ── (NOVA SEÇÃO) -->
-<section class="area-section dark" id="energia" data-wm="ENERGIA">
-  <div class="container">
-    <div class="area-grid">
-      <div class="area-img-col reveal-left">
-        <div class="area-img-frame">
-          <img class="area-img"
-            src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-            alt="Direito de Energia, Petróleo e Gás">
-        </div>
-        <div class="area-img-badge">
-          <span class="area-img-badge-num">+50</span>
-          <span class="area-img-badge-txt">Projetos assessorados</span>
-        </div>
-      </div>
-      <div class="area-text reveal-right">
-        <div class="section-label">05 — Especialidade</div>
-        <h2 class="section-title light">Direito de <em>Energia, Petróleo e Gás</em></h2>
-        <p class="light">O setor de energia, petróleo e gás exige conhecimento técnico aprofundado e visão estratégica para navegar no complexo ambiente regulatório brasileiro. Nossa equipe oferece assessoria jurídica completa para empresas que atuam nesses segmentos.</p>
-        <p class="light">Atuamos desde a fase exploratória até a comercialização, garantindo conformidade com as normas da ANP, Aneel e demais órgãos reguladores, além de apoiar na estruturação de contratos complexos e na defesa em processos administrativos.</p>
-        <div class="services-list">
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Assessoria Regulatória (ANP, ANEEL)</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Contratos de Concessão, Cessão e Partilha</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Due Diligence de Ativos de Óleo e Gás</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Defesa em Processos Administrativos</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Transações de Energia e Comercialização</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Contratos de EPC e Supply Chain</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Licenciamento Ambiental no Setor</span></div>
-          <div class="service-item"><div class="service-dot"></div><span class="service-text light">M&A de Empresas de Energia</span></div>
-        </div>
-        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section-cta">
-  <div class="container">
-    <div class="cta-eyebrow reveal">Próximo passo</div>
-    <h2 class="cta-title reveal">Seu caso merece<br>atenção <em>especializada.</em></h2>
-    <p class="cta-sub reveal">Agende uma consulta gratuita e descubra como podemos transformar sua situação jurídica. Nossa equipe está pronta para ouvir você.</p>
-    <div class="cta-actions reveal">
-      <a href="contato.html" class="btn-gold">
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow" id="heroEyebrow">Direito Previdenciário</div>
+    <h1 class="hero-title" id="heroTitle">Planeje sua<br><em>aposentadoria</em><br>com segurança</h1>
+    <p class="hero-sub">Soluções jurídicas personalizadas aliando conhecimento tradicional à mais moderna tecnologia. Atendimento humanizado, resultados precisos.</p>
+    <div class="hero-actions">
+      <a href="https://api.whatsapp.com/send/?phone=558441412470&text&type=phone_number&app_absent=0" class="btn-gold">
         <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Consulta gratuita
       </a>
-      <a href="sobre.html" class="btn-ghost-light">Conhecer a equipe →</a>
+      <a href="areas.html" class="btn-ghost">Nossas áreas <span class="circ">→</span></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" id="heroImg" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Escritório Jurídico">
+  </div>
+  <div class="hero-indicator">
+    <div class="indicator-dot active" data-s="0"></div>
+    <div class="indicator-dot" data-s="1"></div>
+    <div class="indicator-dot" data-s="2"></div>
+    <div class="indicator-dot" data-s="3"></div>
+  </div>
+  <div class="hero-scroll">Rolar</div>
+</section>
+
+<section class="section-stats">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-col reveal"><span class="stat-number" data-target="1000">+1000</span><span class="stat-label">Atuações judiciais e extrajudiciais</span></div>
+      <div class="stat-col reveal" style="transition-delay:.15s"><span class="stat-number" data-target="700">+700</span><span class="stat-label">Clientes atendidos</span></div>
+      <div class="stat-col reveal" style="transition-delay:.3s"><span class="stat-number" data-target="10">+10</span><span class="stat-label">Anos de experiência</span></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="section-areas" id="areas">
+  <div class="container">
+    <div class="section-label reveal">Especialidades</div>
+    <h2 class="section-title reveal">Áreas de <em>atuação</em></h2>
+  </div>
+  <div class="areas-grid">
+    <a href="areas.html" class="area-item reveal">
+      <span class="area-num">01</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+      <div class="area-title">Previdenciário</div>
+      <p class="area-desc">Aposentadorias, revisões de benefício e planejamento estratégico para o seu futuro.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+    <a href="areas.html" class="area-item reveal" style="transition-delay:.1s">
+      <span class="area-num">02</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="area-title">Tributário para municípios</div>
+      <p class="area-desc">Planejamento tributário, litígios fiscais e recuperação de créditos com eficiência.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+    <a href="areas.html" class="area-item reveal" style="transition-delay:.2s">
+      <span class="area-num">03</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="area-title">Civil</div>
+      <p class="area-desc">Contratos, responsabilidade civil e direito das famílias com abordagem personalizada.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+    <a href="areas.html" class="area-item reveal" style="transition-delay:.3s">
+      <span class="area-num">04</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+      <div class="area-title">Saúde</div>
+      <p class="area-desc">Planos de saúde, tratamentos negados e defesa do seu direito ao tratamento digno.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+    <!-- NOVO ITEM: Energia, Petróleo e Gás -->
+    <a href="areas.html" class="area-item reveal" style="transition-delay:.4s">
+      <span class="area-num">05</span>
+      <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg></div>
+      <div class="area-title">Energia, Petróleo e Gás</div>
+      <p class="area-desc">Assessoria jurídica especializada nos setores de energia, óleo e gás, incluindo regulação, contratos e conformidade.</p>
+      <div class="area-arrow">Saiba mais →</div>
+    </a>
+  </div>
+</section>
+
+<section class="section-sobre" id="sobre">
+  <div class="sobre-img-col">
+    <img class="sobre-img" src="kayomelo.png" onerror="this.src='https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Dr. Kayo Melo">
+  </div>
+  <div class="sobre-content">
+    <div class="section-label reveal-right">Sobre o escritório</div>
+    <blockquote class="sobre-quote reveal-right">Nós não apenas resolvemos problemas jurídicos; nós viabilizamos os objetivos de quem confia no nosso trabalho.</blockquote>
+    <div class="sobre-author reveal-right">
+      <div class="sobre-author-line"></div>
+      <div>
+        <div class="sobre-author-name">Dr. Kayo Melo</div>
+        <div class="sobre-author-title">Advogado fundador · OAB/RN</div>
+      </div>
+    </div>
+    <p class="sobre-text reveal-right">Fundado com o propósito de oferecer soluções jurídicas personalizadas, aliando conhecimento tradicional à mais moderna tecnologia. Nossa trajetória é marcada pela ética, transparência e busca incessante pela atualização.</p>
+    <a href="sobre.html" class="btn-outline-gold reveal-right">Conheça nossa história →</a>
+  </div>
+</section>
+
+<!-- ===== NOVA SEÇÃO: DEPOIMENTOS ===== -->
+<section class="section-testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-label reveal">O que nossos clientes dizem</div>
+    <h2 class="section-title reveal">Depoimentos <em>reais</em></h2>
+    <div class="testimonials-grid">
+      <!-- Depoimento 1 -->
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">“Foi ótimo munca deixe de acreditar na em.vcs nu senho eu sempre falei para minha mãe qui ir luta pelo benefício do meu irmão gratidão adeus a vcs tinha dias qui eu fala senho pq tiram qui direto do meu irmão mais quem pensa gente eu fala várias vezes pra pessoal do escritório falando pra deixe minha mãe minha filha deixe isso não vai da certo eu falei eu senhora vai ver em tão eu acreditei pegue os papel de maurilio mandei pra ele ir sem minha mãe sem quere eu peguei os documentos leve hoje recebi melho notícias da minha vida qui meu irmão está de vota aposentado”</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MS</div>
+          <div class="testimonial-info">
+            <h4>Raissa Santos</h4>
+
+          </div>
+        </div>
+      </div>
+      <!-- Depoimento 2 -->
+      <div class="testimonial-card reveal" style="transition-delay:.1s">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">“Me chamo Juliana Felix da Silva dátilo endico muito o escritório do dr kaio !!! Ótimos advogados; através do trabalho do dr Matheus suzar um dos advogados ajudar a realizar o sonho da minha mãe. Parabéns pelo excelente trabalho do grupo, e muito bom ter pessoas assim como essa como vocês para ajudar nosso povo de Ceará-Mirin”</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JP</div>
+          <div class="testimonial-info">
+            <h4>Juliana Felix</h4>
+          </div>
+        </div>
+      </div>
+      <!-- Depoimento 3 -->
+      <div class="testimonial-card reveal" style="transition-delay:.2s">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">“Primeiramente agradeço a Deus, a indicação de um Amigo e ao Profissionalismo de Dr. Kayo e de sua equipe, o benefício do meu filho foi suspenso de forma indevida, e vinha si arrastando no INNS por mais de 1 ano, e sem nenhuma expectativa para ser reativado, depois de acionar Dr. Kayo e ele assumir a causa, ficamos esperançosos, e de fato, esse escritório sabe o que faz, podem confiar, que eles resolvem, obenefício foi reativado, é também recebemos os atrasados”</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CL</div>
+          <div class="testimonial-info">
+            <h4>elizabetjoann love</h4>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== FIM DEPOIMENTOS ===== -->
+
+<section class="section-faq" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <div class="section-label reveal">FAQ</div>
+        <h2 class="section-title reveal" style="margin-bottom:1.5rem">Dúvidas sobre <em>aposentadoria</em></h2>
+        <p class="reveal" style="font-size:.95rem;font-weight:300;color:var(--smoke);line-height:1.8;margin-bottom:2.5rem">As perguntas mais comuns respondidas com clareza. Tem mais dúvidas? Fale com um especialista.</p>
+        <a href="contato.html" class="btn-gold">Falar com advogado</a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Qual a idade mínima para se aposentar?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Após a Reforma da Previdência (EC 103/2019), a idade mínima é de 65 anos para homens e 62 para mulheres, com tempo de contribuição de 15 anos (mulheres) e 20 anos (homens), dependendo da regra de transição aplicável.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Posso me aposentar sem atingir a idade mínima?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Sim, é possível pelas regras de transição (pedágio de 50% ou 100%) ou aposentadoria por tempo de contribuição para quem já estava no sistema antes da reforma, cumpridos os requisitos.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">O que é o fator previdenciário?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>É uma fórmula que considera idade, tempo de contribuição e expectativa de vida. Hoje a aposentadoria programada tem cálculo baseado na média de 100% dos salários de contribuição.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Como é calculado o valor da aposentadoria?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Média de 100% dos salários desde julho/1994. O valor inicial é 60% dessa média + 2% para cada ano que ultrapassar 20 anos (homens) ou 15 anos (mulheres).</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">O que fazer se o INSS negar meu pedido?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>É possível entrar com recurso administrativo ou ação judicial. Recomenda-se buscar um advogado especializado para avaliar as chances de êxito e a melhor estratégia.</p></div>
+        </div>
+        <!-- NOVAS PERGUNTAS SOBRE O ESCRITÓRIO -->
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">O escritório atende em todo o Brasil?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Sim! Atendemos clientes de todo o país por meio de consultas online, videoconferências e plataformas digitais. Nosso time está preparado para oferecer suporte completo onde quer que você esteja.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Como funciona o atendimento de urgência?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Mantemos um plantão 24h para situações de emergência, como negativas de saúde, liminares urgentes ou prazos judiciais. Basta entrar em contato pelo nosso WhatsApp que nossa equipe estará pronta para atender.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Quantas aposentadorias o escritório já conquistou?</span><div class="faq-icon">+</div></div>
+          <div class="faq-a"><p>Já auxiliamos mais de 700 clientes a conquistarem seus benefícios previdenciários, incluindo mais de 1000 atuações judiciais e extrajudiciais. Nosso índice de êxito é fruto de um trabalho criterioso e personalizado.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-blog" id="blog">
+  <div class="container">
+    <div class="section-label reveal">Conteúdo</div>
+    <h2 class="section-title reveal">Últimas do <em>blog</em></h2>
+    <div class="blog-grid">
+      <a href="blog.html" class="post-card reveal">
+        <img class="post-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reforma Tributária">
+        <div class="post-overlay"><span class="post-tag">Tributário</span><h3 class="post-title">Reforma Tributária: o que muda para você e sua empresa em 2025</h3><div class="post-meta">5 min · Jan 2025</div></div>
+      </a>
+      <a href="blog.html" class="post-card reveal" style="transition-delay:.15s">
+        <img class="post-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aposentadoria">
+        <div class="post-overlay"><span class="post-tag">Previdenciário</span><h3 class="post-title">Novas regras para aposentadoria em 2025</h3><div class="post-meta">4 min · Fev 2025</div></div>
+      </a>
+      <a href="blog.html" class="post-card reveal" style="transition-delay:.3s">
+        <img class="post-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Planos de saúde">
+        <div class="post-overlay"><span class="post-tag">Saúde</span><h3 class="post-title">Planos de saúde: como garantir seu tratamento</h3><div class="post-meta">3 min · Mar 2025</div></div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:3rem"><a href="blog.html" class="btn-gold">Ver todos os posts</a></div>
+  </div>
+</section>
+
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href="index.html" class="nav-logo">
-          <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
-        </a>
+  <a href="index.html" class="nav-logo">
+    <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
+  </a>
         <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/kayomeloadvogados/" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
           <a href="https://www.facebook.com/kayomeloadvogados/" aria-label="Facebook"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
           <a href="#" aria-label="LinkedIn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <a href="https://www.youtube.com/" aria-label="YouTube"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <!-- NOVO ÍCONE DO YOUTUBE -->
+          <a href="https://www.youtube.com/@kayomeloadvogados" target="_blank" aria-label="YouTube"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -481,23 +705,23 @@ footer{background:var(--ink);padding:5rem 0 3rem}
       <div class="footer-col">
         <h5>Especialidades</h5>
         <ul>
-          <li><a href="#previdenciario">Direito Previdenciário</a></li>
-          <li><a href="#tributario">Direito Tributário</a></li>
-          <li><a href="#civil">Direito Civil</a></li>
-          <li><a href="#saude">Direito à Saúde</a></li>
-          <li><a href="#energia">Direito de Energia, Petróleo e Gás</a></li>
+          <li><a href="areas.html">Direito Previdenciário</a></li>
+          <li><a href="areas.html">Direito Tributário</a></li>
+          <li><a href="areas.html">Direito Civil</a></li>
+          <li><a href="areas.html">Direito à Saúde</a></li>
+          <li><a href="areas.html">Energia, Petróleo e Gás</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Contato</h5>
-        <p class="contact-row"> (84) 4141-2470</p>
+        <p class="contact-row">(84) 4141-2470</p>
         <p class="contact-row">contato@kayomeloadvogados.com.br</p>
         <p class="contact-row">Brasil, Rio Grande do Norte, Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
         <p class="contact-row">Brasil, Rio Grande do Norte (RN), Edifício Lagoa Center – Sala 506, Av. Antônio Basílio, nº 3006, Esquina com Av. Romualdo Galvão, Bairro Lagoa Nova – Natal, CEP: 59056-901.</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light); text-decoration: none; transition: color 0.3s;">Ominus Tech</a>. Todos os direitos reservados.</p>
+      <p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer">Ominus Tech</a>. Todos os direitos reservados. <a href="#" style="margin-left: 1.5rem;">Política de Privacidade (LGPD)</a></p>
       <p>OAB/RN — Advocacia com ética e responsabilidade</p>
     </div>
   </div>
@@ -510,50 +734,91 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 </a>
 
 <script>
+// LOADER - usa timeout curto sem depender do evento load
 setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
 
+// NAV SCROLL
 var navbar = document.getElementById('navbar');
 window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
 
+// HAMBURGER
 var hamburger = document.getElementById('hamburger');
 var mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click', function(){ hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
-document.querySelectorAll('.ml').forEach(function(l){ l.addEventListener('click', function(){ hamburger.classList.remove('open'); mobileNav.classList.remove('open'); }); });
+hamburger.addEventListener('click', function(){
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+document.querySelectorAll('.ml').forEach(function(link){
+  link.addEventListener('click', function(){
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+  });
+});
 
-// REVEAL
+// REVEAL ON SCROLL
 var obs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:0.08});
+}, {threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
 
-// ACTIVE TAB on scroll (agora com 5 seções)
-var sections = ['previdenciario','tributario','civil','saude','energia'];
-var tabs = document.querySelectorAll('.area-tab');
-var scrollObs = new IntersectionObserver(function(entries){
+// COUNTER ANIMATION
+var cObs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
-    if(e.isIntersecting){
-      var id = e.target.id;
-      tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.area === id); });
+    if(!e.isIntersecting) return;
+    var el = e.target;
+    var target = parseInt(el.dataset.target);
+    var t0 = performance.now();
+    function run(now){
+      var p = Math.min((now - t0) / 2000, 1);
+      el.textContent = '+' + Math.floor((1 - Math.pow(1-p, 3)) * target);
+      if(p < 1) requestAnimationFrame(run);
     }
+    requestAnimationFrame(run);
+    cObs.unobserve(el);
   });
-}, {threshold:0.4});
-sections.forEach(function(id){
-  var el = document.getElementById(id);
-  if(el) scrollObs.observe(el);
+}, {threshold:0.5});
+document.querySelectorAll('.stat-number[data-target]').forEach(function(el){ cObs.observe(el); });
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click', function(){
+    var item = q.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if(!wasOpen) item.classList.add('open');
+  });
 });
 
-// Smooth scroll for tabs
-tabs.forEach(function(tab){
-  tab.addEventListener('click', function(e){
-    e.preventDefault();
-    var target = document.querySelector(tab.getAttribute('href'));
-    if(target){
-      var offset = 120;
-      var top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({top:top, behavior:'smooth'});
-    }
-  });
-});
+// HERO SLIDESHOW
+var eyebrow = document.getElementById('heroEyebrow');
+var title   = document.getElementById('heroTitle');
+var img     = document.getElementById('heroImg');
+var dots    = document.querySelectorAll('.indicator-dot');
+var slides  = [
+  {e:'Direito Previdenciário', t:'Planeje sua<br><em>aposentadoria</em><br>com segurança',          i:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'},
+  {e:'Direito Tributário',     t:'Inteligência fiscal<br>para proteger seu<br><em>patrimônio</em>',  i:'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'},
+  {e:'Direito Civil',          t:'Soluções para seus<br><em>desafios</em><br>cotidianos',            i:'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'},
+  {e:'Direito à Saúde',        t:'Defendendo seu<br>direito ao <em>tratamento</em><br>digno',        i:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'}
+];
+var cur = 0;
+eyebrow.style.transition = title.style.transition = 'opacity 0.4s';
+if(img) img.style.transition = 'opacity 0.5s';
+function go(n){
+  cur = n;
+  dots.forEach(function(d,i){ d.classList.toggle('active', i===n); });
+  eyebrow.style.opacity = title.style.opacity = '0';
+  if(img) img.style.opacity = '0.2';
+  setTimeout(function(){
+    eyebrow.textContent = slides[n].e;
+    title.innerHTML = slides[n].t;
+    if(img){ img.src = slides[n].i; img.style.opacity = '0.55'; }
+    eyebrow.style.opacity = title.style.opacity = '1';
+  }, 400);
+}
+dots.forEach(function(d,i){ d.addEventListener('click', function(){ go(i); reset(); }); });
+var timer;
+function reset(){ clearInterval(timer); timer = setInterval(function(){ go((cur+1)%4); }, 6000); }
+reset();
 </script>
 </body>
 </html>
