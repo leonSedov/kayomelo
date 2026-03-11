@@ -251,6 +251,112 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
 }
 /* ===== FIM NOVA SEÇÃO ===== */
 
+/* ===== NOVA SEÇÃO: DEPOIMENTOS ===== */
+.section-testimonials {
+  background: var(--white);
+  padding: 9rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.section-testimonials::before {
+  content: 'DEPOIMENTOS';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: clamp(8rem, 15vw, 18rem);
+  font-weight: 700;
+  color: rgba(184,149,42,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+.testimonial-card {
+  background: var(--white);
+  border: 1px solid rgba(184,149,42,0.15);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(10,22,40,0.1);
+  border-color: var(--gold);
+}
+.testimonial-card::after {
+  content: '“';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-family: var(--serif);
+  font-size: 8rem;
+  color: rgba(184,149,42,0.05);
+  line-height: 1;
+  pointer-events: none;
+}
+.testimonial-stars {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+.testimonial-stars svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--gold);
+}
+.testimonial-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--smoke);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--parchment);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-weight: 500;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  border: 1px solid rgba(184,149,42,0.2);
+}
+.testimonial-info h4 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+.testimonial-info p {
+  font-size: 0.75rem;
+  color: var(--smoke);
+  font-weight: 300;
+}
+/* ===== FIM DEPOIMENTOS ===== */
+
 .section-faq{background:var(--parchment);padding:9rem 0}
 .faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:6rem}
 .faq-list{display:flex;flex-direction:column}
@@ -298,9 +404,9 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal-right{opacity:0;transform:translateX(28px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
-@media(max-width:1100px){.areas-grid{grid-template-columns:repeat(2,1fr)}.area-item{border-bottom:1px solid rgba(184,149,42,0.15)}.area-item:nth-child(2){border-right:none}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .post-card:first-child{grid-column:1/-1}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.members-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.areas-grid{grid-template-columns:repeat(2,1fr)}.area-item{border-bottom:1px solid rgba(184,149,42,0.15)}.area-item:nth-child(2){border-right:none}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .post-card:first-child{grid-column:1/-1}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.members-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}.container{padding:0 2rem}.hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:10rem 2rem 10rem}.hero-indicator{left:2rem}.hero-scroll{display:none}.section-sobre{grid-template-columns:1fr}.sobre-img-col{height:50vh}.sobre-content{padding:4rem 2rem}.faq-layout{grid-template-columns:1fr;gap:3rem}.stats-row{grid-template-columns:1fr}.stat-col{border-right:none;border-bottom:1px solid rgba(184,149,42,0.1)}.stat-col:last-child{border-bottom:none}}
-@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.areas-grid{grid-template-columns:1fr}.area-item{border-right:none}.members-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.areas-grid{grid-template-columns:1fr}.area-item{border-right:none}.members-grid{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -321,7 +427,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
     <li><a href="areas.html">Áreas</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contato.html">Contato</a></li>
-    <li><a href="contato.html" class="nav-cta">Consulta</a></li>
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
@@ -387,7 +492,7 @@ footer{background:var(--ink);padding:5rem 0 3rem}
     <a href="areas.html" class="area-item reveal" style="transition-delay:.1s">
       <span class="area-num">02</span>
       <div class="area-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div class="area-title">Tributário</div>
+      <div class="area-title">Tributário para municípios</div>
       <p class="area-desc">Planejamento tributário, litígios fiscais e recuperação de créditos com eficiência.</p>
       <div class="area-arrow">Saiba mais →</div>
     </a>
@@ -435,108 +540,69 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   </div>
 </section>
 
-<!-- ===== NOVA SEÇÃO: CORPO JURÍDICO (SUBSTITUI A EQUIPE DE TI) ===== -->
-<section class="section-juridico" id="equipe">
+<!-- ===== NOVA SEÇÃO: DEPOIMENTOS ===== -->
+<section class="section-testimonials" id="depoimentos">
   <div class="container">
-    <div class="section-label reveal">Nosso time</div>
-    <h2 class="section-title reveal">Corpo Jurídico <em>Especializado</em></h2>
+    <div class="section-label reveal">O que nossos clientes dizem</div>
+    <h2 class="section-title reveal">Depoimentos <em>reais</em></h2>
+    <div class="testimonials-grid">
+      <!-- Depoimento 1 -->
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">“Foi ótimo munca deixe de acreditar na em.vcs nu senho eu sempre falei para minha mãe qui ir luta pelo benefício do meu irmão gratidão adeus a vcs tinha dias qui eu fala senho pq tiram qui direto do meu irmão mais quem pensa gente eu fala várias vezes pra pessoal do escritório falando pra deixe minha mãe minha filha deixe isso não vai da certo eu falei eu senhora vai ver em tão eu acreditei pegue os papel de maurilio mandei pra ele ir sem minha mãe sem quere eu peguei os documentos leve hoje recebi melho notícias da minha vida qui meu irmão está de vota aposentado”</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MS</div>
+          <div class="testimonial-info">
+            <h4>Raissa Santos</h4>
 
-    <!-- bloco com a linha e tag (exatamente como solicitado) -->
-    <div class="cat-div reveal">
-      <span class="cat-div-label">Corpo Jurídico Especializado</span>
-      <span class="cat-div-tag">7 profissionais</span>
-      <div class="cat-div-line"></div>
-    </div>
+          </div>
+        </div>
+      </div>
+      <!-- Depoimento 2 -->
+      <div class="testimonial-card reveal" style="transition-delay:.1s">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">“Me chamo Juliana Felix da Silva dátilo endico muito o escritório do dr kaio !!! Ótimos advogados; através do trabalho do dr Matheus suzar um dos advogados ajudar a realizar o sonho da minha mãe. Parabéns pelo excelente trabalho do grupo, e muito bom ter pessoas assim como essa como vocês para ajudar nosso povo de Ceará-Mirin”</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JP</div>
+          <div class="testimonial-info">
+            <h4>Juliana Felix</h4>
+          </div>
+        </div>
+      </div>
+      <!-- Depoimento 3 -->
+      <div class="testimonial-card reveal" style="transition-delay:.2s">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">“Primeiramente agradeço a Deus, a indicação de um Amigo e ao Profissionalismo de Dr. Kayo e de sua equipe, o benefício do meu filho foi suspenso de forma indevida, e vinha si arrastando no INNS por mais de 1 ano, e sem nenhuma expectativa para ser reativado, depois de acionar Dr. Kayo e ele assumir a causa, ficamos esperançosos, e de fato, esse escritório sabe o que faz, podem confiar, que eles resolvem, obenefício foi reativado, é também recebemos os atrasados”</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CL</div>
+          <div class="testimonial-info">
+            <h4>elizabetjoann love</h4>
 
-    <div class="members-grid reveal">
-      <!-- KAYO MELO -->
-      <div class="mcard">
-        <div class="mcard-img-wrap">
-          <img class="mcard-img" src="fotos equipe/kayo melo equipe.jpg"
-            onerror="this.style.display='none'"
-            alt="Kayo Melo">
-          <div class="mcard-initials">KM</div>
-        </div>
-        <div class="mcard-body">
-          <span class="mcard-role">Sócio Fundador</span>
-          <div class="mcard-name">Kayo Melo</div>
-          <p class="mcard-bio">Estrategista jurídico focado em soluções inovadoras e gestão de alta performance.</p>
-        </div>
-      </div>
-      <!-- MATHEUS ZUZA -->
-      <div class="mcard">
-        <div class="mcard-img-wrap">
-          <img class="mcard-img" src="fotos equipe/mathues advogado.png"
-            onerror="this.style.display='none'"
-            alt="Matheus Zuza">
-          <div class="mcard-initials">MZ</div>
-        </div>
-        <div class="mcard-body">
-          <span class="mcard-role">Advogado Associado</span>
-          <div class="mcard-name">Matheus Zuza</div>
-          <p class="mcard-bio">Especialista em Direito Previdenciário e Planejamento de Aposentadoria.</p>
-        </div>
-      </div>
-      <!-- ISRAEL MORAIS -->
-      <div class="mcard">
-        <div class="mcard-img-wrap">
-          <img class="mcard-img" src="fotos equipe/israel advogado.jpg"
-            onerror="this.style.display='none'"
-            alt="Israel Morais">
-          <div class="mcard-initials">IM</div>
-        </div>
-        <div class="mcard-body">
-          <span class="mcard-role">Advogado Associado</span>
-          <div class="mcard-name">Israel Morais</div>
-          <p class="mcard-bio">Atuação estratégica em Direito Tributário e Recuperação de Créditos Fiscais.</p>
-        </div>
-      </div>
-      <!-- ANA CLARA -->
-      <div class="mcard">
-        <div class="mcard-img-wrap">
-          <img class="mcard-img" src="fotos equipe/ana advogada.jpg"
-            onerror="this.style.display='none'"
-            alt="Ana Clara">
-          <div class="mcard-initials">AC</div>
-        </div>
-        <div class="mcard-body">
-          <span class="mcard-role">Advogada Associada</span>
-          <div class="mcard-name">Ana Clara</div>
-          <p class="mcard-bio">Dupla titulação em Direito Público e Previdenciário, na interface entre Controladoria e prática jurídica.</p>
-        </div>
-      </div>
-      <!-- MARIA RUTHILLENA -->
-      <div class="mcard">
-        <div class="mcard-img-wrap">
-          <img class="mcard-img" src="fotos equipe/ruht advogada.jpg"
-            onerror="this.style.display='none'"
-            alt="Maria Ruthillena">
-          <div class="mcard-initials">MR</div>
-        </div>
-        <div class="mcard-body">
-          <span class="mcard-role">Advogada Associada</span>
-          <div class="mcard-name">Maria Ruthillena</div>
-          <p class="mcard-bio">Especialista em Direito Civil e Responsabilidade Civil.</p>
-        </div>
-      </div>
-      <!-- LUIZ HENRIQUE -->
-      <div class="mcard">
-        <div class="mcard-img-wrap">
-          <img class="mcard-img" src="fotos equipe/luiz henrique.jpeg"
-            onerror="this.style.display='none'"
-            alt="Luiz Henrique">
-          <div class="mcard-initials">LH</div>
-        </div>
-        <div class="mcard-body">
-          <span class="mcard-role">Advogado Associado</span>
-          <div class="mcard-name">Luiz Henrique</div>
-          <p class="mcard-bio">Especialista em Direito do Consumidor e Processo Civil.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- ===== FIM NOVA SEÇÃO ===== -->
+<!-- ===== FIM DEPOIMENTOS ===== -->
 
 <section class="section-faq" id="faq">
   <div class="container">
@@ -631,10 +697,10 @@ footer{background:var(--ink);padding:5rem 0 3rem}
       </div>
       <div class="footer-col">
         <h5>Contato</h5>
-        <p class="contact-row">📞  (84) 4141-2470</p>
-        <p class="contact-row">✉️ contato@kayomeloadvogados.com.br</p>
-        <p class="contact-row">📍 Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
-        <p class="contact-row">📍 Edifício Lagoa Center – Sala 506 Av. Antônio Basílio, nº 3006 Esquina com Av. Romualdo Galvão Bairro Lagoa Nova – Natal/RN CEP: 59056-901</p>
+        <p class="contact-row">(84) 4141-2470</p>
+        <p class="contact-row">contato@kayomeloadvogados.com.br</p>
+        <p class="contact-row">Brasil, Rio Grande do Norte, Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
+        <p class="contact-row">Brasil, Rio Grande do Norte (RN), Edifício Lagoa Center – Sala 506, Av. Antônio Basílio, nº 3006, Esquina com Av. Romualdo Galvão, Bairro Lagoa Nova – Natal, CEP: 59056-901.</p>
       </div>
     </div>
     <div class="footer-bottom">

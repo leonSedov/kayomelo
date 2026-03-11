@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kayo Melo Advogados — Artigo: OMS e obesidade</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
+:root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--parchment)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s,visibility 0.8s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#fff;letter-spacing:0.2em;text-transform:uppercase}
+.loader-logo span{color:var(--gold-light)}
+.loader-bar{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
+.loader-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold-light);animation:loadBar 1.5s ease forwards}
+@keyframes loadBar{to{left:0}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;background:rgba(10,22,40,0.15);backdrop-filter:blur(8px)}
+nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
+.nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase}
+.nav-logo span{color:var(--gold-light)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-cta{border:1px solid var(--gold)!important;padding:0.5rem 1.4rem;border-radius:100px;color:var(--gold-light)!important;transition:background 0.3s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:28px;height:1px;background:#fff;transition:all 0.3s;transform-origin:left}
+.hamburger.open span:nth-child(1){transform:rotate(42deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-42deg)}
+.mobile-nav{position:fixed;inset:0;background:var(--navy);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2.5rem;transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.77,0,0.18,1)}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav a{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:#fff;text-decoration:none;transition:color 0.3s}
+.mobile-nav a:hover{color:var(--gold-light)}
+
+/* PAGE HERO */
+.page-hero{min-height:102vh;background:var(--navy);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(35%);opacity:0.18;display:block}
+.page-hero-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,0.97) 0%,rgba(10,22,40,0.65) 50%,rgba(10,22,40,0.88) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 0 7rem;width:100%}
+.container{max-width:1280px;margin:0 auto;padding:0 4rem}
+.page-hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.page-hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.page-hero-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:#fff;line-height:1.05;letter-spacing:-0.02em;margin-bottom:2rem}
+.page-hero-title em{font-style:italic;color:var(--gold-light);display:block}
+.page-hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.9;max-width:520px}
+.hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,149,42,0.4),transparent)}
+
+/* SHARED */
+.section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:'';width:30px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:2.5rem}
+.section-title em{font-style:italic;color:var(--gold)}
+.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem;cursor:pointer}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 40px rgba(184,149,42,0.35)}
+
+/* ── COMUNIDADES BANNER ── */
+.section-comunidades{background:var(--navy);padding:5rem 0;border-top:1px solid rgba(184,149,42,0.15);border-bottom:1px solid rgba(184,149,42,0.15);position:relative;overflow:hidden}
+.section-comunidades::before{content:'COMUNIDADE';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(5rem,10vw,12rem);font-weight:700;color:rgba(184,149,42,0.04);white-space:nowrap;pointer-events:none;letter-spacing:0.1em}
+.com-inner{display:grid;grid-template-columns:1fr auto 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
+.com-text{}
+.com-text-eyebrow{font-size:0.68rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem}
+.com-text-eyebrow::before{content:'';width:25px;height:1px;background:var(--gold)}
+.com-text h3{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;line-height:1.2;margin-bottom:1rem}
+.com-text h3 em{font-style:italic;color:var(--gold-light)}
+.com-text p{font-size:0.9rem;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.8;max-width:380px}
+.com-divider{width:1px;height:100px;background:linear-gradient(to bottom,transparent,rgba(184,149,42,0.3),transparent)}
+.com-cards{display:flex;flex-direction:column;gap:1.2rem}
+.com-card{display:flex;align-items:center;gap:1.5rem;padding:1.4rem 2rem;border:1px solid rgba(184,149,42,0.18);text-decoration:none;transition:all 0.4s;position:relative;overflow:hidden;background:rgba(255,255,255,0.02)}
+.com-card::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.77,0,0.18,1);z-index:0}
+.com-card:hover::before{transform:scaleX(1)}
+.com-card>*{position:relative;z-index:1}
+.com-card:hover{border-color:var(--gold)}
+.com-card-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.3s}
+.com-card:hover .com-card-icon{transform:scale(1.1)}
+.com-card.wpp .com-card-icon{background:rgba(37,211,102,0.15)}
+.com-card.tgm .com-card-icon{background:rgba(41,182,246,0.15)}
+.com-card-icon svg{width:22px;height:22px}
+.com-card-body{}
+.com-card-title{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:#fff;transition:color 0.3s;display:block;margin-bottom:0.2rem}
+.com-card:hover .com-card-title{color:var(--navy)}
+.com-card-sub{font-size:0.72rem;font-weight:400;color:rgba(255,255,255,0.4);letter-spacing:0.05em;transition:color 0.3s}
+.com-card:hover .com-card-sub{color:rgba(10,22,40,0.7)}
+.com-card-arrow{margin-left:auto;font-size:1.1rem;color:rgba(255,255,255,0.3);transition:all 0.3s}
+.com-card:hover .com-card-arrow{color:var(--navy);transform:translateX(4px)}
+
+/* ── CONTEÚDO DO ARTIGO ── */
+.article-body{padding:5rem 0 6rem;background:var(--white)}
+.article-content{max-width:860px;margin:0 auto;font-size:1.1rem;font-weight:300;color:var(--ink);line-height:1.9}
+.article-content p{margin-bottom:1.8rem}
+.article-content h2{font-family:var(--serif);font-size:2rem;font-weight:500;color:var(--navy);margin:3rem 0 1.5rem}
+.article-content h2::before{content:'';display:block;width:50px;height:2px;background:var(--gold);margin-bottom:0.5rem}
+.audio-player{background:var(--parchment);border-radius:100px;padding:0.8rem 2rem;display:inline-flex;align-items:center;gap:2rem;margin:2rem 0 3rem;border:1px solid rgba(184,149,42,0.2);flex-wrap:wrap;justify-content:center}
+.audio-btn{background:var(--gold);border:none;color:var(--navy);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s}
+.audio-btn:hover{background:var(--gold-light);transform:scale(1.05)}
+.audio-btn svg{width:20px;height:20px;stroke:var(--navy);stroke-width:2;fill:none}
+.progress-bar{width:200px;height:4px;background:rgba(184,149,42,0.2);border-radius:4px;cursor:pointer;position:relative}
+.progress-fill{height:100%;width:0%;background:var(--gold);border-radius:4px;transition:width 0.1s}
+.time-display{font-size:0.8rem;color:var(--smoke);font-family:monospace}
+
+/* ── NEWSLETTER / COMUNIDADES CTA ── */
+.section-newsletter{background:var(--parchment);padding:9rem 0;position:relative;overflow:hidden}
+.section-newsletter::before{content:'JOIN';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:clamp(8rem,16vw,20rem);font-weight:700;color:rgba(184,149,42,0.04);white-space:nowrap;pointer-events:none}
+.newsletter-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1}
+.newsletter-text .section-title{margin-bottom:1.5rem}
+.newsletter-text p{font-size:0.95rem;font-weight:300;color:var(--smoke);line-height:1.9;margin-bottom:2.5rem}
+.community-cards{display:flex;flex-direction:column;gap:1.5rem}
+.community-card{display:flex;align-items:center;gap:2rem;padding:2rem 2.5rem;background:var(--white);border:1px solid rgba(184,149,42,0.15);text-decoration:none;transition:all 0.4s;position:relative;overflow:hidden}
+.community-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;transition:width 0.4s}
+.community-card.wpp::after{background:#25D366}
+.community-card.tgm::after{background:#29B6F6}
+.community-card:hover{transform:translateX(8px);box-shadow:0 20px 40px rgba(0,0,0,0.06)}
+.community-card:hover::after{width:100%}
+.community-card.wpp:hover{border-color:rgba(37,211,102,0.3)}
+.community-card.tgm:hover{border-color:rgba(41,182,246,0.3)}
+.comm-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.community-card.wpp .comm-icon{background:rgba(37,211,102,0.1)}
+.community-card.tgm .comm-icon{background:rgba(41,182,246,0.1)}
+.comm-icon svg{width:26px;height:26px}
+.comm-body{}
+.comm-title{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink);display:block;margin-bottom:0.3rem}
+.comm-sub{font-size:0.78rem;font-weight:300;color:var(--smoke);line-height:1.5}
+.comm-members{margin-left:auto;text-align:right;flex-shrink:0}
+.comm-members-num{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--gold);display:block;line-height:1}
+.comm-members-lbl{font-size:0.62rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--smoke);margin-top:0.2rem;display:block}
+
+/* FOOTER */
+footer{background:var(--ink);padding:5rem 0 3rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-logo-text{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:#fff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem}
+.footer-logo-text span{color:var(--gold-light)}
+.footer-tagline{font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.35);line-height:1.7;max-width:260px;margin-bottom:2rem}
+.footer-socials{display:flex;gap:1rem}
+.footer-socials a{width:38px;height:38px;border:1px solid rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s}
+.footer-socials a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h5{font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:1rem}
+.footer-col ul li a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.88rem;font-weight:300;transition:color 0.3s}
+.footer-col ul li a:hover{color:var(--gold-light)}
+.contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
+.footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
+
+/* WA */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.4);transition:transform 0.3s;animation:waPulse 2.5s infinite}
+.wa-btn:hover{transform:scale(1.1)}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:3rem}
+  .com-inner{grid-template-columns:1fr;gap:2rem}
+  .com-divider{display:none}
+  .newsletter-grid{gap:4rem}
+}
+@media(max-width:900px){
+  nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}
+  .container{padding:0 2rem}
+  .newsletter-grid{grid-template-columns:1fr}
+  .page-hero-title{font-size:clamp(2.8rem,8vw,4rem)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .audio-player{border-radius:40px;padding:1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <!-- LOADER LOGO COM IMAGEM images.png -->
+  <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
+  <div class="loader-bar"></div>
+</div>
+
+<nav id="navbar">
+  <!-- NAV LOGO COM IMAGEM images.png -->
+  <a href="index.html" class="nav-logo">
+    <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="areas.html">Áreas</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="ml">Início</a>
+  <a href="sobre.html" class="ml">Sobre</a>
+  <a href="areas.html" class="ml">Áreas</a>
+  <a href="blog.html" class="ml">Blog</a>
+  <a href="contato.html" class="ml">Contato</a>
+</div>
+
+<!-- HERO DO ARTIGO (usando estrutura page-hero) -->
+<section class="page-hero">
+  <img class="page-hero-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Medicamentos e saúde">
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content">
+    <div class="container">
+      <div class="page-hero-eyebrow reveal">Direito à Saúde</div>
+      <h1 class="page-hero-title reveal">OMS reconhece obesidade<br>como doença crônica: <em>o que muda para o acesso a medicamentos</em></h1>
+      <p class="page-hero-sub reveal">Publicado em 13 de março de 2026 · Dr. Kayo Melo</p>
+    </div>
+  </div>
+  <div class="hero-bottom-bar"></div>
+</section>
+
+<!-- COMUNIDADES BANNER (topo) -->
+<section class="section-comunidades">
+  <div class="container">
+    <div class="com-inner">
+      <div class="com-text reveal-left">
+        <div class="com-text-eyebrow">Nossas comunidades</div>
+        <h3>Fique por dentro de<br>tudo em <em>tempo real</em></h3>
+        <p>Junte-se às nossas comunidades e receba dicas jurídicas, alertas de prazos, novidades legislativas e conteúdo exclusivo diretamente no seu celular.</p>
+      </div>
+      <div class="com-divider"></div>
+      <div class="com-cards reveal-right">
+        <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" target="_blank" class="com-card wpp">
+          <div class="com-card-icon">
+            <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="com-card-body">
+            <span class="com-card-title">Comunidade WhatsApp</span>
+            <span class="com-card-sub">Dicas diárias e alertas jurídicos</span>
+          </div>
+          <span class="com-card-arrow">→</span>
+        </a>
+        <a href="https://t.me/SEU_LINK_AQUI" target="_blank" class="com-card tgm">
+          <div class="com-card-icon">
+            <svg viewBox="0 0 24 24" fill="#29B6F6"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </div>
+          <div class="com-card-body">
+            <span class="com-card-title">Canal Telegram</span>
+            <span class="com-card-sub">Conteúdo exclusivo e análises</span>
+          </div>
+          <span class="com-card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEÚDO DO ARTIGO COM PLAYER MP3 -->
+<section class="article-body">
+  <div class="container">
+    <div class="article-content">
+      
+      <!-- PLAYER DE ÁUDIO MP3 (substitua o src pelo seu arquivo) -->
+      <div class="audio-player reveal" id="audioPlayer">
+        <button class="audio-btn" id="playPauseBtn">
+          <svg viewBox="0 0 24 24" id="playIcon">
+            <polygon points="5 3 19 12 5 21 5 3" fill="none" stroke="currentColor"/>
+          </svg>
+        </button>
+        
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+        
+        <button class="audio-btn" id="stopBtn" style="background:transparent; border:1px solid var(--gold);">
+          <svg viewBox="0 0 24 24">
+            <rect x="6" y="4" width="12" height="16" fill="none" stroke="currentColor"/>
+          </svg>
+        </button>
+        
+        <audio id="audioElement" preload="metadata">
+          <!-- SUBSTITUA PELO CAMINHO DO SEU ARQUIVO MP3 -->
+          <source src="audios_post/audiopost4.mp3" type="audio/mpeg">
+          Seu navegador não suporta o elemento de áudio.
+        </audio>
+      </div>
+
+      <!-- TEXTO DO ARTIGO (FORNECIDO) -->
+      <p>A Organização Mundial da Saúde publicou, em dezembro de 2025, um marco histórico para o tratamento da obesidade: novas diretrizes que reconhecem formalmente a obesidade como doença crônica progressiva e recomendam o uso de terapias medicamentosas de longo prazo, incluindo os agonistas de GLP-1 como tirzepatida e semaglutida. Essa decisão representa uma mudança de paradigma que impacta diretamente o cenário jurídico brasileiro e fortalece o direito dos pacientes ao tratamento adequado.</p>
+
+      <p>Durante décadas, a obesidade foi tratada como uma questão de estilo de vida, reduzida a conselhos simplistas sobre dieta e exercício. A nova posição da OMS reconhece o que a ciência já demonstrava há anos: a obesidade é uma doença multifatorial, com componentes genéticos, hormonais, ambientais e neurológicos que vão muito além da força de vontade individual. Essa classificação tem implicações jurídicas profundas, pois equipara a obesidade a outras doenças crônicas como diabetes e hipertensão, que já possuem cobertura obrigatória pelos planos de saúde.</p>
+
+      <p>No Brasil, a obesidade atinge mais de 60 milhões de pessoas, segundo dados do IBGE. A doença está associada a mais de 200 comorbidades, incluindo diabetes tipo 2, doenças cardiovasculares, apneia do sono, problemas articulares e diversos tipos de câncer. O custo anual da obesidade para o sistema de saúde brasileiro ultrapassa R$ 100 bilhões, considerando tratamentos diretos e perda de produtividade.</p>
+
+      <p>As novas diretrizes da OMS recomendam especificamente que os sistemas de saúde incorporem os agonistas de GLP-1 em seus protocolos de tratamento para pacientes com IMC igual ou superior a 30, ou IMC igual ou superior a 27 com comorbidades. Essa recomendação fortalece significativamente os argumentos jurídicos para a obtenção desses medicamentos tanto pelo SUS quanto pelos planos de saúde privados.</p>
+
+      <p>Para os pacientes brasileiros, essa mudança significa que a negativa de cobertura por parte dos planos de saúde se torna ainda mais difícil de sustentar juridicamente. Quando uma organização internacional do porte da OMS recomenda um tratamento específico para uma doença reconhecida, os tribunais tendem a considerar essa recomendação como evidência científica robusta em favor do paciente.</p>
+
+      <p>Se você convive com a obesidade e enfrenta dificuldades para acessar o tratamento medicamentoso adequado, saiba que o direito está do seu lado. A combinação da classificação da OMS, da aprovação da Anvisa e da jurisprudência favorável dos tribunais brasileiros cria um cenário propício para a obtenção judicial do tratamento. Consulte um advogado especializado em Direito da Saúde para entender como essas novas diretrizes podem beneficiar o seu caso específico.</p>
+
+      <!-- CHAMADA PARA CONTATO AO FINAL -->
+      <div style="background:var(--parchment); border-radius:8px; padding:2.5rem; text-align:center; margin:4rem 0 2rem;">
+        <h3 style="font-family:var(--serif); font-size:2rem; margin-bottom:1rem;">Teve o Mounjaro ou Ozempic negado?</h3>
+        <p style="margin-bottom:2rem;">Nossa equipe de Direito à Saúde está pronta para analisar seu caso à luz das novas diretrizes da OMS.</p>
+        <a href="contato.html" class="btn-gold" style="display:inline-flex;">Falar com especialista</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMUNIDADES SEÇÃO COMPLETA -->
+<section class="section-newsletter">
+  <div class="container">
+    <div class="newsletter-grid">
+      <div class="newsletter-text reveal-left">
+        <div class="section-label">Comunidades gratuitas</div>
+        <h2 class="section-title">Entre para nossas<br><em>comunidades</em></h2>
+        <p>Receba conteúdo jurídico de qualidade antes de todo mundo. Nossas comunidades são gratuitas e estão cheias de dicas práticas sobre seus direitos, novidades legislativas e alertas importantes.</p>
+        <p>Já são centenas de membros que se mantêm informados e protegidos pelo conhecimento da equipe Kayo Melo Advogados.</p>
+      </div>
+      <div class="community-cards reveal-right">
+        <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" target="_blank" class="community-card wpp">
+          <div class="comm-icon">
+            <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="comm-body">
+            <span class="comm-title">Comunidade WhatsApp</span>
+            <span class="comm-sub">Dicas diárias · Alertas de prazo · Novidades jurídicas</span>
+          </div>
+          <div class="comm-members">
+            <span class="comm-members-num">Entrar</span>
+            <span class="comm-members-lbl">Gratuito</span>
+          </div>
+        </a>
+        <a href="https://t.me/SEU_LINK_AQUI" target="_blank" class="community-card tgm">
+          <div class="comm-icon">
+            <svg viewBox="0 0 24 24" fill="#29B6F6"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </div>
+          <div class="comm-body">
+            <span class="comm-title">Canal Telegram</span>
+            <span class="comm-sub">Análises exclusivas · Artigos em primeira mão</span>
+          </div>
+          <div class="comm-members">
+            <span class="comm-members-num">Entrar</span>
+            <span class="comm-members-lbl">Gratuito</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="nav-logo">
+          <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
+        </a>
+        <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/kayomeloadvogados/" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.facebook.com/kayomeloadvogados/" aria-label="Facebook"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="areas.html">Áreas de Atuação</a></li>
+          <li><a href="blog.html"class="active">Blog</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Especialidades</h5>
+        <ul>
+          <li><a href="areas.html#previdenciario">Direito Previdenciário</a></li>
+          <li><a href="areas.html#tributario">Direito Tributário</a></li>
+          <li><a href="areas.html#civil">Direito Civil</a></li>
+          <li><a href="areas.html#saude">Direito à Saúde</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <p class="contact-row"> (84) 4141-2470</p>
+        <p class="contact-row">contato@kayomeloadvogados.com.br</p>
+        <p class="contact-row">Brasil, Rio Grande do Norte, Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
+        <p class="contact-row">Brasil, Rio Grande do Norte (RN), Edifício Lagoa Center – Sala 506, Av. Antônio Basílio, nº 3006, Esquina com Av. Romualdo Galvão, Bairro Lagoa Nova – Natal, CEP: 59056-901.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light); text-decoration: none; transition: color 0.3s;">Ominus Tech</a>. Todos os direitos reservados.</p>
+      <p>OAB/RN — Advocacia com ética e responsabilidade</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/558441412470" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <div class="wa-btn">
+    <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</a>
+
+<script>
+setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
+
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
+
+var hamburger = document.getElementById('hamburger');
+var mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', function(){ hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+document.querySelectorAll('.ml').forEach(function(l){ l.addEventListener('click', function(){ hamburger.classList.remove('open'); mobileNav.classList.remove('open'); }); });
+
+// REVEAL
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
+
+// PLAYER DE ÁUDIO MP3
+const audio = document.getElementById('audioElement');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+const playIcon = document.getElementById('playIcon');
+const progressBar = document.getElementById('progressBar');
+const progressFill = document.getElementById('progressFill');
+const timeDisplay = document.getElementById('timeDisplay');
+
+function updatePlayIcon() {
+  if (audio.paused) {
+    playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3" fill="none" stroke="currentColor"/>';
+  } else {
+    playIcon.innerHTML = '<rect x="4" y="4" width="6" height="16" fill="none" stroke="currentColor"/><rect x="14" y="4" width="6" height="16" fill="none" stroke="currentColor"/>';
+  }
+}
+
+function formatTime(seconds) {
+  if (isNaN(seconds)) return '0:00';
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return mins + ':' + (secs < 10 ? '0' : '') + secs;
+}
+
+function updateProgress() {
+  const current = audio.currentTime;
+  const duration = audio.duration;
+  if (duration > 0) {
+    const percent = (current / duration) * 100;
+    progressFill.style.width = percent + '%';
+    timeDisplay.textContent = formatTime(current) + ' / ' + formatTime(duration);
+  } else {
+    timeDisplay.textContent = '0:00 / 0:00';
+  }
+}
+
+audio.addEventListener('loadedmetadata', function() {
+  timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+});
+audio.addEventListener('timeupdate', updateProgress);
+audio.addEventListener('ended', function() {
+  updatePlayIcon();
+  progressFill.style.width = '0%';
+  timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+});
+
+playPauseBtn.addEventListener('click', function() {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+  updatePlayIcon();
+});
+
+stopBtn.addEventListener('click', function() {
+  audio.pause();
+  audio.currentTime = 0;
+  updatePlayIcon();
+  progressFill.style.width = '0%';
+  timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+});
+
+progressBar.addEventListener('click', function(e) {
+  const rect = progressBar.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+  const width = rect.width;
+  const percent = clickX / width;
+  if (audio.duration) {
+    audio.currentTime = percent * audio.duration;
+  }
+});
+</script>
+</body>
+</html>
