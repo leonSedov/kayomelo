@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kayo Melo Advogados — Contato melhorado</title>
+<title>Kayo Melo Advogados — Contato</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
 :root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
@@ -77,9 +77,9 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
 .form-group button{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;cursor:pointer;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem}
 .form-group button:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 30px rgba(184,149,42,0.25)}
 .map-section{background:var(--parchment);padding:6rem 0;border-top:1px solid rgba(184,149,42,0.15);border-bottom:1px solid rgba(184,149,42,0.15)}
-.map-container{background:var(--navy);border-radius:8px;overflow:hidden;box-shadow:0 25px 50px -10px rgba(0,0,0,0.3);border:1px solid rgba(184,149,42,0.2);height:420px;position:relative}
-.map-container iframe{width:100%;height:100%;filter:grayscale(40%) contrast(1.05);transition:filter 0.5s;display:block;border:0}
-.map-container:hover iframe{filter:grayscale(10%) contrast(1)}
+.map-container{background:var(--navy);border-radius:8px;overflow:hidden;box-shadow:0 25px 50px -10px rgba(0,0,0,0.3);border:1px solid rgba(184,149,42,0.2);position:relative;height:420px;}
+.map-container img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%) contrast(1.05);transition:filter 0.5s;}
+.map-container:hover img{filter:grayscale(10%) contrast(1);}
 .map-overlay{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(10,22,40,0.85);backdrop-filter:blur(8px);padding:0.8rem 1.5rem;border-radius:100px;border:1px solid rgba(184,149,42,0.3);color:#fff;font-size:0.85rem;letter-spacing:0.05em;display:flex;align-items:center;gap:0.5rem;pointer-events:none}
 .map-overlay svg{width:16px;height:16px;stroke:var(--gold-light);fill:none}
 .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
@@ -106,21 +106,20 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 .contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
 .footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
+.footer-bottom a{color:var(--gold-light);text-decoration:none;transition:color 0.3s}
+.footer-bottom a:hover{color:var(--gold)}
 @media(max-width:1100px){.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.contact-grid{grid-template-columns:1fr;gap:3rem}}
 @media(max-width:900px){nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}.container{padding:0 2rem}.hero-page{padding:8rem 1rem 3rem}}
 @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.contact-card{padding:2rem}}
 </style>
 </head>
-<link rel="icon" type="image/png" href="logoicon.webp">
 <body>
 <div class="loader" id="loader">
-  <!-- LOADER LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
   <div class="loader-bar"></div>
 </div>
 
 <nav id="navbar">
-  <!-- NAV LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <a href="index.html" class="nav-logo">
     <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
   </a>
@@ -130,18 +129,9 @@ footer{background:var(--ink);padding:5rem 0 3rem}
     <li><a href="areas.html">Áreas</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contato.html">Contato</a></li>
-
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
-
-<div class="mobile-nav" id="mobileNav">
-  <a href="index.html" class="ml">Início</a>
-  <a href="sobre.html" class="ml">Sobre</a>
-  <a href="areas.html" class="ml">Áreas</a>
-  <a href="blog.html" class="ml">Blog</a>
-  <a href="contato.html" class="ml">Contato</a>
-</div>
 
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html" class="ml">Início</a>
@@ -161,11 +151,11 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   </div>
 </section>
 
-<!-- INFORMAÇÕES + FORMULÁRIO MELHORADO -->
+<!-- INFORMAÇÕES + FORMULÁRIO -->
 <section class="contact-section">
   <div class="container">
     <div class="contact-grid">
-      <!-- cards lado esquerdo (com badge de horário mais refinado) -->
+      <!-- cards lado esquerdo -->
       <div>
         <div class="contact-card reveal">
           <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg></div>
@@ -192,7 +182,7 @@ footer{background:var(--ink);padding:5rem 0 3rem}
         </div>
       </div>
 
-      <!-- formulário com validação e feedback -->
+      <!-- formulário -->
       <div class="contact-form reveal-right">
         <h3>Envie sua mensagem</h3>
         <form id="contactForm" action="#" method="post" novalidate>
@@ -222,14 +212,14 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   </div>
 </section>
 
-<!-- MAPA INTERATIVO (GOOGLE MAPS EMBED) -->
+<!-- MAPA COM A IMAGEM DO CLIENTE -->
 <section class="map-section">
   <div class="container">
     <div class="section-label reveal">Onde estamos</div>
     <h2 class="section-title reveal">Visite nosso <em>escritório</em></h2>
     <div class="map-container reveal">
-
-      <iframe src="imag.maps/maps.png" allowfullscreen="" loading="lazy"></iframe>
+      <!-- SUBSTITUA "mapa-brasil.png" PELO NOME DO SEU ARQUIVO -->
+      <img src="imag.maps/maps.png" alt="Mapa com localização do escritório">
       <div class="map-overlay">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Rua Benilde Dantas, 300 – Centro, Ceará‑Mirim/RN
@@ -241,20 +231,19 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   </div>
 </section>
 
-<!-- FOOTER COM REDES SOCIAIS REAIS (APENAS EXEMPLO) -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
-  <a href="index.html" class="nav-logo">
-    <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
-  </a>
+        <a href="index.html" class="nav-logo">
+          <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
+        </a>
         <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/kayomeloadvogados/" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
           <a href="https://www.facebook.com/kayomeloadvogados/" aria-label="Facebook"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
           <a href="#" aria-label="LinkedIn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <!-- NOVO ÍCONE DO YOUTUBE -->
           <a href="https://www.youtube.com/@kayomeloadvogados" target="_blank" aria-label="YouTube"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
         </div>
       </div>
@@ -282,12 +271,12 @@ footer{background:var(--ink);padding:5rem 0 3rem}
         <h5>Contato</h5>
         <p class="contact-row">(84) 4141-2470</p>
         <p class="contact-row">contato@kayomeloadvogados.com.br</p>
-        <p class="contact-row">Brasil, Rio Grande do Norte, Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
-        <p class="contact-row">Brasil, Rio Grande do Norte (RN), Edifício Lagoa Center – Sala 506, Av. Antônio Basílio, nº 3006, Esquina com Av. Romualdo Galvão, Bairro Lagoa Nova – Natal, CEP: 59056-901.</p>
+        <p class="contact-row">Brasil, RN, Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
+        <p class="contact-row">Edifício Lagoa Center – Sala 506, Av. Antônio Basílio, 3006, Lagoa Nova – Natal/RN, CEP: 59056-901</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer">Ominus Tech</a>. Todos os direitos reservados. <a href="#" style="margin-left: 1.5rem;">Política de Privacidade (LGPD)</a></p>
+      <p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer">Ominus Tech</a>. Todos os direitos reservados. <a href="lgpd.html">Política de Privacidade (LGPD)</a></p>
       <p>OAB/RN — Advocacia com ética e responsabilidade</p>
     </div>
   </div>
@@ -300,14 +289,11 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 </a>
 
 <script>
-// LOADER
 setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
 
-// NAV SCROLL
 var navbar = document.getElementById('navbar');
 window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
 
-// HAMBURGER
 var hamburger = document.getElementById('hamburger');
 var mobileNav = document.getElementById('mobileNav');
 hamburger.addEventListener('click', function(){
@@ -321,20 +307,16 @@ document.querySelectorAll('.ml').forEach(function(link){
   });
 });
 
-// REVEAL ON SCROLL
 var obs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
 
-// VALIDAÇÃO DE FORMULÁRIO SIMPLES
 const form = document.getElementById('contactForm');
 if(form) {
   form.addEventListener('submit', function(e){
     e.preventDefault();
     let valid = true;
-
-    // nome
     const nome = document.getElementById('nome');
     const groupNome = document.getElementById('group-nome');
     if(!nome.value.trim()) {
@@ -342,7 +324,6 @@ if(form) {
       valid = false;
     } else groupNome.classList.remove('invalid');
 
-    // email
     const email = document.getElementById('email');
     const groupEmail = document.getElementById('group-email');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -351,7 +332,6 @@ if(form) {
       valid = false;
     } else groupEmail.classList.remove('invalid');
 
-    // mensagem
     const msg = document.getElementById('mensagem');
     const groupMsg = document.getElementById('group-mensagem');
     if(!msg.value.trim()) {
@@ -365,7 +345,6 @@ if(form) {
     }
   });
 
-  // remover classe invalid ao digitar
   document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(field => {
     field.addEventListener('input', function(){
       this.closest('.form-group')?.classList.remove('invalid');
