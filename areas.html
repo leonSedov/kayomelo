@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Áreas de Atuação | Kayo Melo Advogados</title>
+<link rel="icon" type="image/png" href="images.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
 :root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
@@ -24,10 +25,10 @@ body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;background:rgba(10,22,40,0.15);backdrop-filter:blur(8px)}
 nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
-.nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase}
-.nav-logo span{color:var(--gold-light)}
-.nav-links{display:flex;gap:2.2rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px}
+.nav-logo{display:flex;align-items:center;text-decoration:none;height:100%;}
+.nav-logo img{height:42px;width:auto;display:block;vertical-align:middle;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;margin:0;}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px;line-height:1;}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
 .nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%}
@@ -150,6 +151,8 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 .contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
 .footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
+.footer-bottom a{color:var(--gold-light);text-decoration:none;}
+.footer-bottom a:hover{color:var(--gold)}
 
 /* WA */
 .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
@@ -184,26 +187,22 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 }
 </style>
 </head>
-<link rel="icon" type="image/png" href="logoicon.webp">
 <body>
 <div class="loader" id="loader">
-  <!-- LOADER LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
   <div class="loader-bar"></div>
 </div>
 
 <nav id="navbar">
-  <!-- NAV LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <a href="index.html" class="nav-logo">
-    <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
+    <img src="images.png" alt="Kayo Melo">
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Início</a></li>
     <li><a href="sobre.html">Sobre</a></li>
-    <li><a href="areas.html"class="active" >Áreas</a></li>
+    <li><a href="areas.html" class="active">Áreas</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contato.html">Contato</a></li>
-
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
@@ -216,7 +215,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   <a href="contato.html" class="ml">Contato</a>
 </div>
 
-
 <!-- HERO -->
 <section class="page-hero">
   <img class="page-hero-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="">
@@ -225,13 +223,13 @@ footer{background:var(--ink);padding:5rem 0 3rem}
     <div class="container">
       <div class="page-hero-eyebrow reveal">Especialidades</div>
       <h1 class="page-hero-title reveal">Direito que<br><em>transforma.</em></h1>
-      <p class="page-hero-sub reveal">Atuamos com precisão técnica e visão estratégica nas áreas de Previdenciário, Tributário, Civil e Saúde. Cada caso, uma solução única.</p>
+      <p class="page-hero-sub reveal">Atuamos com precisão técnica e visão estratégica nas áreas de Previdenciário, Tributário, Civil, Saúde e Energia. Cada caso, uma solução única.</p>
     </div>
   </div>
   <div class="hero-bottom-bar"></div>
 </section>
 
-<!-- AREA TABS NAV -->
+<!-- AREA TABS NAV (agora com 5 itens) -->
 <nav class="areas-nav" id="areasNav">
   <div class="container">
     <div class="areas-nav-inner">
@@ -250,6 +248,10 @@ footer{background:var(--ink);padding:5rem 0 3rem}
       <a href="#saude" class="area-tab" data-area="saude">
         <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
         Saúde
+      </a>
+      <a href="#energia" class="area-tab" data-area="energia">
+        <svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
+        Energia, Petróleo & Gás
       </a>
     </div>
   </div>
@@ -399,6 +401,42 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   </div>
 </section>
 
+<!-- ── 05 ENERGIA, PETRÓLEO E GÁS ── (NOVA SEÇÃO) -->
+<section class="area-section dark" id="energia" data-wm="ENERGIA">
+  <div class="container">
+    <div class="area-grid">
+      <div class="area-img-col reveal-left">
+        <div class="area-img-frame">
+          <img class="area-img"
+            src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+            alt="Direito de Energia, Petróleo e Gás">
+        </div>
+        <div class="area-img-badge">
+          <span class="area-img-badge-num">+50</span>
+          <span class="area-img-badge-txt">Projetos assessorados</span>
+        </div>
+      </div>
+      <div class="area-text reveal-right">
+        <div class="section-label">05 — Especialidade</div>
+        <h2 class="section-title light">Direito de <em>Energia, Petróleo e Gás</em></h2>
+        <p class="light">O setor de energia, petróleo e gás exige conhecimento técnico aprofundado e visão estratégica para navegar no complexo ambiente regulatório brasileiro. Nossa equipe oferece assessoria jurídica completa para empresas que atuam nesses segmentos.</p>
+        <p class="light">Atuamos desde a fase exploratória até a comercialização, garantindo conformidade com as normas da ANP, Aneel e demais órgãos reguladores, além de apoiar na estruturação de contratos complexos e na defesa em processos administrativos.</p>
+        <div class="services-list">
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Assessoria Regulatória (ANP, ANEEL)</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Contratos de Concessão, Cessão e Partilha</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Due Diligence de Ativos de Óleo e Gás</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Defesa em Processos Administrativos</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Transações de Energia e Comercialização</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Contratos de EPC e Supply Chain</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">Licenciamento Ambiental no Setor</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text light">M&A de Empresas de Energia</span></div>
+        </div>
+        <a href="contato.html" class="btn-gold">Consulta gratuita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="section-cta">
   <div class="container">
@@ -420,15 +458,14 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   <div class="container">
     <div class="footer-grid">
       <div>
-  <a href="index.html" class="nav-logo">
-    <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
-  </a>
+        <a href="index.html" class="nav-logo">
+          <img src="images.png" alt="Kayo Melo" style="height: 42px; width: auto;">
+        </a>
         <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/kayomeloadvogados/" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
           <a href="https://www.facebook.com/kayomeloadvogados/" aria-label="Facebook"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
           <a href="#" aria-label="LinkedIn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <!-- NOVO ÍCONE DO YOUTUBE -->
           <a href="https://www.youtube.com/@kayomeloadvogados" target="_blank" aria-label="YouTube"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
         </div>
       </div>
@@ -445,23 +482,23 @@ footer{background:var(--ink);padding:5rem 0 3rem}
       <div class="footer-col">
         <h5>Especialidades</h5>
         <ul>
-          <li><a href="areas.html">Direito Previdenciário</a></li>
-          <li><a href="areas.html">Direito Tributário</a></li>
-          <li><a href="areas.html">Direito Civil</a></li>
-          <li><a href="areas.html">Direito à Saúde</a></li>
-          <li><a href="areas.html">Energia, Petróleo e Gás</a></li>
+          <li><a href="#previdenciario">Direito Previdenciário</a></li>
+          <li><a href="#tributario">Direito Tributário</a></li>
+          <li><a href="#civil">Direito Civil</a></li>
+          <li><a href="#saude">Direito à Saúde</a></li>
+          <li><a href="#energia">Direito de Energia, Petróleo e Gás</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Contato</h5>
         <p class="contact-row">(84) 4141-2470</p>
         <p class="contact-row">contato@kayomeloadvogados.com.br</p>
-        <p class="contact-row">Brasil, Rio Grande do Norte, Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
-        <p class="contact-row">Brasil, Rio Grande do Norte (RN), Edifício Lagoa Center – Sala 506, Av. Antônio Basílio, nº 3006, Esquina com Av. Romualdo Galvão, Bairro Lagoa Nova – Natal, CEP: 59056-901.</p>
+        <p class="contact-row">Brasil, RN, Rua Benilde Dantas, 300 - Centro, Ceará-Mirim - RN, 59570-000</p>
+        <p class="contact-row">Edifício Lagoa Center – Sala 506, Av. Antônio Basílio, 3006, Lagoa Nova – Natal/RN, CEP: 59056-901</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer">Ominus Tech</a>. Todos os direitos reservados. <a href="#" style="margin-left: 1.5rem;">Política de Privacidade (LGPD)</a></p>
+      <p>© 2025 Kayo Melo Advogados. Site produzido por <a href="https://ominustech.com" target="_blank" rel="noopener noreferrer">Ominus Tech</a>. Todos os direitos reservados. <a href="#">Política de Privacidade (LGPD)</a></p>
       <p>OAB/RN — Advocacia com ética e responsabilidade</p>
     </div>
   </div>
@@ -490,8 +527,8 @@ var obs = new IntersectionObserver(function(entries){
 }, {threshold:0.08});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
 
-// ACTIVE TAB on scroll
-var sections = ['previdenciario','tributario','civil','saude'];
+// ACTIVE TAB on scroll (agora com 5 seções)
+var sections = ['previdenciario','tributario','civil','saude','energia'];
 var tabs = document.querySelectorAll('.area-tab');
 var scrollObs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
