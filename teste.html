@@ -252,7 +252,7 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
 }
 /* ===== FIM NOVA SEÇÃO ===== */
 
-/* ===== NOVA SEÇÃO: DEPOIMENTOS ===== */
+/* ===== SEÇÃO DE AVALIAÇÕES GOOGLE (IMAGENS) ===== */
 .section-testimonials {
   background: var(--white);
   padding: 9rem 0;
@@ -260,7 +260,7 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
   overflow: hidden;
 }
 .section-testimonials::before {
-  content: 'DEPOIMENTOS';
+  content: 'AVALIAÇÕES';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -273,90 +273,30 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
   pointer-events: none;
   letter-spacing: 0.1em;
 }
-.testimonials-grid {
+.google-reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  gap: 2rem;
   margin-top: 3rem;
 }
-.testimonial-card {
-  background: var(--white);
-  border: 1px solid rgba(184,149,42,0.15);
-  border-radius: 4px;
-  padding: 2.5rem 2rem;
-  transition: all 0.3s ease;
-  position: relative;
+.review-image {
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(184,149,42,0.15);
 }
-.testimonial-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 30px -10px rgba(10,22,40,0.1);
+.review-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(184,149,42,0.1);
   border-color: var(--gold);
 }
-.testimonial-card::after {
-  content: '“';
-  position: absolute;
-  bottom: 0.5rem;
-  right: 1rem;
-  font-family: var(--serif);
-  font-size: 8rem;
-  color: rgba(184,149,42,0.05);
-  line-height: 1;
-  pointer-events: none;
+.review-image img {
+  height: 200px;
+  width: 400px;
+
 }
-.testimonial-stars {
-  display: flex;
-  gap: 0.3rem;
-  margin-bottom: 1.5rem;
-  color: var(--gold);
-}
-.testimonial-stars svg {
-  width: 18px;
-  height: 18px;
-  fill: var(--gold);
-}
-.testimonial-text {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--smoke);
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  font-style: italic;
-  position: relative;
-  z-index: 1;
-}
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.testimonial-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--parchment);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  font-weight: 500;
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  border: 1px solid rgba(184,149,42,0.2);
-}
-.testimonial-info h4 {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 0.2rem;
-}
-.testimonial-info p {
-  font-size: 0.75rem;
-  color: var(--smoke);
-  font-weight: 300;
-}
-/* ===== FIM DEPOIMENTOS ===== */
+/* ===== FIM AVALIAÇÕES ===== */
 
 .section-faq{background:var(--parchment);padding:9rem 0}
 .faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:6rem}
@@ -407,21 +347,19 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal-right{opacity:0;transform:translateX(28px);transition:opacity 0.9s ease,transform 0.9s ease}
 .reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
-@media(max-width:1100px){.areas-grid{grid-template-columns:repeat(2,1fr)}.area-item{border-bottom:1px solid rgba(184,149,42,0.15)}.area-item:nth-child(2){border-right:none}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .post-card:first-child{grid-column:1/-1}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.members-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.areas-grid{grid-template-columns:repeat(2,1fr)}.area-item{border-bottom:1px solid rgba(184,149,42,0.15)}.area-item:nth-child(2){border-right:none}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .post-card:first-child{grid-column:1/-1}.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.members-grid{grid-template-columns:repeat(2,1fr)}.google-reviews-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}.container{padding:0 2rem}.hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:10rem 2rem 10rem}.hero-indicator{left:2rem}.hero-scroll{display:none}.section-sobre{grid-template-columns:1fr}.sobre-img-col{height:50vh}.sobre-content{padding:4rem 2rem}.faq-layout{grid-template-columns:1fr;gap:3rem}.stats-row{grid-template-columns:1fr}.stat-col{border-right:none;border-bottom:1px solid rgba(184,149,42,0.1)}.stat-col:last-child{border-bottom:none}}
-@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.areas-grid{grid-template-columns:1fr}.area-item{border-right:none}.members-grid{grid-template-columns:1fr}.testimonials-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.areas-grid{grid-template-columns:1fr}.area-item{border-right:none}.members-grid{grid-template-columns:1fr}.google-reviews-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <link rel="icon" type="image/png" href="logoicon.webp">
 <body>
 <div class="loader" id="loader">
-  <!-- LOADER LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
   <div class="loader-bar"></div>
 </div>
 
 <nav id="navbar">
-  <!-- NAV LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <a href="index.html" class="nav-logo">
     <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
   </a>
@@ -442,7 +380,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   <a href="blog.html" class="ml">Blog</a>
   <a href="contato.html" class="ml">Contato</a>
 </div>
-
 
 <section class="hero" id="home">
   <div class="hero-bg"></div>
@@ -543,69 +480,19 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   </div>
 </section>
 
-<!-- ===== NOVA SEÇÃO: DEPOIMENTOS ===== -->
+<!-- ===== SEÇÃO DE AVALIAÇÕES GOOGLE (IMAGENS) ===== -->
 <section class="section-testimonials" id="depoimentos">
   <div class="container">
     <div class="section-label reveal">O que nossos clientes dizem</div>
-    <h2 class="section-title reveal">Depoimentos <em>reais</em></h2>
-    <div class="testimonials-grid">
-      <!-- Depoimento 1 -->
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p class="testimonial-text">“Foi ótimo munca deixe de acreditar na em.vcs nu senho eu sempre falei para minha mãe qui ir luta pelo benefício do meu irmão gratidão adeus a vcs tinha dias qui eu fala senho pq tiram qui direto do meu irmão mais quem pensa gente eu fala várias vezes pra pessoal do escritório falando pra deixe minha mãe minha filha deixe isso não vai da certo eu falei eu senhora vai ver em tão eu acreditei pegue os papel de maurilio mandei pra ele ir sem minha mãe sem quere eu peguei os documentos leve hoje recebi melho notícias da minha vida qui meu irmão está de vota aposentado”</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">MS</div>
-          <div class="testimonial-info">
-            <h4>Raissa Santos</h4>
-
-          </div>
-        </div>
-      </div>
-      <!-- Depoimento 2 -->
-      <div class="testimonial-card reveal" style="transition-delay:.1s">
-        <div class="testimonial-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p class="testimonial-text">“Me chamo Juliana Felix da Silva dátilo endico muito o escritório do dr kaio !!! Ótimos advogados; através do trabalho do dr Matheus suzar um dos advogados ajudar a realizar o sonho da minha mãe. Parabéns pelo excelente trabalho do grupo, e muito bom ter pessoas assim como essa como vocês para ajudar nosso povo de Ceará-Mirin”</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">JP</div>
-          <div class="testimonial-info">
-            <h4>Juliana Felix</h4>
-          </div>
-        </div>
-      </div>
-      <!-- Depoimento 3 -->
-      <div class="testimonial-card reveal" style="transition-delay:.2s">
-        <div class="testimonial-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p class="testimonial-text">“Primeiramente agradeço a Deus, a indicação de um Amigo e ao Profissionalismo de Dr. Kayo e de sua equipe, o benefício do meu filho foi suspenso de forma indevida, e vinha si arrastando no INNS por mais de 1 ano, e sem nenhuma expectativa para ser reativado, depois de acionar Dr. Kayo e ele assumir a causa, ficamos esperançosos, e de fato, esse escritório sabe o que faz, podem confiar, que eles resolvem, obenefício foi reativado, é também recebemos os atrasados”</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">CL</div>
-          <div class="testimonial-info">
-            <h4>elizabetjoann love</h4>
-
-          </div>
-        </div>
-      </div>
+    <h2 class="section-title reveal">Avaliações <em>Google</em></h2>
+    <div class="google-reviews-grid">
+      <div class="review-image"><img src="imag coment/comenta1.png" alt="Avaliação Google 1"></div>
+      <div class="review-image"><img src="imag coment/comenta2.png" alt="Avaliação Google 2"></div>
+      <div class="review-image"><img src="imag coment/comenta3.png" alt="Avaliação Google 3"></div>
     </div>
   </div>
 </section>
-<!-- ===== FIM DEPOIMENTOS ===== -->
+<!-- ===== FIM AVALIAÇÕES ===== -->
 
 <section class="section-faq" id="faq">
   <div class="container">
@@ -675,16 +562,15 @@ footer{background:var(--ink);padding:5rem 0 3rem}
     </div>
     <div style="text-align:center;margin-top:3rem"><a href="blog.html" class="btn-gold">Ver todos os posts</a></div>
   </div>
-  
 </section>
 
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div>
-  <a href="index.html" class="nav-logo">
-    <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
-  </a>
+        <a href="index.html" class="nav-logo">
+          <img src="images.png" alt="Kayo Melo" style="height: 50px; width: auto;">
+        </a>
         <p class="footer-tagline">Advocacia especializada com tecnologia própria, servindo clientes em todo o Rio Grande do Norte.</p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/kayomeloadvogados/" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
@@ -736,7 +622,7 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 </a>
 
 <script>
-// LOADER - usa timeout curto sem depender do evento load
+// LOADER
 setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
 
 // NAV SCROLL
