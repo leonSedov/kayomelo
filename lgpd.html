@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kayo Melo Advogados — Artigo: Mounjaro negado?</title>
+<title>Kayo Melo Advogados — LGPD e Privacidade</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600&display=swap');
 :root{--ink:#0D0D0D;--parchment:#F5F0E8;--gold:#B8952A;--gold-light:#D4AF5A;--smoke:#6B6560;--white:#FDFCFA;--navy:#0A1628;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit','Segoe UI',system-ui,sans-serif}
@@ -11,6 +11,8 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--parchment)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* LOADER */
 .loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity 0.8s,visibility 0.8s}
 .loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .loader-logo{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#fff;letter-spacing:0.2em;text-transform:uppercase}
@@ -18,15 +20,17 @@ body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x
 .loader-bar{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
 .loader-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold-light);animation:loadBar 1.5s ease forwards}
 @keyframes loadBar{to{left:0}}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease}
-nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.5s ease;background:rgba(10,22,40,0.15);backdrop-filter:blur(8px)}
+nav.scrolled{background:rgba(10,22,40,0.97);backdrop-filter:blur(20px);padding:1.2rem 4rem;border-bottom:1px solid rgba(184,149,42,0.2)}
 .nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase}
 .nav-logo span{color:var(--gold-light)}
 .nav-links{display:flex;gap:2.2rem;list-style:none}
 .nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.75rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:4px}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
-.nav-links a:hover{color:var(--gold-light)}
-.nav-links a:hover::after{width:100%}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
 .nav-cta{border:1px solid var(--gold)!important;padding:0.5rem 1.4rem;border-radius:100px;color:var(--gold-light)!important;transition:background 0.3s!important}
 .nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
 .nav-cta::after{display:none!important}
@@ -39,39 +43,51 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
 .mobile-nav.open{transform:translateX(0)}
 .mobile-nav a{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:#fff;text-decoration:none;transition:color 0.3s}
 .mobile-nav a:hover{color:var(--gold-light)}
+
+/* PAGE HERO */
+.page-hero{min-height:60vh;background:var(--navy);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(35%);opacity:0.18;display:block}
+.page-hero-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,0.97) 0%,rgba(10,22,40,0.65) 50%,rgba(10,22,40,0.88) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 0 5rem;width:100%}
 .container{max-width:1280px;margin:0 auto;padding:0 4rem}
+.page-hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.page-hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.page-hero-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5rem);font-weight:300;color:#fff;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.page-hero-title em{font-style:italic;color:var(--gold-light)}
+.page-hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.9;max-width:620px}
+.hero-bottom-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,149,42,0.4),transparent)}
+
+/* SHARED */
 .section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
 .section-label::before{content:'';width:30px;height:1px;background:var(--gold)}
-.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:2rem}
+.section-title{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--ink);line-height:1.08;margin-bottom:2.5rem}
 .section-title em{font-style:italic;color:var(--gold)}
-.hero-page{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:8rem 0 4rem}
-.hero-page-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(184,149,42,0.07) 0%,transparent 60%)}
-.hero-page-content{position:relative;z-index:2}
-.hero-page h1{font-family:var(--serif);font-size:clamp(2.5rem,4vw,4rem);font-weight:300;color:#fff;line-height:1.2}
-.hero-page h1 em{font-style:italic;color:var(--gold-light)}
-.article-meta{display:flex;gap:2rem;justify-content:center;color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem}
-.article-body{padding:5rem 0 6rem;background:var(--white)}
-.article-content{max-width:860px;margin:0 auto;font-size:1.1rem;font-weight:300;color:var(--ink);line-height:1.9}
-.article-content p{margin-bottom:1.8rem}
-.article-content h2{font-family:var(--serif);font-size:2rem;font-weight:500;color:var(--navy);margin:3rem 0 1.5rem}
-.article-content h2::before{content:'';display:block;width:50px;height:2px;background:var(--gold);margin-bottom:0.5rem}
-.article-content ul{margin:1.5rem 0 2rem 2rem;list-style:disc}
-.article-content li{margin-bottom:0.5rem}
-.article-content ol{margin:1.5rem 0 2rem 2rem;list-style:decimal}
-.audio-player{background:var(--parchment);border-radius:100px;padding:0.8rem 2rem;display:inline-flex;align-items:center;gap:2rem;margin:2rem 0 3rem;border:1px solid rgba(184,149,42,0.2);flex-wrap:wrap;justify-content:center}
-.audio-btn{background:var(--gold);border:none;color:var(--navy);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s}
-.audio-btn:hover{background:var(--gold-light);transform:scale(1.05)}
-.audio-btn svg{width:20px;height:20px;stroke:var(--navy);stroke-width:2;fill:none}
-.audio-status{font-size:0.9rem;color:var(--smoke);font-weight:300}
-.progress-bar{width:200px;height:4px;background:rgba(184,149,42,0.2);border-radius:4px;cursor:pointer;position:relative}
-.progress-fill{height:100%;width:0%;background:var(--gold);border-radius:4px;transition:width 0.1s}
-.time-display{font-size:0.8rem;color:var(--smoke);font-family:monospace}
-.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
-.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.4);transition:transform 0.3s;animation:waPulse 2.5s infinite}
-.wa-btn:hover{transform:scale(1.1)}
-@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
-.reveal.visible{opacity:1;transform:none}
+.section-title.light{color:#fff}
+.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:1rem 2.5rem;font-family:var(--sans);font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.7rem;cursor:pointer}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 15px 40px rgba(184,149,42,0.35)}
+
+/* CONTEÚDO LGPD */
+.lgpd-section{padding:6rem 0;background:var(--white)}
+.lgpd-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.lgpd-card{background:var(--parchment);padding:2.5rem;border:1px solid rgba(184,149,42,0.15);border-radius:4px;transition:transform 0.3s,box-shadow 0.3s}
+.lgpd-card:hover{transform:translateY(-4px);box-shadow:0 20px 30px -10px rgba(10,22,40,0.1);border-color:var(--gold)}
+.lgpd-icon{width:48px;height:48px;border:1px solid rgba(184,149,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
+.lgpd-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.lgpd-card h3{font-family:var(--serif);font-size:1.8rem;font-weight:500;color:var(--ink);margin-bottom:1rem}
+.lgpd-card p{font-size:1rem;font-weight:300;color:var(--smoke);line-height:1.8;margin-bottom:1rem}
+.lgpd-card ul{margin-left:1.5rem;margin-bottom:1rem}
+.lgpd-card li{font-size:0.95rem;font-weight:300;color:var(--smoke);margin-bottom:0.5rem}
+.lgpd-card strong{color:var(--navy);font-weight:500}
+.lgpd-divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:3rem 0}
+.lgpd-fullwidth{grid-column:1/-1}
+
+/* CONTATO RÁPIDO */
+.contact-mini{background:var(--navy);border-radius:8px;padding:3rem;margin-top:3rem;text-align:center}
+.contact-mini h3{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:#fff;margin-bottom:1rem}
+.contact-mini h3 em{color:var(--gold-light);font-style:italic}
+.contact-mini p{color:rgba(255,255,255,0.55);font-size:1rem;max-width:600px;margin:0 auto 2rem}
+
+/* FOOTER */
 footer{background:var(--ink);padding:5rem 0 3rem}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.06)}
 .footer-logo-text{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:#fff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem}
@@ -88,18 +104,41 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 .contact-row{margin-bottom:1.2rem;color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:300;line-height:1.5}
 .footer-bottom{padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300}
-@media(max-width:1100px){.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}}
-@media(max-width:900px){nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}.container{padding:0 2rem}.hero-page{padding:8rem 1rem 3rem}.article-content{font-size:1rem}}
-@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.footer-grid{grid-template-columns:1fr;gap:2.5rem}.footer-bottom{flex-direction:column;text-align:center}.audio-player{border-radius:40px;padding:1rem}}
+.footer-bottom a{color:var(--gold-light);text-decoration:none;transition:color 0.3s}
+.footer-bottom a:hover{color:var(--gold)}
+
+/* WA */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;text-decoration:none}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.4);transition:transform 0.3s;animation:waPulse 2.5s infinite}
+.wa-btn:hover{transform:scale(1.1)}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.footer-grid{grid-template-columns:1fr 1fr;gap:3rem}.lgpd-grid{grid-template-columns:1fr}}
+@media(max-width:900px){
+  nav{padding:1.5rem 2rem}nav.scrolled{padding:1rem 2rem}
+  .container{padding:0 2rem}
+  .page-hero-title{font-size:clamp(2.5rem,8vw,4rem)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
 </style>
 </head>
 <link rel="icon" type="image/png" href="logoicon.webp">
 <body>
+
 <div class="loader" id="loader">
-  <!-- LOADER LOGO SUBSTITUÍDO POR IMAGEM images.png -->
   <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
   <div class="loader-bar"></div>
-</div>
 </div>
 
 <nav id="navbar">
@@ -112,7 +151,6 @@ footer{background:var(--ink);padding:5rem 0 3rem}
     <li><a href="areas.html">Áreas</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contato.html">Contato</a></li>
-
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
@@ -125,93 +163,103 @@ footer{background:var(--ink);padding:5rem 0 3rem}
   <a href="contato.html" class="ml">Contato</a>
 </div>
 
-<!-- HERO DO ARTIGO -->
-<section class="hero-page">
-  <div class="hero-page-bg"></div>
-  <div class="hero-page-content container">
-    <div class="hero-eyebrow reveal" style="justify-content:center;">Direito à Saúde</div>
-    <h1 class="reveal">Por que o plano de saúde<br><em>nega o Mounjaro?</em></h1>
-    <div class="article-meta reveal">
-      <span>Publicado em 11 de março de 2026</span>
-      <span>|</span>
-      <span>Dr. Kayo Melo</span>
+<!-- HERO -->
+<section class="page-hero">
+  <img class="page-hero-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Privacidade e dados">
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content">
+    <div class="container">
+      <div class="page-hero-eyebrow reveal">LGPD</div>
+      <h1 class="page-hero-title reveal">Política de<br><em>Privacidade</em></h1>
+      <p class="page-hero-sub reveal">A Lei Geral de Proteção de Dados (Lei 13.709/2018) garante a você o controle sobre suas informações pessoais. Conheça como o Kayo Melo Advogados trata seus dados com segurança e transparência.</p>
     </div>
   </div>
+  <div class="hero-bottom-bar"></div>
 </section>
 
-<!-- CONTEÚDO DO ARTIGO COM PLAYER MP3 -->
-<section class="article-body">
+<!-- CONTEÚDO LGPD -->
+<section class="lgpd-section">
   <div class="container">
-    <div class="article-content">
-      
-      <!-- PLAYER DE ÁUDIO MP3 -->
-      <div class="audio-player reveal" id="audioPlayer">
-        <button class="audio-btn" id="playPauseBtn">
-          <svg viewBox="0 0 24 24" id="playIcon">
-            <polygon points="5 3 19 12 5 21 5 3" fill="none" stroke="currentColor"/>
-          </svg>
-        </button>
-        
-        <div class="progress-bar" id="progressBar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-        
-        <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
-        
-        <button class="audio-btn" id="stopBtn" style="background:transparent; border:1px solid var(--gold);">
-          <svg viewBox="0 0 24 24">
-            <rect x="6" y="4" width="12" height="16" fill="none" stroke="currentColor"/>
-          </svg>
-        </button>
-        
-        <audio id="audioElement" preload="metadata">
-          <!-- SUBSTITUA O CAMINHO ABAIXO PELO LOCAL DO SEU ARQUIVO MP3 -->
-          <source src="audio/mounjaro-artigo.mp3" type="audio/mpeg">
-          Seu navegador não suporta o elemento de áudio.
-        </audio>
+    <div class="lgpd-grid">
+
+      <!-- Card 1 -->
+      <div class="lgpd-card reveal">
+        <div class="lgpd-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Como tratamos seus dados</h3>
+        <p>No Kayo Melo Advogados, a privacidade dos nossos clientes e visitantes é prioridade. Coletamos apenas os dados estritamente necessários para:</p>
+        <ul>
+          <li><strong>Prestação de serviços jurídicos</strong> (identificação, contato, documentos processuais);</li>
+          <li><strong>Comunicação institucional</strong> (newsletters, informativos, mediante consentimento);</li>
+          <li><strong>Cumprimento de obrigações legais</strong> (registros exigidos pela OAB e órgãos reguladores).</li>
+        </ul>
+        <p>Todos os dados são armazenados em ambiente seguro e acessados apenas por profissionais autorizados.</p>
       </div>
 
-      <!-- TEXTO DO ARTIGO (FORNECIDO) -->
-      <p>É comum que os planos de saúde apresentem algumas justificativas para negar o medicamento, como por exemplo:</p>
-      <ul>
-        <li>Alegar que o remédio não está no rol da ANS</li>
-        <li>Dizer que o medicamento não está previsto no contrato</li>
-        <li>Informar que o uso seria fora da indicação da bula (off label)</li>
-        <li>Afirmar que existem outros tratamentos disponíveis</li>
-      </ul>
-      <p>No entanto, essas justificativas nem sempre levam em consideração a necessidade específica do paciente.</p>
-      <p>Quando um médico prescreve um medicamento, ele faz isso com base na análise do quadro clínico do paciente e no que considera mais adequado para o tratamento.</p>
-
-      <h2>A negativa do plano pode ser abusiva?</h2>
-      <p>Em muitos casos, sim. A Justiça tem entendido que o plano de saúde não pode substituir a decisão do médico responsável pelo tratamento. Ou seja, se existe prescrição médica e necessidade comprovada, o paciente não deve ficar sem acesso ao tratamento indicado.</p>
-      <p>Além disso, diversas decisões judiciais reconhecem que o rol da ANS representa apenas uma cobertura mínima, não podendo limitar tratamentos necessários para a saúde do paciente.</p>
-      <p>Por isso, quando o plano de saúde nega um medicamento essencial, essa negativa pode ser contestada.</p>
-
-      <h2>O que fazer quando o plano de saúde nega o Mounjaro?</h2>
-      <p>Se você recebeu uma negativa do plano de saúde, alguns passos são importantes:</p>
-      <ol>
-        <li><strong>Peça a negativa por escrito</strong> – O plano de saúde é obrigado a informar formalmente o motivo da recusa.</li>
-        <li><strong>Solicite um relatório médico</strong> – Peça ao seu médico um relatório explicando por que o Mounjaro é necessário para o seu tratamento.</li>
-        <li><strong>Guarde todos os documentos</strong> – Receitas médicas, exames, laudos e qualquer comunicação com o plano de saúde podem ser importantes.</li>
-        <li><strong>Procure orientação jurídica</strong> – Um advogado especializado em direito à saúde pode analisar o caso e orientar sobre as medidas necessárias.</li>
-      </ol>
-
-      <h2>É possível conseguir o medicamento pela Justiça?</h2>
-      <p>Sim. Em muitos casos, pacientes conseguem na Justiça uma decisão que obriga o plano de saúde a fornecer o medicamento.</p>
-      <p>Essas decisões podem acontecer rapidamente por meio de uma liminar, que é uma decisão urgente quando existe risco à saúde do paciente.</p>
-      <p>Cada caso deve ser analisado individualmente, mas muitas pessoas conseguem garantir o tratamento dessa forma.</p>
-
-      <h2>Negativa de Mounjaro pelo plano de saúde: você não precisa enfrentar isso sozinho</h2>
-      <p>Quando um medicamento importante é negado, o paciente pode se sentir perdido ou sem saber como agir. Porém, é importante lembrar que existem caminhos legais para buscar seus direitos.</p>
-      <p>Com a documentação correta e orientação adequada, é possível contestar a negativa e lutar pelo acesso ao tratamento indicado pelo médico.</p>
-      <p>Se você ou alguém da sua família teve o Mounjaro negado pelo plano de saúde, buscar informação e orientação pode ser o primeiro passo para garantir o tratamento necessário.</p>
-
-      <!-- CHAMADA PARA CONTATO AO FINAL -->
-      <div style="background:var(--parchment); border-radius:8px; padding:2.5rem; text-align:center; margin:4rem 0 2rem;">
-        <h3 style="font-family:var(--serif); font-size:2rem; margin-bottom:1rem;">Precisando de ajuda?</h3>
-        <p style="margin-bottom:2rem;">Nossa equipe de Direito à Saúde está pronta para analisar seu caso.</p>
-        <a href="contato.html" class="btn-gold" style="display:inline-flex;">Falar com especialista</a>
+      <!-- Card 2 -->
+      <div class="lgpd-card reveal" style="transition-delay:0.1s">
+        <div class="lgpd-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <h3>Seus direitos como titular</h3>
+        <p>A LGPD garante a você diversos direitos. Você pode solicitar a qualquer momento:</p>
+        <ul>
+          <li><strong>Confirmação da existência de tratamento</strong> de seus dados;</li>
+          <li><strong>Acesso</strong> aos dados que possuímos;</li>
+          <li><strong>Correção</strong> de dados incompletos ou desatualizados;</li>
+          <li><strong>Anonimização, bloqueio ou eliminação</strong> de dados desnecessários;</li>
+          <li><strong>Portabilidade</strong> dos dados a outro fornecedor de serviço;</li>
+          <li><strong>Revogação do consentimento</strong> a qualquer tempo.</li>
+        </ul>
+        <p>Para exercer seus direitos, entre em contato pelo e-mail <strong>lgpd@kayomeloadvogados.com.br</strong>.</p>
       </div>
+    </div>
+
+    <div class="lgpd-divider reveal"></div>
+
+    <!-- Cards seguintes (2 colunas) -->
+    <div class="lgpd-grid">
+      <!-- Card 3 -->
+      <div class="lgpd-card reveal">
+        <div class="lgpd-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+        <h3>Cookies e tecnologias</h3>
+        <p>Utilizamos cookies essenciais para o funcionamento do site e, mediante seu consentimento, cookies de marketing e analytics para melhorar sua experiência. Você pode gerenciar suas preferências a qualquer momento através das configurações do seu navegador.</p>
+        <p>Os cookies coletam informações como páginas visitadas, tempo de navegação e origem do acesso, sempre de forma agregada e anônima.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="lgpd-card reveal" style="transition-delay:0.1s">
+        <div class="lgpd-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>Segurança da informação</h3>
+        <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acessos não autorizados, destruição, perda ou alteração. Entre as práticas estão:</p>
+        <ul>
+          <li>Criptografia de dados sensíveis;</li>
+          <li>Controle de acesso baseado em perfis;</li>
+          <li>Monitoramento contínuo de vulnerabilidades;</li>
+          <li>Treinamento periódico da equipe em boas práticas de proteção de dados.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lgpd-divider reveal"></div>
+
+    <!-- Card único (largura total) -->
+    <div class="lgpd-fullwidth reveal">
+      <div class="lgpd-card" style="background:var(--navy); border-color:rgba(184,149,42,0.3);">
+        <div class="lgpd-icon" style="border-color:rgba(184,149,42,0.5);"><svg viewBox="0 0 24 24" stroke="var(--gold-light)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3 style="color:#fff;">Encarregado (DPO)</h3>
+        <p style="color:rgba(255,255,255,0.7);">Para questões relacionadas à proteção de dados, você pode contatar nosso Encarregado (Data Protection Officer):</p>
+        <ul style="color:rgba(255,255,255,0.7);">
+          <li><strong>Nome:</strong> Dr. Kayo Melo</li>
+          <li><strong>E-mail:</strong> dpo@kayomeloadvogados.com.br</li>
+          <li><strong>Telefone:</strong> (84) 4141-2470</li>
+        </ul>
+        <p style="color:rgba(255,255,255,0.7);">Estamos à disposição para esclarecer qualquer dúvida sobre o tratamento dos seus dados pessoais.</p>
+      </div>
+    </div>
+
+    <!-- Contato rápido -->
+    <div class="contact-mini reveal">
+      <h3>Fale conosco sobre <em>privacidade</em></h3>
+      <p>Caso deseje exercer seus direitos ou tenha qualquer pergunta sobre esta política, utilize nossos canais de atendimento.</p>
+      <a href="contato.html" class="btn-gold">Falar com o DPO</a>
     </div>
   </div>
 </section>
@@ -273,125 +321,21 @@ footer{background:var(--ink);padding:5rem 0 3rem}
     <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </div>
 </a>
-
 <script>
-// LOADER
 setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 1600);
 
-// NAV SCROLL
 var navbar = document.getElementById('navbar');
 window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
 
-// HAMBURGER
 var hamburger = document.getElementById('hamburger');
 var mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click', function(){
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-});
-document.querySelectorAll('.ml').forEach(function(link){
-  link.addEventListener('click', function(){
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-  });
-});
+hamburger.addEventListener('click', function(){ hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+document.querySelectorAll('.ml').forEach(function(l){ l.addEventListener('click', function(){ hamburger.classList.remove('open'); mobileNav.classList.remove('open'); }); });
 
-// REVEAL ON SCROLL
 var obs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:0.1});
-document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
-
-// PLAYER DE ÁUDIO MP3
-const audio = document.getElementById('audioElement');
-const playPauseBtn = document.getElementById('playPauseBtn');
-const stopBtn = document.getElementById('stopBtn');
-const playIcon = document.getElementById('playIcon');
-const progressBar = document.getElementById('progressBar');
-const progressFill = document.getElementById('progressFill');
-const timeDisplay = document.getElementById('timeDisplay');
-
-// Atualizar ícone conforme estado do áudio
-function updatePlayIcon() {
-  if (audio.paused) {
-    playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3" fill="none" stroke="currentColor"/>';
-  } else {
-    playIcon.innerHTML = '<rect x="4" y="4" width="6" height="16" fill="none" stroke="currentColor"/><rect x="14" y="4" width="6" height="16" fill="none" stroke="currentColor"/>';
-  }
-}
-
-// Formatar tempo (segundos -> mm:ss)
-function formatTime(seconds) {
-  if (isNaN(seconds)) return '0:00';
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return mins + ':' + (secs < 10 ? '0' : '') + secs;
-}
-
-// Atualizar barra de progresso e tempo
-function updateProgress() {
-  const current = audio.currentTime;
-  const duration = audio.duration;
-  if (duration > 0) {
-    const percent = (current / duration) * 100;
-    progressFill.style.width = percent + '%';
-    timeDisplay.textContent = formatTime(current) + ' / ' + formatTime(duration);
-  } else {
-    timeDisplay.textContent = '0:00 / 0:00';
-  }
-}
-
-// Quando metadata carregar, mostra duração total
-audio.addEventListener('loadedmetadata', function() {
-  timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
-});
-
-// Atualizar durante a reprodução
-audio.addEventListener('timeupdate', updateProgress);
-
-// Ao final, voltar ícone de play
-audio.addEventListener('ended', function() {
-  updatePlayIcon();
-  progressFill.style.width = '0%';
-  timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
-});
-
-// Play/Pause
-playPauseBtn.addEventListener('click', function() {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-  updatePlayIcon();
-});
-
-// Stop (para e volta ao início)
-stopBtn.addEventListener('click', function() {
-  audio.pause();
-  audio.currentTime = 0;
-  updatePlayIcon();
-  progressFill.style.width = '0%';
-  timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
-});
-
-// Clique na barra de progresso para buscar posição
-progressBar.addEventListener('click', function(e) {
-  const rect = progressBar.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  const width = rect.width;
-  const percent = clickX / width;
-  if (audio.duration) {
-    audio.currentTime = percent * audio.duration;
-  }
-});
-
-// Pausar ao clicar em links do menu (opcional, para não conflitar)
-document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
-  link.addEventListener('click', function() {
-    // não mexe no áudio, apenas deixa como está
-  });
-});
+}, {threshold:0.08});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){ obs.observe(el); });
 </script>
 </body>
 </html>
