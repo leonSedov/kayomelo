@@ -285,6 +285,9 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(184,149,42,0.15);
+  background-color: #f9f9f9;
+  height: 280px; /* altura fixa para manter consistência */
+  width: 100%;
 }
 .review-image:hover {
   transform: translateY(-5px);
@@ -292,9 +295,10 @@ nav.scrolled{background:rgba(10,22,40,0.96);backdrop-filter:blur(20px);padding:1
   border-color: var(--gold);
 }
 .review-image img {
-  height: 200px;
-  width: 400px;
-
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* garante que a imagem inteira seja visível sem cortes */
+  display: block;
 }
 /* ===== FIM AVALIAÇÕES ===== */
 
@@ -355,7 +359,7 @@ footer{background:var(--ink);padding:5rem 0 3rem}
 <link rel="icon" type="image/png" href="logoicon.webp">
 <body>
 <div class="loader" id="loader">
-  <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 100px; width: auto;">
+  <img src="images.png" alt="Kayo Melo" class="loader-logo" style="height: 200px; width: auto;">
   <div class="loader-bar"></div>
 </div>
 
