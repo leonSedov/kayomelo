@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Kayomelo Advogados - Links Bio</title>
+    <meta name="description" content="Kayomelo Advogados - Escritório de advocacia especializado em direito previdenciário, tributário e civil. Contato direto e informações.">
+    <meta name="theme-color" content="#0f1419">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;500;600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: #0f1419;
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Container principal */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Background com padrão sutil */
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            pointer-events: none;
+            background: linear-gradient(135deg, #d4af37 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        /* Content wrapper */
+        .content {
+            width: 100%;
+            max-width: 28rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @media (min-width: 640px) {
+            .header {
+                margin-bottom: 3rem;
+            }
+        }
+
+        /* Logo */
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            margin-bottom: 1rem;
+            border: 2px solid #d4af37;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease-out;
+        }
+
+        .logo:hover {
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.3);
+        }
+
+        @media (min-width: 640px) {
+            .logo {
+                width: 5rem;
+                height: 5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .logo-text {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+        }
+
+        @media (min-width: 640px) {
+            .logo-text {
+                font-size: 2.25rem;
+            }
+        }
+
+        /* Título */
+        .title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        @media (min-width: 640px) {
+            .title {
+                font-size: 2.25rem;
+            }
+        }
+
+        /* Subtítulo */
+        .subtitle {
+            font-size: 1rem;
+            color: #d4d4d8;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .subtitle {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Divisor dourado */
+        .divider {
+            height: 0.25rem;
+            width: 3rem;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 1rem auto 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .divider {
+                width: 4rem;
+                margin: 1.5rem auto 2rem;
+            }
+        }
+
+        /* Descrição */
+        .description {
+            color: #a1a5b0;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            padding: 0 0.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .description {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Links container */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .links-container {
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Link card */
+        .link-card {
+            display: block;
+            position: relative;
+            background-color: #1a1f2e;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        @media (min-width: 640px) {
+            .link-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .link-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .link-card:active {
+            transform: scale(0.98);
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+            border-radius: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            pointer-events: none;
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Link card content */
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .link-content {
+                gap: 1rem;
+            }
+        }
+
+        /* Link icon */
+        .link-icon {
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: rgba(212, 175, 55, 0.1);
+            transition: background-color 0.3s ease-out;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-card:hover .link-icon {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .link-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #d4af37;
+        }
+
+        @media (min-width: 640px) {
+            .link-icon {
+                padding: 0.75rem;
+            }
+
+            .link-icon svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        /* Link text */
+        .link-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .link-title {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.875rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            .link-title {
+                font-size: 1.125rem;
+            }
+        }
+
+        .link-description {
+            font-size: 0.75rem;
+            color: #a1a5b0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (min-width: 640px) {
+            .link-description {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Link arrow */
+        .link-arrow {
+            color: #d4af37;
+            font-size: 0.875rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            flex-shrink: 0;
+        }
+
+        .link-card:hover .link-arrow {
+            opacity: 1;
+        }
+
+        /* Divisor horizontal */
+        .horizontal-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.3), transparent);
+            margin: 1.5rem 0 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .horizontal-divider {
+                margin: 2rem 0 2.5rem;
+            }
+        }
+
+        /* Social section */
+        .social-section {
+            text-align: center;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        .social-label {
+            font-size: 0.875rem;
+            color: #a1a5b0;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .social-label {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Social links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .social-links {
+                gap: 1.5rem;
+            }
+        }
+
+        .social-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: #1a1f2e;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease-out;
+        }
+
+        @media (min-width: 640px) {
+            .social-link {
+                padding: 0.75rem;
+            }
+        }
+
+        .social-link:hover {
+            border-color: #d4af37;
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .social-link:active {
+            transform: scale(0.9);
+        }
+
+        .social-link svg {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.3s ease-out;
+        }
+
+        @media (min-width: 640px) {
+            .social-link svg {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        @media (min-width: 640px) {
+            .footer {
+                margin-top: 3rem;
+                padding-top: 2rem;
+            }
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: #a1a5b0;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 640px) {
+            .footer-text {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .link-card {
+            animation: slideUp 0.6s ease-out both;
+        }
+
+        .link-card:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .link-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="container">
+        <div class="content">
+            <!-- Header -->
+            <div class="header">
+                <!-- Logo -->
+                <div class="logo">
+                    <span class="logo-text">KM</span>
+                </div>
+
+                <!-- Título -->
+                <h1 class="title">Kayomelo</h1>
+                <p class="subtitle">Advogados</p>
+
+                <!-- Divisor -->
+                <div class="divider"></div>
+
+                <!-- Descrição -->
+                <p class="description">
+                    Advocacia especializada em Direito Previdenciário, Tributário e Civil. Atendimento em todo o Brasil.
+                </p>
+            </div>
+
+            <!-- Links principais -->
+            <div class="links-container">
+                <!-- Link 1: WhatsApp -->
+                <a href="https://api.whatsapp.com/send/?phone=558441412470&text=Olá%20Kayomelo%20Advogados!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-content">
+                        <div class="link-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="link-text">
+                            <div class="link-title">Agende uma Consulta</div>
+                            <div class="link-description">Fale com nossos advogados via WhatsApp</div>
+                        </div>
+                        <div class="link-arrow">→</div>
+                    </div>
+                </a>
+
+                <!-- Link 2: Site -->
+                <a href="https://kayomeloadvogados.com.br/" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <div class="link-content">
+                        <div class="link-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                <path d="M2 12h20"></path>
+                            </svg>
+                        </div>
+                        <div class="link-text">
+                            <div class="link-title">Visite Nosso Site</div>
+                            <div class="link-description">Conheça nossas áreas de atuação e especialidades</div>
+                        </div>
+                        <div class="link-arrow">→</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Divisor horizontal -->
+            <div class="horizontal-divider"></div>
+
+            <!-- Redes sociais -->
+            <div class="social-section">
+                <p class="social-label">Nos acompanhe nas redes sociais</p>
+                <div class="social-links">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/kayomeloadvogados/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                        </svg>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/kayomeloadvogados/" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a6 6 0 0 0-6 6v3H7v4h2v8h4v-8h3l1-4h-4V8a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/company/kayomelo-advogados/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p class="footer-text">
+                    © 2026 Kayomelo Advogados. Todos os direitos reservados.
+                </p>
+                <p class="footer-text" style="margin-top: 0.5rem;">
+                    (84) 4141-2470<br>
+                    contato@kayomeloadvogados.com.br
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adicionar animação de fade-in ao carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Todas as animações já estão configuradas via CSS
+            // Este script pode ser expandido para funcionalidades adicionais
+            
+            // Log de carregamento (opcional)
+            console.log('Página de links Kayomelo Advogados carregada com sucesso!');
+        });
+
+        // Adicionar feedback visual ao clicar nos links
+        document.querySelectorAll('.link-card, .social-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Criar efeito ripple
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.width = '0';
+                ripple.style.height = '0';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(212, 175, 55, 0.5)';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Adicionar estilo para animação ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    width: 500px;
+                    height: 500px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
